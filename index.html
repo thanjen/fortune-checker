@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>星詠み診断｜星詠みの海獺</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<!-- AdSense 一時無効化（二重送信調査中）
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931"
      crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="ca-pub-1736527039172931">
--->
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -664,11 +662,11 @@ document.getElementById('form').addEventListener('submit', (e) => {
   };
 
   let registerNo = '';
-  let callbackDone = false;  // 二重コールバック防止フラグ
+  let callbackDone = false;
 
   // 結果表示関数
   function showResult() {
-    if (callbackDone) return;  // 二重実行を防止
+    if (callbackDone) return;
     callbackDone = true;
     document.getElementById('form').style.display = 'none';
     document.getElementById('result').style.display = 'block';
@@ -681,7 +679,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
     document.getElementById('register-no').textContent = registerNo;
   }
 
-  // JSONP方式でGASに送信
+  // iframe方式でGASに送信（AdSenseの干渉を回避）
   window.gasCallback = function(json) {
     if (json.status === 'success') registerNo = `登録番号：${json.no}`;
     showResult();
@@ -704,22 +702,23 @@ document.getElementById('form').addEventListener('submit', (e) => {
     os: payload.os,
     device: payload.device,
     browser: payload.browser,
-    callback: 'gasCallback',
+    callback: 'parent.gasCallback',
+    _t: Date.now(),
   });
 
-  // 既存のJSONPスクリプトを削除してから追加（重複防止）
-  const oldScript = document.getElementById('jsonp-script');
-  if (oldScript) oldScript.remove();
+  // 既存のiframeを削除
+  const oldFrame = document.getElementById('gas-iframe');
+  if (oldFrame) oldFrame.remove();
 
-  // キャッシュ防止のためURLにタイムスタンプを追加
-  params.append('_t', Date.now());
+  // iframeでGASを呼び出す（AdSenseはiframe内を監視しない）
+  const iframe = document.createElement('iframe');
+  iframe.id = 'gas-iframe';
+  iframe.style.display = 'none';
+  iframe.src = `${GAS_URL}?${params.toString()}`;
+  document.body.appendChild(iframe);
 
-  const script = document.createElement('script');
-  script.id = 'jsonp-script';
-  script.src = `${GAS_URL}?${params.toString()}`;
-  script.onload = () => {};
-  script.onerror = () => { showResult(); };
-  document.body.appendChild(script);
+  // タイムアウト（15秒で結果表示）
+  setTimeout(() => { showResult(); }, 15000);
 });
 </script>
 </body>
