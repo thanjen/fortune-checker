@@ -515,9 +515,9 @@ for (let i = 0; i < 40; i++) {
 }
 
 // ============================================================
-// 九星気学：本命星の計算
+// 九星気学：本命星の計算（性別に関係なく共通）
 // ============================================================
-function calcKyusei(birthdate, gender) {
+function calcKyusei(birthdate) {
   const date = new Date(birthdate);
   let year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -532,16 +532,10 @@ function calcKyusei(birthdate, gender) {
     sum = String(sum).split('').reduce((a, b) => a + parseInt(b), 0);
   }
 
-  let starNum;
-  if (gender === '男性') {
-    starNum = 11 - sum;
-    if (starNum <= 0) starNum += 9;
-    if (starNum > 9) starNum -= 9;
-  } else {
-    starNum = 4 + sum;
-    if (starNum > 9) starNum -= 9;
-    if (starNum > 9) starNum -= 9;
-  }
+  // 11 - sum で本命星を算出（性別不問）
+  let starNum = 11 - sum;
+  if (starNum <= 0) starNum += 9;
+  if (starNum > 9) starNum -= 9;
 
   const stars = {
     1: { name: '一白水星', code: 'A' },
@@ -595,7 +589,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
   const gender = document.getElementById('gender').value;
 
   // 計算
-  const kyusei = calcKyusei(birthdate, gender);
+  const kyusei = calcKyusei(birthdate);
   const jikkan = calcJikkan(birthdate);
   const diagCode = `${kyusei.code}-${jikkan.code}`;
 
