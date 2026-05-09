@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星詠み診断｜星詠みの海獺</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #faf8f3;
+    --muted: #6b6b7a;
+    --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--d, 4s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: var(--op, 0.4); transform: scale(1); }
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .otter {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.15em;
+  }
+  .divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1rem auto;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.8s ease both;
+    margin-bottom: 1.5rem;
+  }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.2s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .field { margin-bottom: 1.25rem; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .required {
+    color: var(--gold);
+    margin-left: 2px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="time"],
+  select {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.8);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a84c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .checkbox-group {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .checkbox-group label {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 0;
+    letter-spacing: 0.05em;
+  }
+  .checkbox-group input[type="checkbox"] { display: none; }
+  .checkbox-group input[type="checkbox"]:checked + span {
+    color: var(--gold);
+  }
+  .checkbox-group label:has(input:checked) {
+    background: rgba(201,168,76,0.08);
+    border-color: var(--gold);
+  }
+
+  .note {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+    letter-spacing: 0.05em;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--ink);
+    color: var(--gold-light);
+    border: none;
+    border-radius: 10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn:hover { background: #2d2d45; transform: translateY(-1px); }
+  .btn:active { transform: scale(0.99); }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  /* 結果表示 */
+  #result {
+    display: none;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+  .result-star {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .result-main {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+  .result-code {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border: 0.5px solid var(--gold);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .result-msg {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .note-link {
+    display: block;
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #c9a84c, #e8d5a3);
+    color: var(--ink);
+    border-radius: 10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-bottom: 0.75rem;
+  }
+  .note-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+  .register-no {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.2s steps(4, end) infinite;
+  }
+  @keyframes dots {
+    0%,20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%,100% { content: '...'; }
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 480px) {
+    .grid2 { grid-template-columns: 1fr; }
+    h1 { font-size: 1.3rem; }
+    .card { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <header>
+    <span class="otter">🦦</span>
+    <h1>星詠み診断</h1>
+    <p class="subtitle">九星気学 × 四柱推命</p>
+    <div class="divider"></div>
+    <p style="font-size:0.8rem; color:var(--muted); line-height:1.8;">
+      生年月日と性別から、あなたの<br>「本命星」と「日干」を導き出します。
+    </p>
+  </header>
+
+  <!-- フォーム -->
+  <form id="form">
+
+    <div class="card">
+      <div class="section-title">基本情報</div>
+
+      <div class="field">
+        <label>お名前（ニックネームでも）<span class="required">*</span></label>
+        <input type="text" id="name" placeholder="例：ラッコ太郎" required>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label>生年月日<span class="required">*</span></label>
+          <input type="date" id="birthdate" required>
+        </div>
+        <div class="field">
+          <label>性別<span class="required">*</span></label>
+          <select id="gender" required>
+            <option value="">選択してください</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label>生まれた時間</label>
+          <input type="time" id="birthtime">
+          <p class="note">不明の場合は空欄でOK</p>
+        </div>
+        <div class="field">
+          <label>血液型</label>
+          <select id="bloodtype">
+            <option value="">選択してください</option>
+            <option>A型</option>
+            <option>B型</option>
+            <option>O型</option>
+            <option>AB型</option>
+            <option>不明</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">出身・居住地</div>
+
+      <div class="field">
+        <label>生まれた場所<span class="required">*</span></label>
+        <input type="text" id="birthplace" placeholder="例：東京都、大阪府、海外など" required>
+      </div>
+
+      <div class="field">
+        <label>現在お住まいの都道府県</label>
+        <select id="prefecture">
+          <option value="">選択してください</option>
+          <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option>
+          <option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option>
+          <option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option>
+          <option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option>
+          <option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option>
+          <option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option>
+          <option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option>
+          <option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option>
+          <option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option>
+          <option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option>
+          <option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option>
+          <option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option><option>海外</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">SNS・きっかけ</div>
+
+      <div class="field">
+        <label>よく使うSNS（複数選択可）</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="X（旧Twitter）"><span>X（旧Twitter）</span></label>
+          <label><input type="checkbox" value="Instagram"><span>Instagram</span></label>
+          <label><input type="checkbox" value="Threads"><span>Threads</span></label>
+          <label><input type="checkbox" value="TikTok"><span>TikTok</span></label>
+          <label><input type="checkbox" value="YouTube"><span>YouTube</span></label>
+          <label><input type="checkbox" value="Facebook"><span>Facebook</span></label>
+          <label><input type="checkbox" value="LINE"><span>LINE</span></label>
+          <label><input type="checkbox" value="その他"><span>その他</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>このアカウントを知ったきっかけ</label>
+        <select id="trigger">
+          <option value="">選択してください</option>
+          <option>X（旧Twitter）</option>
+          <option>Instagram</option>
+          <option>Threads</option>
+          <option>TikTok</option>
+          <option>YouTube</option>
+          <option>知人・友人の紹介</option>
+          <option>note</option>
+          <option>検索エンジン</option>
+          <option>その他</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>メールアドレス（任意）</label>
+        <input type="email" id="email" placeholder="example@email.com">
+        <p class="note">鑑定情報のお知らせ等に使用することがあります</p>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" id="submit-btn">
+      ✦ 星を詠む ✦
+    </button>
+  </form>
+
+  <!-- 結果表示 -->
+  <div id="result" class="card">
+    <p class="result-star">✦ あなたの星が導き出されました ✦</p>
+    <div class="divider"></div>
+    <p class="result-main" id="result-text"></p>
+    <span class="result-code" id="result-code"></span>
+    <p class="result-msg" id="result-msg"></p>
+    <a href="#" class="note-link" id="note-link" target="_blank">
+      📖 あなたの詳細鑑定レポートを読む（note）
+    </a>
+    <p class="register-no" id="register-no"></p>
+  </div>
+
+  <footer>
+    © 星詠みの海獺 by_nature<br>
+    <a href="https://note.com/by_nature" target="_blank" style="color:var(--gold); text-decoration:none;">note.com/by_nature</a>
+  </footer>
+</div>
+
+<script>
+// ============================================================
+// 設定
+// ============================================================
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiGd-DULfEAn5T4D6UOAxaDUW1aReloVfCjUGR3jwZvG0Gr9g/exec';
+const NOTE_BASE_URL = 'https://note.com/by_nature'; // 記事URLのベース
+
+// ============================================================
+// 星の背景
+// ============================================================
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 40; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${3+Math.random()*5}s;--delay:${Math.random()*6}s;--op:${0.2+Math.random()*0.5}`;
+  starsEl.appendChild(s);
+}
+
+// ============================================================
+// 九星気学：本命星の計算
+// ============================================================
+function calcKyusei(birthdate, gender) {
+  const date = new Date(birthdate);
+  let year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  // 節分（2月4日）前は前年として計算
+  if (month < 2 || (month === 2 && day < 4)) year--;
+
+  // 各桁の和を1桁になるまで繰り返す
+  let sum = String(year).split('').reduce((a, b) => a + parseInt(b), 0);
+  while (sum >= 10) {
+    sum = String(sum).split('').reduce((a, b) => a + parseInt(b), 0);
+  }
+
+  let starNum;
+  if (gender === '男性') {
+    starNum = 11 - sum;
+    if (starNum <= 0) starNum += 9;
+    if (starNum > 9) starNum -= 9;
+  } else {
+    starNum = 4 + sum;
+    if (starNum > 9) starNum -= 9;
+    if (starNum > 9) starNum -= 9;
+  }
+
+  const stars = {
+    1: { name: '一白水星', code: 'A' },
+    2: { name: '二黒土星', code: 'B' },
+    3: { name: '三碧木星', code: 'C' },
+    4: { name: '四緑木星', code: 'D' },
+    5: { name: '五黄土星', code: 'E' },
+    6: { name: '六白金星', code: 'F' },
+    7: { name: '七赤金星', code: 'G' },
+    8: { name: '八白土星', code: 'H' },
+    9: { name: '九紫火星', code: 'I' },
+  };
+  return stars[starNum];
+}
+
+// ============================================================
+// 四柱推命：日干の計算
+// ============================================================
+function calcJikkan(birthdate) {
+  const date = new Date(birthdate);
+  // 基準日：1900年1月1日は庚（かのえ）= index 6
+  const base = new Date('1900-01-01');
+  const diff = Math.floor((date - base) / (1000 * 60 * 60 * 24));
+  const jikkanList = [
+    { name: '甲', reading: 'きのえ', code: '01' },
+    { name: '乙', reading: 'きのと', code: '02' },
+    { name: '丙', reading: 'ひのえ', code: '03' },
+    { name: '丁', reading: 'ひのと', code: '04' },
+    { name: '戊', reading: 'つちのえ', code: '05' },
+    { name: '己', reading: 'つちのと', code: '06' },
+    { name: '庚', reading: 'かのえ', code: '07' },
+    { name: '辛', reading: 'かのと', code: '08' },
+    { name: '壬', reading: 'みずのえ', code: '09' },
+    { name: '癸', reading: 'みずのと', code: '10' },
+  ];
+  const idx = ((diff % 10) + 10) % 10;
+  return jikkanList[idx];
+}
+
+// ============================================================
+// フォーム送信
+// ============================================================
+document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="loading-dots">鑑定中</span>';
+
+  const birthdate = document.getElementById('birthdate').value;
+  const gender = document.getElementById('gender').value;
+
+  // 計算
+  const kyusei = calcKyusei(birthdate, gender);
+  const jikkan = calcJikkan(birthdate);
+  const diagCode = `${kyusei.code}-${jikkan.code}`;
+
+  // SNSチェックボックス収集
+  const snsChecked = [...document.querySelectorAll('.checkbox-group input:checked')]
+    .map(el => el.value).join('、') || '未選択';
+
+  // GASに送信
+  const payload = {
+    name: document.getElementById('name').value,
+    birthdate: birthdate,
+    gender: gender,
+    birthtime: document.getElementById('birthtime').value || '不明',
+    birthplace: document.getElementById('birthplace').value,
+    prefecture: document.getElementById('prefecture').value || '未選択',
+    bloodtype: document.getElementById('bloodtype').value || '未選択',
+    email: document.getElementById('email').value || '',
+    sns: snsChecked,
+    trigger: document.getElementById('trigger').value || '未選択',
+    kyusei: kyusei.name,
+    jikkan: `${jikkan.name}（${jikkan.reading}）`,
+    code: diagCode,
+  };
+
+  let registerNo = '';
+  try {
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json();
+    if (json.status === 'success') registerNo = `登録番号：${json.no}`;
+  } catch (err) {
+    console.warn('保存エラー（診断は続行）', err);
+  }
+
+  // 結果表示
+  document.getElementById('form').style.display = 'none';
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+
+  document.getElementById('result-text').textContent =
+    `${kyusei.name} × ${jikkan.name}（${jikkan.reading}）`;
+  document.getElementById('result-code').textContent = `診断コード：${diagCode}`;
+  document.getElementById('result-msg').textContent =
+    `あなたは「${kyusei.name}」の本命星と「${jikkan.name}（${jikkan.reading}）」の日干を持っています。\nこの組み合わせだけの詳細な鑑定レポートをnoteで公開中です。ぜひご覧ください。`;
+  document.getElementById('note-link').href = NOTE_BASE_URL;
+  document.getElementById('register-no').textContent = registerNo;
+});
+</script>
+</body>
+</html>
