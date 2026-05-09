@@ -705,21 +705,18 @@ document.getElementById('form').addEventListener('submit', (e) => {
     callback: 'gasCallback',
   });
 
-  // タイムアウト（10秒で結果表示）
-  const timeout = setTimeout(() => {
-    console.warn('GAS通信タイムアウト（診断は続行）');
-    showResult();
-  }, 10000);
-
   // 既存のJSONPスクリプトを削除してから追加（重複防止）
   const oldScript = document.getElementById('jsonp-script');
   if (oldScript) oldScript.remove();
 
+  // キャッシュ防止のためURLにタイムスタンプを追加
+  params.append('_t', Date.now());
+
   const script = document.createElement('script');
   script.id = 'jsonp-script';
   script.src = `${GAS_URL}?${params.toString()}`;
-  script.onload = () => clearTimeout(timeout);
-  script.onerror = () => { clearTimeout(timeout); showResult(); };
+  script.onload = () => {};
+  script.onerror = () => { showResult(); };
   document.body.appendChild(script);
 });
 </script>
