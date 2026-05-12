@@ -6,7 +6,7 @@
 <title>星詠み診断｜星詠みの海獺</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=56RFYXHB41"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-56RFYXHB41"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -474,6 +474,30 @@
     <p style="font-size:0.72rem; color:var(--muted); margin-top:1rem; letter-spacing:0.05em;">しばらくお待ちください</p>
   </div>
 
+  <!-- 広告中間ページ -->
+  <div id="ad-bridge" class="card" style="display:none; text-align:center;">
+    <span style="font-size:2rem; display:block; margin-bottom:1rem;">🦦</span>
+    <p style="font-family:'Shippori Mincho',serif; font-size:1rem; letter-spacing:0.15em; margin-bottom:0.5rem;">まとめページへ移動します</p>
+    <p style="font-size:0.8rem; color:var(--muted); margin-bottom:1.5rem;">
+      <span id="ad-countdown" style="font-size:1.5rem; color:var(--gold); font-weight:bold;">5</span>
+      秒後に自動で移動します
+    </p>
+    <div class="divider"></div>
+    <!-- AdSenseディスプレイ広告 -->
+    <div style="margin:1.5rem 0;">
+      <p style="font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem;">スポンサー</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1736527039172931"
+           data-ad-slot="1780471203"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="divider"></div>
+    <p style="font-size:0.72rem; color:var(--muted); margin-top:1rem;">広告が表示されない場合はしばらくお待ちください</p>
+  </div>
+
   <!-- 結果表示 -->
   <div id="result" class="card">
     <p class="result-star">✦ あなたの星が導き出されました ✦</p>
@@ -481,6 +505,18 @@
     <p class="result-main" id="result-text"></p>
     <span class="result-code" id="result-code"></span>
     <p class="result-msg" id="result-msg"></p>
+
+    <!-- 星名別まとめページへのボタン -->
+    <button onclick="goToSummaryPage()" style="
+      width:100%; padding:1rem; margin-bottom:0.75rem;
+      background:linear-gradient(135deg,#1a1a2e,#2d4a6b);
+      color:var(--gold-light); border:none; border-radius:10px;
+      font-family:'Shippori Mincho',serif; font-size:0.95rem;
+      letter-spacing:0.15em; cursor:pointer; transition:all 0.3s;
+    ">
+      🌟 あなたの星（全10パターン）を見る
+    </button>
+
     <a href="#" class="note-link" id="note-link" target="_blank">
       📖 あなたの詳細鑑定レポートを読む（note）
     </a>
@@ -536,8 +572,50 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiG
 const NOTE_BASE_URL = 'https://note.com/by_nature'; // 記事URLのベース
 
 // ============================================================
-// 星の背景
+// 星名別 noteまとめページURL
 // ============================================================
+const KYUSEI_NOTE_URLS = {
+  '一白水星': 'https://note.com/by_nature/n/n1ae55303ca6d',
+  '二黒土星': 'https://note.com/by_nature/n/n7ed66035aee0',
+  '三碧木星': 'https://note.com/by_nature/n/ne752fa6bd42b',
+  '四緑木星': 'https://note.com/by_nature/n/nfe3a6af73709',
+  '五黄土星': 'https://note.com/by_nature/n/n747bc65ac43c',
+  '六白金星': 'https://note.com/by_nature/n/n90e6f76f2ff5',
+  '七赤金星': 'https://note.com/by_nature/n/n0fe029ff036c',
+  '八白土星': 'https://note.com/by_nature/n/n6120cd5b4e14',
+  '九紫火星': 'https://note.com/by_nature/n/n86837353792d',
+};
+
+// 現在の診断結果の星名を保持
+let currentKyuseiName = '';
+
+// ============================================================
+// 星名まとめページへ遷移（広告を挟む）
+// ============================================================
+function goToSummaryPage() {
+  const url = KYUSEI_NOTE_URLS[currentKyuseiName];
+  if (!url) return;
+
+  // 広告中間ページを表示
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('ad-bridge').style.display = 'block';
+
+  // カウントダウン
+  let count = 5;
+  const countEl = document.getElementById('ad-countdown');
+  countEl.textContent = count;
+
+  const timer = setInterval(() => {
+    count--;
+    countEl.textContent = count;
+    if (count <= 0) {
+      clearInterval(timer);
+      window.open(url, '_blank');
+      document.getElementById('ad-bridge').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+    }
+  }, 1000);
+}
 const starsEl = document.getElementById('stars');
 for (let i = 0; i < 40; i++) {
   const s = document.createElement('div');
@@ -713,6 +791,8 @@ document.getElementById('form').addEventListener('submit', (e) => {
       `あなたは「${kyusei.name}」の本命星と「${jikkan.name}（${jikkan.reading}）」の日干を持っています。この組み合わせだけの詳細な鑑定レポートをnoteで公開中です。ぜひご覧ください。`;
     document.getElementById('note-link').href = NOTE_BASE_URL;
     document.getElementById('register-no').textContent = registerNo;
+    // 星名を保持（まとめページ遷移用）
+    currentKyuseiName = kyusei.name;
   }
 
   // iframe方式でGASに送信（AdSenseの干渉を回避）
