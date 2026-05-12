@@ -507,8 +507,11 @@
     <p class="result-msg" id="result-msg"></p>
 
     <button onclick="goToSummaryPage()" class="note-link" style="border:none; cursor:pointer; width:100%;">
-      あなたの特徴はこちら（note）
+      🌟 あなたの特徴はこちら
     </button>
+    <a href="https://note.com/by_nature" class="note-link" id="note-link" target="_blank" style="display:block; text-align:center; margin-top:0.75rem; font-size:0.8rem; background:rgba(201,168,76,0.15); color:var(--ink);">
+      📖 上記ボタンで見れない方はこちら（一覧ページ）
+    </a>
     <p class="register-no" id="register-no"></p>
 
     <!-- アフィリエイト -->
@@ -599,9 +602,7 @@ function goToSummaryPage() {
     countEl.textContent = count;
     if (count <= 0) {
       clearInterval(timer);
-      window.open(url, '_blank');
-      document.getElementById('ad-bridge').style.display = 'none';
-      document.getElementById('result').style.display = 'block';
+      location.href = url;  // 同じタブで遷移（ポップアップブロック対策）
     }
   }, 1000);
 }
