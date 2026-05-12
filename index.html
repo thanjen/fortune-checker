@@ -506,20 +506,9 @@
     <span class="result-code" id="result-code"></span>
     <p class="result-msg" id="result-msg"></p>
 
-    <!-- 星名別まとめページへのボタン -->
-    <button onclick="goToSummaryPage()" style="
-      width:100%; padding:1rem; margin-bottom:0.75rem;
-      background:linear-gradient(135deg,#1a1a2e,#2d4a6b);
-      color:var(--gold-light); border:none; border-radius:10px;
-      font-family:'Shippori Mincho',serif; font-size:0.95rem;
-      letter-spacing:0.15em; cursor:pointer; transition:all 0.3s;
-    ">
-      🌟 あなたの星（全10パターン）を見る
+    <button onclick="goToSummaryPage()" class="note-link" style="border:none; cursor:pointer; width:100%;">
+      あなたの特徴はこちら（note）
     </button>
-
-    <a href="#" class="note-link" id="note-link" target="_blank">
-      📖 あなたの詳細鑑定レポートを読む（note）
-    </a>
     <p class="register-no" id="register-no"></p>
 
     <!-- アフィリエイト -->
@@ -789,8 +778,6 @@ document.getElementById('form').addEventListener('submit', (e) => {
     document.getElementById('result-code').textContent = `診断コード：${diagCode}`;
     document.getElementById('result-msg').textContent =
       `あなたは「${kyusei.name}」の本命星と「${jikkan.name}（${jikkan.reading}）」の日干を持っています。この組み合わせだけの詳細な鑑定レポートをnoteで公開中です。ぜひご覧ください。`;
-    document.getElementById('note-link').href = NOTE_BASE_URL;
-    document.getElementById('register-no').textContent = registerNo;
     // 星名を保持（まとめページ遷移用）
     currentKyuseiName = kyusei.name;
   }
