@@ -266,19 +266,31 @@
       </div>
 
       <div class="field">
-        <label class="field-label">お問い合わせ種別</label>
+        <label class="field-label">当サイトはどちらで知りましたか？<span class="required">*</span></label>
         <div class="checkbox-group">
           <label class="checkbox-item">
-            <input type="checkbox" value="X"> <span>X（Twitter）について</span>
+            <input type="checkbox" name="category" value="ネット検索"> <span>ネット検索</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" value="note"> <span>noteについて</span>
+            <input type="checkbox" name="category" value="X"> <span>X</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" value="診断ページ"> <span>診断ページについて</span>
+            <input type="checkbox" name="category" value="Instagram"> <span>Instagram</span>
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" value="その他"> <span>その他</span>
+            <input type="checkbox" name="category" value="note"> <span>note</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="category" value="知人や友人の紹介"> <span>知人や友人の紹介</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="category" value="Threads"> <span>Threads</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="category" value="YouTube"> <span>YouTube</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="category" value="その他"> <span>その他</span>
           </label>
         </div>
       </div>
@@ -349,12 +361,13 @@
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
-    const checks = document.querySelectorAll('.checkbox-group input:checked');
+    const checks = document.querySelectorAll('.checkbox-group input[name="category"]:checked');
     const categories = Array.from(checks).map(c => c.value);
 
     // バリデーション
     if (!name) { alert('お名前を入力してください'); return; }
     if (!email || !email.includes('@')) { alert('正しいメールアドレスを入力してください'); return; }
+    if (categories.length === 0) { alert('当サイトをどちらで知りましたか？を選択してください'); return; }
     if (!message) { alert('お問い合わせ内容を入力してください'); return; }
 
     const btn = document.getElementById('submit-btn');
