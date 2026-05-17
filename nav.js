@@ -169,7 +169,7 @@
         <ins class="adsbygoogle"
           style="display:block"
           data-ad-client="ca-pub-1736527039172931"
-          data-ad-slot="1780471203"
+          data-ad-slot="5698827070"
           data-ad-format="auto"
           data-full-width-responsive="true"></ins>
       </div>
