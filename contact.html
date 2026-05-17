@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-97D73QKGJ0');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931"
+     crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #faf8f3;
+    --muted: #6b6b7a;
+    --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--d, 3s) var(--delay, 0s) infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: var(--op, 0.6); transform: scale(1.2); }
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .site-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .site-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .site-sub { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.15em; }
+
+  .page-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.9;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  .contact-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .google-form-wrap {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .google-form-wrap iframe {
+    width: 100%;
+    min-height: 620px;
+    border: none;
+    display: block;
+  }
+
+  .x-contact {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .x-contact p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .x-btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: #1a1a2e;
+    color: #fff;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .x-btn:hover { opacity: 0.8; text-decoration: none; }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .back-link a { color: var(--gold); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  .footer-nav a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; }
+  .footer-copy { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <header>
+    <span class="site-icon">🦦</span>
+    <div class="site-title">星詠みの海獺</div>
+    <div class="site-sub">九星気学 × 四柱推命</div>
+  </header>
+
+  <h1 class="page-title">お問い合わせ</h1>
+
+  <div class="card">
+    <p class="contact-note">
+      ご質問・ご意見・不具合のご報告などは以下のフォームまたはXのDMよりお気軽にどうぞ。<br>
+      お返事まで数日いただく場合がございます。
+    </p>
+
+    <!-- Google フォームを埋め込み -->
+    <div class="google-form-wrap">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeObWI2GBbGmhm4b75Y4RMt2ROBZ6DekAnYhha1c3SZvxUe6A/viewform?embedded=true"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">
+        読み込んでいます…
+      </iframe>
+    </div>
+
+    <div class="x-contact">
+      <p>フォームが表示されない場合はXのDMからもお問い合わせいただけます</p>
+      <a href="https://x.com/By_______Nature" target="_blank" class="x-btn">
+        🦦 X（Twitter）でDMを送る
+      </a>
+    </div>
+  </div>
+
+  <p class="back-link"><a href="/">← 診断ページへ戻る</a></p>
+
+  <footer>
+    <nav class="footer-nav">
+      <a href="/">診断トップ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+
+</div>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${2+Math.random()*4}s;
+      --delay:${Math.random()*5}s;
+      --op:${0.3+Math.random()*0.5};
+    `;
+    starsEl.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
