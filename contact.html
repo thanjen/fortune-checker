@@ -305,14 +305,38 @@
       </button>
     </div>
 
+    <!-- 送信中 -->
+    <div id="sending" style="display:none; text-align:center; padding:2rem 0;">
+      <div style="font-size:2rem; margin-bottom:0.75rem;">🦦</div>
+      <div style="font-family:'Shippori Mincho',serif; font-size:1rem; letter-spacing:0.15em; margin-bottom:1.5rem;">送信中…</div>
+      <!-- 送信中AdSense -->
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1736527039172931"
+        data-ad-slot="5698827070"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <!-- 送信完了 -->
-    <div id="thanks">
+    <div id="thanks" style="display:none;">
       <div class="thanks-icon">🦦</div>
       <div class="thanks-title">送信完了しました</div>
       <p class="thanks-msg">
         お問い合わせありがとうございます。<br>
         内容を確認の上、数日以内にご返信いたします。
       </p>
+      <!-- 完了時AdSense -->
+      <div style="margin-top:1.5rem;">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-1736527039172931"
+          data-ad-slot="5698827070"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -374,15 +398,21 @@
     btn.disabled = true;
     btn.textContent = '送信中…';
 
+    // 送信中画面を表示
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('sending').style.display = 'block';
+
     fetch(GAS_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, categories, message })
     }).then(() => {
-      document.getElementById('form-area').style.display = 'none';
+      document.getElementById('sending').style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
     }).catch(() => {
+      document.getElementById('sending').style.display = 'none';
+      document.getElementById('form-area').style.display = 'block';
       btn.disabled = false;
       btn.textContent = '送信する ✦';
       alert('送信に失敗しました。時間をおいて再度お試しください。');
