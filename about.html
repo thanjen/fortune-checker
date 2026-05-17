@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星詠みの海獺とは｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-97D73QKGJ0');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931"
+     crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #faf8f3;
+    --muted: #6b6b7a;
+    --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star {
+    position: absolute; width: 2px; height: 2px;
+    background: var(--gold); border-radius: 50%; opacity: 0;
+    animation: twinkle var(--d, 3s) var(--delay, 0s) infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: var(--op, 0.6); transform: scale(1.2); }
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .site-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .site-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.5rem; font-weight: 500;
+    letter-spacing: 0.2em; color: var(--ink); margin-bottom: 0.3rem;
+  }
+  .site-sub { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.15em; }
+
+  .page-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem; font-weight: 500;
+    letter-spacing: 0.15em; color: var(--ink);
+    text-align: center; margin-bottom: 2rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  /* キャラクター紹介 */
+  .chara-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .chara-img {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e8d5a3, #c9a84c);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+  }
+
+  .chara-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--ink); letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .chara-catch {
+    font-size: 0.8rem; color: var(--gold);
+    letter-spacing: 0.1em; margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 2;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  .divider {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+  }
+
+  /* 鑑定の構造 */
+  .structure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .structure-item {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .structure-item .num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .structure-item .label {
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .structure-formula {
+    text-align: center;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.95rem; letter-spacing: 0.1em;
+    color: var(--ink); margin: 1rem 0;
+    padding: 0.75rem;
+    background: rgba(201,168,76,0.06);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .structure-formula span { color: var(--gold); font-weight: 600; }
+
+  /* SNSリンク */
+  .sns-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sns-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+    color: var(--ink);
+  }
+
+  .sns-item:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .sns-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .sns-icon.x { background: #000; color: #fff; font-weight: 900; font-size: 0.9rem; }
+  .sns-icon.note { background: #41C9B4; color: #fff; font-size: 0.75rem; font-weight: 700; }
+  .sns-icon.insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+
+  .sns-info { flex: 1; }
+  .sns-name { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+  .sns-handle { font-size: 0.75rem; color: var(--muted); }
+  .sns-arrow { color: var(--gold); font-size: 0.8rem; }
+
+  /* CTAボタン */
+  .cta-btn {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a2e, #2d4a6b);
+    color: var(--gold-light);
+    border-radius: 10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    margin-top: 1rem;
+  }
+  .cta-btn:hover { opacity: 0.85; text-decoration: none; }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .back-link {
+    display: block; text-align: center; margin-top: 2rem;
+    font-size: 0.875rem; color: var(--muted); letter-spacing: 0.1em;
+  }
+  .back-link a { color: var(--gold); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+  .footer-nav {
+    display: flex; justify-content: center;
+    gap: 1.5rem; margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-nav a { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; }
+  .footer-copy { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; }
+
+  @media (max-width: 480px) {
+    .chara-wrap { flex-direction: column; align-items: center; text-align: center; }
+    .structure-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <header>
+    <span class="site-icon">🦦</span>
+    <div class="site-title">星詠みの海獺</div>
+    <div class="site-sub">九星気学 × 四柱推命</div>
+  </header>
+
+  <h1 class="page-title">このサイトについて</h1>
+
+  <!-- キャラクター紹介 -->
+  <div class="card">
+    <div class="section-title">🦦 星詠みの海獺（ラッコ）</div>
+
+    <div class="chara-wrap">
+      <div class="chara-img">
+        <img src="favicon.png" alt="星詠みの海獺" style="width:70px;height:70px;object-fit:contain;">
+      </div>
+      <div>
+        <div class="chara-name">星詠みの海獺（ラッコ）</div>
+        <div class="chara-catch">✦ 星の声を聞くラッコの占い師 ✦</div>
+        <p>一人でただただ水面に浮いてボーッとしているのが好き。コミュニケーションが苦手なわけではなく、社交的で明るいタイプ。だけど、一人になる時間も大事。疲れちゃうから。</p>
+      </div>
+    </div>
+
+    <p>そうやって川をぷかぷか浮かびながら、気がついたら星の声が聞こえるようになっていた。</p>
+    <p>九星気学と四柱推命、ふたつの叡智を組み合わせてあなたの今日・今年・この先の流れを読みます。</p>
+    <p>むずかしい言葉は使わない。難しいことをわかりやすく、でも本質はちゃんと伝える。そんな鑑定を心がけています。</p>
+  </div>
+
+  <!-- 鑑定の構造 -->
+  <div class="card">
+    <div class="section-title">✦ 鑑定の構造</div>
+
+    <div class="structure-grid">
+      <div class="structure-item">
+        <div class="num">9</div>
+        <div class="label">九星気学<br>本命星のパターン</div>
+      </div>
+      <div class="structure-item">
+        <div class="num">10</div>
+        <div class="label">四柱推命<br>日干のパターン</div>
+      </div>
+    </div>
+
+    <div class="structure-formula">
+      九星気学（9パターン）<span> × </span>四柱推命（10パターン）<span> ＝ </span>90通りの鑑定
+    </div>
+
+    <p>生年月日から導き出される「本命星（九星気学）」と「日干（四柱推命）」を組み合わせることで、あなただけの90パターンの中から、より細かくあなたの特徴・才能・運気の流れをお伝えします。</p>
+    <p>一般的な占いで「同じ星座」「同じ生まれ年」でひとくくりにされていたあなたも、この鑑定では唯一無二の存在として読み解きます。</p>
+
+    <a href="/" class="cta-btn">🌟 あなたの星を診断してみる</a>
+  </div>
+
+  <!-- 管理者の挨拶 -->
+  <div class="card">
+    <div class="section-title">📝 管理者より</div>
+    <p>どうもはじめまして。管理者です。</p>
+    <p>仕事や人間関係に対して迷いが生じた時、一つの判断材料となったのがこの鑑定でした。</p>
+    <p>自分に自信が無くなった時、「違う角度から評価」をして進むべき方向の迷子になった時、「進む方向の一押し」になるように。そんな想いから作っています。</p>
+    <p>運営をしていくため、広告掲載とSNSの発信、noteの有料記事で収益を得ています。フォローやサイトの利用や記事をご覧いただき応援いただけますと大変うれしいです。</p>
+    <p>是非、感想も聞かせてくださいね。</p>
+  </div>
+
+  <!-- SNS紹介 -->
+  <div class="card">
+    <div class="section-title">📱 SNSでも発信中</div>
+    <div class="sns-list">
+      <a href="https://x.com/By_______Nature" target="_blank" class="sns-item">
+        <div class="sns-icon x">𝕏</div>
+        <div class="sns-info">
+          <div class="sns-name">X（Twitter）</div>
+          <div class="sns-handle" style="line-height:1.7;">
+            📅 毎日更新<br>
+            ┣ 朝｜九星気学・今日の運勢（全9星）<br>
+            ┣ 昼｜四柱推命・今日の運勢（全10干）<br>
+            ┗ 夜｜シチュエーション別鑑定 ＆ 普通のつぶやき
+          </div>
+        </div>
+        <div class="sns-arrow">→</div>
+      </a>
+      <a href="https://note.com/by_nature" target="_blank" class="sns-item">
+        <div class="sns-icon note">note</div>
+        <div class="sns-info">
+          <div class="sns-name">note</div>
+          <div class="sns-handle" style="line-height:1.7;">
+            あなたの本質を無料公開中。詳しく知りたい方は詳細鑑定も販売。<br>
+            九星×四柱推命の本格鑑定レポートです。<br>
+            「なんとなく生きづらい」「転機が来ている気がする」<br>
+            そんな方にこそ読んでほしい内容です。
+          </div>
+        </div>
+        <div class="sns-arrow">→</div>
+      </a>
+      <a href="https://www.instagram.com/rakko_kora_rakko/" target="_blank" class="sns-item">
+        <div class="sns-icon insta">📷</div>
+        <div class="sns-info">
+          <div class="sns-name">Instagram</div>
+          <div class="sns-handle" style="line-height:1.7;">
+            @rakko_kora_rakko<br>
+            発信内容はまだ未定。近日中に運用しますのでフォローをお願いします！
+          </div>
+        </div>
+        <div class="sns-arrow">→</div>
+      </a>
+    </div>
+  </div>
+
+  <p class="back-link"><a href="/">← 診断ページへ戻る</a></p>
+
+  <footer>
+    <nav class="footer-nav">
+      <a href="/">診断トップ</a>
+      <a href="/about.html">このサイトについて</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+
+</div>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${2+Math.random()*4}s;
+      --delay:${Math.random()*5}s;
+      --op:${0.3+Math.random()*0.5};
+    `;
+    starsEl.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
