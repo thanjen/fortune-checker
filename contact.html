@@ -355,7 +355,7 @@
   }
 
   // フォーム送信
-  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeObWI2GBbGmhm4b75Y4RMt2ROBZ6DekAnYhha1c3SZvxUe6A/formResponse';
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiGd-DULfEAn5T4D6UOAxaDUW1aReloVfCjUGR3jwZvG0Gr9g/exec';
 
   function submitForm() {
     const name = document.getElementById('name').value.trim();
@@ -374,23 +374,18 @@
     btn.disabled = true;
     btn.textContent = '送信中…';
 
-    // Google フォームに送信
-    const formData = new FormData();
-    formData.append('entry.1380200848', name);
-    formData.append('entry.892219919', email);
-    categories.forEach(cat => formData.append('entry.1873188304', cat));
-    formData.append('entry.385978541', message);
-
-    fetch(FORM_URL, {
+    fetch(GAS_URL, {
       method: 'POST',
       mode: 'no-cors',
-      body: formData
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, categories, message })
     }).then(() => {
       document.getElementById('form-area').style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
     }).catch(() => {
-      document.getElementById('form-area').style.display = 'none';
-      document.getElementById('thanks').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '送信する ✦';
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
     });
   }
 </script>
