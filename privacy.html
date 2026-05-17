@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-97D73QKGJ0');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931"
+     crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #faf8f3;
+    --muted: #6b6b7a;
+    --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--d, 3s) var(--delay, 0s) infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: var(--op, 0.6); transform: scale(1.2); }
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .site-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .site-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  .page-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.9;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  li {
+    font-size: 0.875rem;
+    line-height: 1.9;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  a:hover { text-decoration: underline; }
+
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .back-link a {
+    color: var(--gold);
+  }
+
+  .updated {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-nav a {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <header>
+    <span class="site-icon">🦦</span>
+    <div class="site-title">星詠みの海獺</div>
+    <div class="site-sub">九星気学 × 四柱推命</div>
+  </header>
+
+  <h1 class="page-title">プライバシーポリシー</h1>
+
+  <p class="updated">最終更新日：2026年5月17日</p>
+
+  <div class="card">
+    <h2>はじめに</h2>
+    <p>星詠みの海獺（以下「当サイト」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。本プライバシーポリシーは、当サイトにおける個人情報の取り扱いについて説明するものです。</p>
+  </div>
+
+  <div class="card">
+    <h2>収集する情報</h2>
+    <p>当サイトでは、診断ページの利用時に以下の情報を収集することがあります：</p>
+    <ul>
+      <li>生年月日（本命星・日干の算出のみに使用）</li>
+      <li>性別（本命星の算出のみに使用）</li>
+      <li>お名前（ニックネーム可）</li>
+      <li>お住まいの地域（任意）</li>
+      <li>生まれた時間・血液型（任意）</li>
+    </ul>
+    <p>これらの情報は診断コードの生成およびサービス改善の目的のみに使用し、第三者への提供は行いません。</p>
+  </div>
+
+  <div class="card">
+    <h2>アクセス解析ツールについて</h2>
+    <p>当サイトでは、Googleによるアクセス解析ツール「Google Analytics」を使用しています。Google Analyticsはデータの収集のためにCookieを使用します。このデータは匿名で収集されており、個人を特定するものではありません。</p>
+    <p>Google Analyticsのデータ収集を無効にする場合は、<a href="https://tools.google.com/dlpage/gaoptout/" target="_blank">Google Analytics オプトアウト アドオン</a>をご利用ください。</p>
+  </div>
+
+  <div class="card">
+    <h2>広告について</h2>
+    <p>当サイトでは、Google AdSenseを使用した広告を掲載しています。Google AdSenseは、ユーザーの興味に基づいた広告を表示するためにCookieを使用することがあります。</p>
+    <p>Cookieを使用した広告配信を無効にする場合は、<a href="https://www.google.com/settings/ads" target="_blank">Googleの広告設定ページ</a>からオプトアウトしてください。</p>
+    <p>また、当サイトでは楽天アフィリエイトプログラムに参加しており、商品リンクをクリックして購入された場合、当サイトに報酬が発生することがあります。</p>
+  </div>
+
+  <div class="card">
+    <h2>Cookieについて</h2>
+    <p>当サイトでは、一部のサービス提供のためにCookieを使用しています。ブラウザの設定からCookieを無効にすることも可能ですが、その場合一部の機能が利用できなくなる場合があります。</p>
+  </div>
+
+  <div class="card">
+    <h2>免責事項</h2>
+    <p>当サイトで提供する占い・鑑定コンテンツは、エンターテインメント・参考情報を目的としたものです。診断結果に基づく判断や行動による損害について、当サイトは責任を負いません。</p>
+    <p>当サイトのコンテンツは予告なく変更・削除される場合があります。</p>
+  </div>
+
+  <div class="card">
+    <h2>プライバシーポリシーの変更</h2>
+    <p>当サイトは、必要に応じて本プライバシーポリシーを変更することがあります。変更後のプライバシーポリシーは、当ページに掲載した時点から効力を生じるものとします。</p>
+  </div>
+
+  <div class="card">
+    <h2>お問い合わせ</h2>
+    <p>本プライバシーポリシーに関するご質問は、<a href="contact.html">お問い合わせページ</a>からご連絡ください。</p>
+  </div>
+
+  <p class="back-link"><a href="/">← 診断ページへ戻る</a></p>
+
+  <footer>
+    <nav class="footer-nav">
+      <a href="/">診断トップ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+
+</div>
+
+<script>
+  // 星のアニメーション
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${2+Math.random()*4}s;
+      --delay:${Math.random()*5}s;
+      --op:${0.3+Math.random()*0.5};
+    `;
+    starsEl.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
