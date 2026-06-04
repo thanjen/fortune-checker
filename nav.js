@@ -4,6 +4,7 @@
   // ============================================================
   const NAV_ITEMS = [
     { label: '診断トップ',           href: '/' },
+    { label: '相性診断',             href: '/compatibility.html' },
     { label: '鑑定一覧',             href: '/fortunes.html' },
     { label: 'このサイトについて',   href: '/about.html' },
     { label: 'お問い合わせ',         href: '/contact.html' },
