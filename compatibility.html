@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相性診断｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/compatibility.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-97D73QKGJ0');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #faf8f3;
+    --muted: #6b6b7a;
+    --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7);
+    --purple: #7c3aed;
+    --purple-light: #ede9fe;
+    --teal: #0d9488;
+    --teal-light: #ccfbf1;
+    --rose: #e11d48;
+    --rose-light: #ffe4e6;
+    --blue: #2563eb;
+    --blue-light: #dbeafe;
+    --amber: #d97706;
+    --amber-light: #fef3c7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 300;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(124,58,237,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 0%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(13,148,136,0.06) 0%, transparent 50%);
+  }
+
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star {
+    position: absolute; border-radius: 50%; opacity: 0;
+    animation: twinkle var(--d,3s) var(--delay,0s) infinite;
+  }
+  @keyframes twinkle {
+    0%,100%{opacity:0;} 50%{opacity:var(--op,0.6);}
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 720px; margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  header {
+    text-align: center; padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border); margin-bottom: 2rem;
+  }
+  .site-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .site-title {
+    font-family: 'Shippori Mincho', serif; font-size: 1.5rem;
+    font-weight: 500; letter-spacing: 0.2em; margin-bottom: 0.3rem;
+  }
+  .site-sub { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.15em; }
+
+  .page-title {
+    font-family: 'Shippori Mincho', serif; font-size: 1.4rem;
+    font-weight: 500; letter-spacing: 0.15em; text-align: center;
+    margin-bottom: 0.5rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-desc {
+    text-align: center; font-size: 0.85rem; color: var(--muted);
+    line-height: 1.8; margin-bottom: 2rem;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem; margin-bottom: 1.25rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .card-title {
+    font-family: 'Shippori Mincho', serif; font-size: 0.95rem;
+    font-weight: 600; letter-spacing: 0.1em; margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem; border-bottom: 2px solid;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .card-title.purple { color: var(--purple); border-color: var(--purple); }
+  .card-title.teal   { color: var(--teal);   border-color: var(--teal); }
+  .card-title.gold   { color: var(--gold);   border-color: var(--gold); }
+
+  .field { margin-bottom: 1.1rem; }
+  .field-label {
+    display: block; font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--muted); margin-bottom: 0.35rem;
+  }
+  .field-label .req { color: var(--rose); margin-left: 0.2rem; }
+
+  .field input[type="text"],
+  .field input[type="date"],
+  .field select {
+    width: 100%; padding: 0.7rem 1rem;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: rgba(255,255,255,0.9); color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field input:focus, .field select:focus { border-color: var(--gold); }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  /* 関係タイプ */
+  .relation-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5rem; }
+  .relation-btn {
+    padding: 0.7rem 0.25rem; border-radius: 10px;
+    border: 2px solid var(--border); background: rgba(255,255,255,0.8);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+    text-align: center; color: var(--muted);
+  }
+  .relation-btn:hover { border-color: var(--gold); color: var(--ink); }
+  .relation-btn.active { color:#fff; border-color:transparent; font-weight:500; }
+  .relation-btn[data-type="恋愛"].active { background: var(--rose); }
+  .relation-btn[data-type="友人"].active { background: var(--teal); }
+  .relation-btn[data-type="仕事"].active { background: var(--blue); }
+  .relation-btn[data-type="家族"].active { background: var(--purple); }
+  .relation-emoji { font-size:1.2rem; display:block; margin-bottom:0.2rem; }
+
+  /* 送信ボタン */
+  .submit-btn {
+    width:100%; padding:1.1rem;
+    background: linear-gradient(135deg, var(--purple), #4f46e5);
+    color:#fff; border:none; border-radius:12px;
+    font-family:'Shippori Mincho',serif; font-size:1rem;
+    letter-spacing:0.2em; cursor:pointer; transition:opacity 0.3s;
+    margin-top:0.5rem; box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+  }
+  .submit-btn:hover { opacity:0.85; }
+  .submit-btn:disabled { opacity:0.5; cursor:not-allowed; }
+
+  /* ページ切替 */
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* 鑑定中ページ */
+  .loading-scene {
+    text-align:center; padding:3rem 0 2rem;
+  }
+  .scene-art {
+    font-size:3.5rem; line-height:1.4;
+    margin-bottom:1.5rem; letter-spacing:0.2em;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);}
+  }
+  .loading-title {
+    font-family:'Shippori Mincho',serif; font-size:1.15rem;
+    letter-spacing:0.2em; margin-bottom:0.75rem; color:var(--ink);
+  }
+  .loading-msg { font-size:0.85rem; color:var(--muted); line-height:1.8; margin-bottom:1.5rem; }
+  .loading-bar-wrap {
+    width:80%; max-width:300px; margin:1rem auto;
+    height:4px; background:rgba(0,0,0,0.08); border-radius:2px; overflow:hidden;
+  }
+  .loading-bar-fill {
+    height:100%; width:0%; border-radius:2px;
+    background:linear-gradient(90deg, var(--purple), var(--teal));
+    transition:width 5s linear;
+  }
+
+  .ad-area {
+    margin:1.5rem 0; padding:1rem;
+    background:rgba(255,255,255,0.5);
+    border:1px solid var(--border); border-radius:12px; text-align:center;
+  }
+  .ad-label { font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem; }
+
+  /* 結果ページ */
+  .relation-badge {
+    display:inline-block; padding:0.3rem 0.8rem; border-radius:20px;
+    font-size:0.75rem; font-weight:500; margin-bottom:1rem;
+  }
+  .relation-badge.恋愛{background:var(--rose-light);color:var(--rose);}
+  .relation-badge.友人{background:var(--teal-light);color:var(--teal);}
+  .relation-badge.仕事{background:var(--blue-light);color:var(--blue);}
+  .relation-badge.家族{background:var(--purple-light);color:var(--purple);}
+
+  .result-pair {
+    display:grid; grid-template-columns:1fr auto 1fr;
+    gap:0.75rem; align-items:center; margin-bottom:1.5rem;
+  }
+  .result-person {
+    background:linear-gradient(135deg,rgba(124,58,237,0.08),rgba(201,168,76,0.08));
+    border:1px solid var(--border); border-radius:12px;
+    padding:1rem; text-align:center;
+  }
+  .result-person.target {
+    background:linear-gradient(135deg,rgba(13,148,136,0.08),rgba(201,168,76,0.08));
+  }
+  .person-nickname { font-size:0.85rem; font-weight:500; margin-bottom:0.3rem; color:var(--ink); }
+  .person-label { font-size:0.65rem; color:var(--muted); margin-bottom:0.3rem; }
+  .person-star {
+    font-family:'Shippori Mincho',serif; font-size:0.85rem;
+    font-weight:600; color:var(--ink); margin-bottom:0.2rem;
+  }
+  .person-jikkan { font-size:0.7rem; color:var(--muted); }
+  .heart-icon { font-size:1.5rem; text-align:center; }
+
+  /* スコア */
+  .score-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.25rem;
+  }
+  .score-item { border-radius:12px; padding:1rem 0.5rem; text-align:center; }
+  .score-item.kyusei { background:var(--purple-light); }
+  .score-item.jikkan { background:var(--teal-light); }
+  .score-item.total  { background:linear-gradient(135deg,var(--purple-light),var(--teal-light)); }
+  .score-label { font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem; letter-spacing:0.05em; }
+  .score-stars { font-size:0.9rem; line-height:1; margin-bottom:0.3rem; min-height:1.2rem; }
+  .score-num {
+    font-family:'Shippori Mincho',serif; font-size:1.4rem; font-weight:600; line-height:1;
+  }
+  .score-item.kyusei .score-num{color:var(--purple);}
+  .score-item.jikkan .score-num{color:var(--teal);}
+  .score-item.total  .score-num{color:var(--ink);}
+  .score-unit { font-size:0.65rem; color:var(--muted); }
+
+  .score-bar-wrap { margin-bottom:1rem; }
+  .score-bar-label {
+    font-size:0.75rem; color:var(--muted); margin-bottom:0.5rem;
+    display:flex; justify-content:space-between;
+  }
+  .score-bar {
+    height:10px; background:rgba(0,0,0,0.08); border-radius:5px; overflow:hidden;
+  }
+  .score-bar-fill {
+    height:100%; border-radius:5px; transition:width 1s ease;
+    background:linear-gradient(90deg,var(--purple),var(--teal));
+  }
+
+  /* 鑑定内容 */
+  .result-section { margin-bottom:1rem; }
+  .result-section-title {
+    font-size:0.78rem; font-weight:500; letter-spacing:0.1em;
+    margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;
+  }
+  .result-section-title.rel    {color:var(--purple);}
+  .result-section-title.good   {color:var(--teal);}
+  .result-section-title.caution{color:var(--amber);}
+  .result-section-title.advice {color:var(--gold);}
+  .result-text {
+    font-size:0.875rem; line-height:1.9; color:var(--ink);
+    background:rgba(255,255,255,0.5); border-radius:8px; padding:0.75rem 1rem;
+  }
+
+  /* note誘導 */
+  .note-cta-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:1.5rem;
+  }
+  .note-cta-btn {
+    display:block; padding:1rem 0.75rem; border-radius:12px; text-align:center;
+    text-decoration:none; transition:opacity 0.2s;
+  }
+  .note-cta-btn:hover{opacity:0.85; text-decoration:none;}
+  .note-cta-btn.my-btn {
+    background:linear-gradient(135deg,#1a1a2e,#2d1b69);
+  }
+  .note-cta-btn.target-btn {
+    background:linear-gradient(135deg,#1a1a2e,#064e3b);
+  }
+  .note-cta-label { font-size:0.65rem; color:rgba(255,255,255,0.6); margin-bottom:0.3rem; }
+  .note-cta-text {
+    font-family:'Shippori Mincho',serif; font-size:0.8rem;
+    color:var(--gold-light); letter-spacing:0.05em;
+  }
+
+  .retry-btn {
+    display:block; width:100%; padding:0.875rem;
+    background:rgba(255,255,255,0.8); border:1px solid var(--border);
+    border-radius:10px; font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:0.875rem; color:var(--muted); cursor:pointer;
+    transition:all 0.2s; margin-top:1rem; text-align:center;
+  }
+  .retry-btn:hover{border-color:var(--gold);color:var(--ink);}
+
+  a{color:var(--gold);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .back-link {
+    display:block; text-align:center; margin-top:2rem;
+    font-size:0.875rem; color:var(--muted);
+  }
+  .back-link a{color:var(--gold);}
+
+  footer {
+    text-align:center; padding:2rem 0 1rem;
+    border-top:1px solid var(--border); margin-top:3rem;
+  }
+  .footer-nav {
+    display:flex; justify-content:center;
+    gap:1.5rem; margin-bottom:1rem; flex-wrap:wrap;
+  }
+  .footer-nav a{font-size:0.75rem;color:var(--muted);letter-spacing:0.1em;}
+  .footer-copy{font-size:0.7rem;color:var(--muted);}
+
+  @media(max-width:480px){
+    .relation-grid{grid-template-columns:repeat(2,1fr);}
+    .field-row{grid-template-columns:1fr;}
+    .note-cta-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <header>
+    <span class="site-icon">🦦</span>
+    <div class="site-title">星詠みの海獺</div>
+    <div class="site-sub">九星気学 × 四柱推命</div>
+  </header>
+
+  <!-- ① 入力ページ -->
+  <div id="page-input" class="page active">
+    <h1 class="page-title">✦ 相性診断 ✦</h1>
+    <p class="page-desc">
+      2人の生年月日から本命星と日干を導き出し<br>
+      九星気学×四柱推命で本格的な相性を鑑定します
+    </p>
+
+    <!-- あなたの情報 -->
+    <div class="card">
+      <div class="card-title purple">🌟 あなたの情報</div>
+      <div class="field">
+        <label class="field-label">ニックネーム<span class="req">*</span></label>
+        <input type="text" id="my-name" placeholder="例：ラッコ">
+      </div>
+      <div class="field">
+        <label class="field-label">生年月日<span class="req">*</span></label>
+        <input type="date" id="my-birth" max="2010-12-31" min="1900-01-01">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">性別</label>
+          <select id="my-gender">
+            <option value="">選択してください</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
+            <option value="その他">その他</option>
+            <option value="未回答">未回答</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">血液型</label>
+          <select id="my-blood">
+            <option value="">選択してください</option>
+            <option value="A">A型</option>
+            <option value="B">B型</option>
+            <option value="O">O型</option>
+            <option value="AB">AB型</option>
+            <option value="不明">不明</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 相手の情報 -->
+    <div class="card">
+      <div class="card-title teal">💫 相手の情報</div>
+      <div class="field">
+        <label class="field-label">ニックネーム<span class="req">*</span></label>
+        <input type="text" id="target-name" placeholder="例：お相手の名前">
+      </div>
+      <div class="field">
+        <label class="field-label">生年月日<span class="req">*</span></label>
+        <input type="date" id="target-birth" max="2010-12-31" min="1900-01-01">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">性別</label>
+          <select id="target-gender">
+            <option value="">選択してください</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
+            <option value="その他">その他</option>
+            <option value="未回答">未回答</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">血液型</label>
+          <select id="target-blood">
+            <option value="">選択してください</option>
+            <option value="A">A型</option>
+            <option value="B">B型</option>
+            <option value="O">O型</option>
+            <option value="AB">AB型</option>
+            <option value="不明">不明</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 関係タイプ -->
+    <div class="card">
+      <div class="card-title gold">✦ 関係タイプ<span class="req" style="font-size:0.8rem;margin-left:0.3rem;">*</span></div>
+      <div class="relation-grid">
+        <button class="relation-btn" data-type="恋愛" onclick="selectRelation(this)">
+          <span class="relation-emoji">💕</span>恋愛
+        </button>
+        <button class="relation-btn" data-type="友人" onclick="selectRelation(this)">
+          <span class="relation-emoji">🤝</span>友人
+        </button>
+        <button class="relation-btn" data-type="仕事" onclick="selectRelation(this)">
+          <span class="relation-emoji">💼</span>仕事
+        </button>
+        <button class="relation-btn" data-type="家族" onclick="selectRelation(this)">
+          <span class="relation-emoji">🏠</span>家族
+        </button>
+      </div>
+    </div>
+
+    <button class="submit-btn" onclick="startDiagnosis()">✦ 相性を鑑定する ✦</button>
+    <p class="back-link"><a href="/">← 個人診断はこちら</a></p>
+  </div>
+
+  <!-- ② 鑑定中ページ -->
+  <div id="page-loading" class="page">
+    <div class="loading-scene">
+      <div class="scene-art">🌙🦦✨</div>
+      <div class="loading-title">星の声を聴いています</div>
+      <p class="loading-msg">
+        2人の星と日干の組み合わせから<br>
+        運命の糸を読み解いています
+      </p>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar-fill" id="loading-bar"></div>
+      </div>
+
+      <div class="ad-area">
+        <div class="ad-label">広告</div>
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-1736527039172931"
+          data-ad-slot="5698827070"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 結果ページ -->
+  <div id="page-result" class="page">
+    <h1 class="page-title">✦ 鑑定結果 ✦</h1>
+
+    <div style="text-align:center;margin-bottom:1rem;">
+      <span class="relation-badge" id="result-relation-badge"></span>
+    </div>
+
+    <!-- 2人の情報 -->
+    <div class="result-pair">
+      <div class="result-person">
+        <div class="person-nickname" id="result-my-name"></div>
+        <div class="person-label">本命星</div>
+        <div class="person-star" id="result-my-star"></div>
+        <div class="person-jikkan" id="result-my-jikkan"></div>
+      </div>
+      <div class="heart-icon" id="result-heart">💕</div>
+      <div class="result-person target">
+        <div class="person-nickname" id="result-target-name"></div>
+        <div class="person-label">本命星</div>
+        <div class="person-star" id="result-target-star"></div>
+        <div class="person-jikkan" id="result-target-jikkan"></div>
+      </div>
+    </div>
+
+    <!-- スコア -->
+    <div class="card">
+      <div class="score-grid">
+        <div class="score-item kyusei">
+          <div class="score-label">九星気学</div>
+          <div class="score-stars" id="stars-kyusei"></div>
+          <div class="score-num" id="result-kyusei-score">-</div>
+          <div class="score-unit">点</div>
+        </div>
+        <div class="score-item jikkan">
+          <div class="score-label">四柱推命</div>
+          <div class="score-stars" id="stars-jikkan"></div>
+          <div class="score-num" id="result-jikkan-score">-</div>
+          <div class="score-unit">点</div>
+        </div>
+        <div class="score-item total">
+          <div class="score-label">総合相性</div>
+          <div class="score-stars" id="stars-total"></div>
+          <div class="score-num" id="result-total-score">-</div>
+          <div class="score-unit">点</div>
+        </div>
+      </div>
+
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">
+          <span>総合相性スコア</span>
+          <span id="result-score-pct">-%</span>
+        </div>
+        <div class="score-bar">
+          <div class="score-bar-fill" id="result-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 鑑定内容 -->
+    <div class="card">
+      <div class="result-section">
+        <div class="result-section-title rel">🌙 2人の関係性</div>
+        <div class="result-text" id="result-relationship"></div>
+      </div>
+      <div class="result-section" style="margin-top:1rem;">
+        <div class="result-section-title good">✨ この組み合わせの良い点</div>
+        <div class="result-text" id="result-good"></div>
+      </div>
+      <div class="result-section" style="margin-top:1rem;">
+        <div class="result-section-title caution">⚠️ 気をつけたい点</div>
+        <div class="result-text" id="result-caution"></div>
+      </div>
+      <div class="result-section" style="margin-top:1rem;">
+        <div class="result-section-title advice">🦦 アドバイス</div>
+        <div class="result-text" id="result-advice"></div>
+      </div>
+    </div>
+
+    <!-- note誘導 -->
+    <div class="note-cta-grid">
+      <a href="#" id="note-my-link" target="_blank" class="note-cta-btn my-btn">
+        <div class="note-cta-label">あなたの詳細鑑定</div>
+        <div class="note-cta-text" id="note-my-text">noteで読む →</div>
+      </a>
+      <a href="#" id="note-target-link" target="_blank" class="note-cta-btn target-btn">
+        <div class="note-cta-label">相手の詳細鑑定</div>
+        <div class="note-cta-text" id="note-target-text">noteで読む →</div>
+      </a>
+    </div>
+
+    <button class="retry-btn" onclick="resetDiagnosis()">🔄 もう一度診断する</button>
+    <p class="back-link"><a href="/">← 個人診断はこちら</a></p>
+  </div>
+
+  <footer>
+    <nav class="footer-nav">
+      <a href="/">診断トップ</a>
+      <a href="/compatibility.html">相性診断</a>
+      <a href="/fortunes.html">鑑定一覧</a>
+      <a href="/about.html">このサイトについて</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+</div>
+
+<script src="/nav.js"></script>
+
+<script>
+// ============================================================
+// 定数
+// ============================================================
+const GAS_COMPAT_URL = 'https://script.google.com/macros/s/AKfycbw4hDf56x8mat9bFWKBoiSMHsSq1fFJlR_wO7vxS5fJoMFObFxSl_JC80UGIC_ltmg/exec';
+const GAS_SAVE_URL  = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiGd-DULfEAn5T4D6UOAxaDUW1aReloVfCjUGR3jwZvG0Gr9g/exec';
+
+const STAR_NAMES = ['一白水星','二黒土星','三碧木星','四緑木星','五黄土星','六白金星','七赤金星','八白土星','九紫火星'];
+const STAR_CODES = ['A','B','C','D','E','F','G','H','I'];
+const JIKKAN_NAMES = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const JIKKAN_CODES = ['01','02','03','04','05','06','07','08','09','10'];
+const HEART_ICONS  = {'恋愛':'💕','友人':'🤝','仕事':'💼','家族':'🏠'};
+
+const NOTE_URLS = {
+  '一白水星': 'https://note.com/by_nature/n/n1ae55303ca6d',
+  '二黒土星': 'https://note.com/by_nature/n/n7ed66035aee0',
+  '三碧木星': 'https://note.com/by_nature/n/ne752fa6bd42b',
+  '四緑木星': 'https://note.com/by_nature/n/nfe3a6af73709',
+  '五黄土星': 'https://note.com/by_nature/n/n747bc65ac43c',
+  '六白金星': 'https://note.com/by_nature/n/n90e6f76f2ff5',
+  '七赤金星': 'https://note.com/by_nature/n/n0fe029ff036c',
+  '八白土星': 'https://note.com/by_nature/n/n6120cd5b4e14',
+  '九紫火星': 'https://note.com/by_nature/n/n86837353792d',
+};
+
+let selectedRelation = '';
+
+// ============================================================
+// 星アニメーション
+// ============================================================
+const starsEl = document.getElementById('stars');
+const colors = ['#c9a84c','#7c3aed','#0d9488','#e11d48'];
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 3 + 1;
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${2+Math.random()*4}s;--delay:${Math.random()*6}s;--op:${0.3+Math.random()*0.5};`;
+  starsEl.appendChild(s);
+}
+
+// ============================================================
+// 計算ロジック
+// ============================================================
+function calcKyusei(birthdate) {
+  const d = new Date(birthdate);
+  let year = d.getFullYear();
+  const month = d.getMonth() + 1;
+  const day = d.getDate();
+  if (month < 2 || (month === 2 && day <= 3)) year--;
+  let sum = String(year).split('').reduce((a,b) => a + parseInt(b), 0);
+  while (sum >= 10) sum = String(sum).split('').reduce((a,b) => a + parseInt(b), 0);
+  let star = 11 - sum;
+  if (star > 9) star -= 9;
+  return star - 1;
+}
+
+function calcJikkan(birthdate) {
+  const base = new Date('1900-01-01');
+  const d = new Date(birthdate);
+  const days = Math.floor((d - base) / (1000*60*60*24));
+  return ((days + 6) % 10);
+}
+
+// ============================================================
+// 星評価（0〜10個）
+// ============================================================
+function scoreToStars(score) {
+  const count = Math.round(score / 10);
+  return '⭐'.repeat(count) + '☆'.repeat(10 - count);
+}
+
+// ============================================================
+// 関係タイプ選択
+// ============================================================
+function selectRelation(btn) {
+  document.querySelectorAll('.relation-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedRelation = btn.dataset.type;
+}
+
+// ============================================================
+// ページ切替
+// ============================================================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ============================================================
+// 診断開始
+// ============================================================
+function startDiagnosis() {
+  const myName   = document.getElementById('my-name').value.trim();
+  const myBirth  = document.getElementById('my-birth').value;
+  const myGender = document.getElementById('my-gender').value;
+  const myBlood  = document.getElementById('my-blood').value;
+  const targetName   = document.getElementById('target-name').value.trim();
+  const targetBirth  = document.getElementById('target-birth').value;
+  const targetGender = document.getElementById('target-gender').value;
+  const targetBlood  = document.getElementById('target-blood').value;
+
+  if (!myName)    { alert('あなたのニックネームを入力してください'); return; }
+  if (!myBirth)   { alert('あなたの生年月日を入力してください'); return; }
+  if (!targetName) { alert('相手のニックネームを入力してください'); return; }
+  if (!targetBirth){ alert('相手の生年月日を入力してください'); return; }
+  if (!selectedRelation){ alert('関係タイプを選択してください'); return; }
+
+  const myStarIdx     = calcKyusei(myBirth);
+  const myJikkanIdx   = calcJikkan(myBirth);
+  const targetStarIdx = calcKyusei(targetBirth);
+  const targetJikkanIdx = calcJikkan(targetBirth);
+
+  const myStarCode     = STAR_CODES[myStarIdx];
+  const myJikkanCode   = JIKKAN_CODES[myJikkanIdx];
+  const targetStarCode = STAR_CODES[targetStarIdx];
+  const targetJikkanCode = JIKKAN_CODES[targetJikkanIdx];
+
+  // 鑑定中ページへ
+  showPage('page-loading');
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+
+  // ローディングバーアニメーション
+  setTimeout(() => {
+    document.getElementById('loading-bar').style.width = '100%';
+  }, 100);
+
+  // GASから相性データ取得
+  const cbName = 'compat_cb_' + Date.now();
+  window[cbName] = function(data) {
+    document.getElementById('script-compat')?.remove();
+    if (data.status === 'success') {
+      // データ保存（非同期・エラーは無視）
+      saveData({
+        myName, myBirth, myGender, myBlood,
+        myStarCode, myJikkanCode,
+        targetName, targetBirth, targetGender, targetBlood,
+        targetStarCode, targetJikkanCode,
+        relation: selectedRelation,
+        totalScore: data.total_score
+      });
+      // 5秒後に結果表示
+      setTimeout(() => {
+        showResult({
+          myName, myStarIdx, myJikkanIdx,
+          targetName, targetStarIdx, targetJikkanIdx,
+          relation: selectedRelation, data
+        });
+      }, 5000);
+    } else {
+      alert('データの取得に失敗しました。もう一度お試しください。');
+      showPage('page-input');
+    }
+  };
+
+  const script = document.createElement('script');
+  script.id = 'script-compat';
+  script.src = `${GAS_COMPAT_URL}?type=compatibility&my_star=${myStarCode}&my_jikkan=${myJikkanCode}&target_star=${targetStarCode}&target_jikkan=${targetJikkanCode}&relation=${encodeURIComponent(selectedRelation)}&callback=${cbName}`;
+  document.body.appendChild(script);
+}
+
+// ============================================================
+// データ保存
+// ============================================================
+function saveData(p) {
+  const params = new URLSearchParams({
+    type: 'save_compat', callback: 'save_cb',
+    my_name: p.myName, my_birth: p.myBirth,
+    my_gender: p.myGender, my_blood: p.myBlood,
+    my_star: p.myStarCode, my_jikkan: p.myJikkanCode,
+    target_name: p.targetName, target_birth: p.targetBirth,
+    target_gender: p.targetGender, target_blood: p.targetBlood,
+    target_star: p.targetStarCode, target_jikkan: p.targetJikkanCode,
+    relation: p.relation, total_score: p.totalScore
+  });
+  window['save_cb'] = function(){};
+  const s = document.createElement('script');
+  s.src = `${GAS_SAVE_URL}?${params.toString()}`;
+  document.body.appendChild(s);
+}
+
+// ============================================================
+// 結果表示
+// ============================================================
+function showResult({ myName, myStarIdx, myJikkanIdx, targetName, targetStarIdx, targetJikkanIdx, relation, data }) {
+  const myStarName     = STAR_NAMES[myStarIdx];
+  const targetStarName = STAR_NAMES[targetStarIdx];
+
+  document.getElementById('result-my-name').textContent    = myName;
+  document.getElementById('result-my-star').textContent    = myStarName;
+  document.getElementById('result-my-jikkan').textContent  = JIKKAN_NAMES[myJikkanIdx] + '（日干）';
+  document.getElementById('result-target-name').textContent  = targetName;
+  document.getElementById('result-target-star').textContent  = targetStarName;
+  document.getElementById('result-target-jikkan').textContent= JIKKAN_NAMES[targetJikkanIdx] + '（日干）';
+
+  const badge = document.getElementById('result-relation-badge');
+  badge.textContent = relation;
+  badge.className = `relation-badge ${relation}`;
+  document.getElementById('result-heart').textContent = HEART_ICONS[relation] || '✨';
+
+  // スコア
+  const ks = data.kyusei_score;
+  const js = data.jikkan_score;
+  const ts = data.total_score;
+  document.getElementById('result-kyusei-score').textContent = ks;
+  document.getElementById('result-jikkan-score').textContent = js;
+  document.getElementById('result-total-score').textContent  = ts;
+  document.getElementById('result-score-pct').textContent    = ts + '%';
+  document.getElementById('stars-kyusei').textContent = scoreToStars(ks);
+  document.getElementById('stars-jikkan').textContent = scoreToStars(js);
+  document.getElementById('stars-total').textContent  = scoreToStars(ts);
+
+  setTimeout(() => {
+    document.getElementById('result-bar').style.width = ts + '%';
+  }, 300);
+
+  // 鑑定内容
+  document.getElementById('result-relationship').textContent = data.relationship;
+  document.getElementById('result-good').textContent         = data.good_points;
+  document.getElementById('result-caution').textContent      = data.caution;
+  document.getElementById('result-advice').textContent       = data.advice;
+
+  // note誘導
+  const myNoteUrl     = NOTE_URLS[myStarName]     || 'https://note.com/by_nature';
+  const targetNoteUrl = NOTE_URLS[targetStarName] || 'https://note.com/by_nature';
+  document.getElementById('note-my-link').href     = myNoteUrl;
+  document.getElementById('note-target-link').href = targetNoteUrl;
+  document.getElementById('note-my-text').textContent     = myStarName + 'の鑑定を読む →';
+  document.getElementById('note-target-text').textContent = targetStarName + 'の鑑定を読む →';
+
+  showPage('page-result');
+}
+
+// ============================================================
+// リセット
+// ============================================================
+function resetDiagnosis() {
+  document.getElementById('my-name').value   = '';
+  document.getElementById('my-birth').value  = '';
+  document.getElementById('my-gender').value = '';
+  document.getElementById('my-blood').value  = '';
+  document.getElementById('target-name').value   = '';
+  document.getElementById('target-birth').value  = '';
+  document.getElementById('target-gender').value = '';
+  document.getElementById('target-blood').value  = '';
+  document.querySelectorAll('.relation-btn').forEach(b => b.classList.remove('active'));
+  selectedRelation = '';
+  document.getElementById('result-bar').style.width = '0%';
+  document.getElementById('loading-bar').style.width = '0%';
+  showPage('page-input');
+}
+</script>
+
+</body>
+</html>
