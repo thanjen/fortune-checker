@@ -43,6 +43,7 @@
     background: var(--cream); color: var(--ink);
     font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 300;
     min-height: 100vh;
+    overflow-x: hidden;
     background-image:
       radial-gradient(ellipse at 10% 0%, rgba(124,58,237,0.08) 0%, transparent 50%),
       radial-gradient(ellipse at 90% 0%, rgba(201,168,76,0.08) 0%, transparent 50%),
@@ -225,6 +226,9 @@
   .score-grid {
     display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.25rem;
   }
+  @media(max-width:400px){
+    .score-grid { grid-template-columns:1fr; }
+  }
   .score-item { border-radius:12px; padding:1rem 0.5rem; text-align:center; }
   .score-item.kyusei { background:var(--purple-light); }
   .score-item.jikkan { background:var(--teal-light); }
@@ -321,6 +325,10 @@
     .relation-grid{grid-template-columns:repeat(2,1fr);}
     .field-row{grid-template-columns:1fr;}
     .note-cta-grid{grid-template-columns:1fr;}
+    .score-grid{grid-template-columns:1fr;}
+    .result-pair{grid-template-columns:1fr; grid-template-rows:auto auto auto;}
+    .heart-icon{text-align:center; padding:0.5rem 0;}
+    .wrap{padding:1rem 1rem 4rem;}
   }
 </style>
 </head>
@@ -633,7 +641,8 @@ function calcJikkan(birthdate) {
   const base = new Date('1900-01-01');
   const d = new Date(birthdate);
   const days = Math.floor((d - base) / (1000*60*60*24));
-  return ((days + 6) % 10);
+  // fortune_checker.htmlと同じロジック（offset=0・甲が基準）
+  return ((days % 10) + 10) % 10;
 }
 
 // ============================================================
