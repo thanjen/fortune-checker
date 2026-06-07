@@ -375,8 +375,11 @@ let currentKyuseiName = '';
 let currentDiagCode = '';
 
 function goToStarPage() {
-  const url = STAR_PAGE_URLS[currentKyuseiName];
-  if (url) location.href = url;
+  const baseUrl = STAR_PAGE_URLS[currentKyuseiName];
+  if (!baseUrl) return;
+  // diagCode例: "A-01" → 日干部分 "01" → アンカー "#combo-01"
+  const jikkanCode = currentDiagCode.split('-')[1];
+  location.href = baseUrl + '#combo-' + jikkanCode;
 }
 
 function calcKyusei(birthdate) {
