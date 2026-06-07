@@ -3,14 +3,14 @@
   // ナビゲーション項目（追加・削除はここだけ変更）
   // ============================================================
   const NAV_ITEMS = [
-    { label: '診断トップ',           href: '/' },
-    { label: '無料診断',             href: '/diagnosis.html' },
-    { label: '相性診断',             href: '/compatibility.html' },
-    { label: '9つの星',             href: '/stars/index.html' },
-    { label: '鑑定一覧',             href: '/fortunes.html' },
-    { label: 'このサイトについて',   href: '/about.html' },
-    { label: 'お問い合わせ',         href: '/contact.html' },
-    { label: 'プライバシーポリシー', href: '/privacy.html' },
+    { label: 'トップ',         href: '/' },
+    { label: '無料診断',       href: '/diagnosis.html' },
+    { label: '相性診断',       href: '/compatibility.html' },
+    { label: '鑑定方法',       href: '/stars/index.html' },
+    { label: '鑑定一覧',       href: '/fortunes.html' },
+    { label: 'サイトについて', href: '/about.html' },
+    { label: 'お問い合わせ',   href: '/contact.html' },
+    { label: 'プライバシー',   href: '/privacy.html' },
   ];
 
   // 楽天アフィリエイト商品
@@ -64,30 +64,34 @@
         border-bottom: 1px solid rgba(201,168,76,0.2);
         padding: 0 1rem;
       }
-      .site-nav-inner {
+      .site-nav-logo-row {
         max-width: 720px; margin: 0 auto;
         display: flex; align-items: center;
-        justify-content: space-between;
-        height: 48px;
+        height: 32px; padding-top: 2px;
       }
       .site-nav-logo {
         font-family: 'Shippori Mincho', serif;
         font-size: 0.85rem; font-weight: 500;
         color: #1a1a2e; letter-spacing: 0.1em;
-        text-decoration: none; white-space: nowrap; flex-shrink: 0;
+        text-decoration: none; white-space: nowrap;
       }
       .site-nav-logo:hover { color: #c9a84c; text-decoration: none; }
+      .site-nav-inner {
+        max-width: 720px; margin: 0 auto;
+        display: flex; align-items: center;
+        height: 36px; border-top: 1px solid rgba(201,168,76,0.12);
+      }
       .site-nav-links {
         display: flex; align-items: center;
         gap: 0; list-style: none;
         overflow-x: auto; -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        scrollbar-width: none; width: 100%;
       }
       .site-nav-links::-webkit-scrollbar { display: none; }
       .site-nav-links li a {
-        display: block; padding: 0.35rem 0.6rem;
-        font-size: 0.72rem; color: #6b6b7a;
-        letter-spacing: 0.05em; text-decoration: none;
+        display: block; padding: 0.3rem 0.55rem;
+        font-size: 0.7rem; color: #6b6b7a;
+        letter-spacing: 0.04em; text-decoration: none;
         border-radius: 6px; white-space: nowrap; transition: all 0.2s;
       }
       .site-nav-links li a:hover { color: #c9a84c; background: rgba(201,168,76,0.08); }
@@ -151,8 +155,10 @@
     const nav = document.createElement('nav');
     nav.className = 'site-nav';
     nav.innerHTML = `
-      <div class="site-nav-inner">
+      <div class="site-nav-logo-row">
         <a href="/" class="site-nav-logo">🦦 星詠みの海獺</a>
+      </div>
+      <div class="site-nav-inner">
         <ul class="site-nav-links">
           ${NAV_ITEMS.map(item => `
             <li><a href="${item.href}" class="${isActive(item.href) ? 'nav-active' : ''}">${item.label}</a></li>
