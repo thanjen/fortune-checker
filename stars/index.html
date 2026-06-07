@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9つの星を知る｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/stars/index.html">
+<meta name="description" content="一白水星から九紫火星まで、9つの本命星×10干の組み合わせを詳しく解説。自分の星を調べて、詳細ページで運気を読み解こう。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e; --gold: #c9a84c; --gold-light: #e8d5a3;
+    --cream: #faf8f3; --muted: #6b6b7a; --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7); --purple: #7c3aed; --teal: #0d9488;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 300;
+    min-height: 100vh; overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 15% 5%, rgba(201,168,76,0.09) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 5%, rgba(124,58,237,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 95%, rgba(13,148,136,0.06) 0%, transparent 50%);
+  }
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star { position: absolute; border-radius: 50%; opacity: 0; animation: twinkle var(--d,3s) var(--delay,0s) infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0;} 50%{opacity:var(--op,0.6);} }
+
+  .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; margin-bottom: 1.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .page-hero { text-align: center; padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+  .page-label { display: inline-block; font-size: 0.68rem; letter-spacing: 0.25em; color: var(--gold); border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.8rem; margin-bottom: 1rem; }
+  .page-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+  .page-title { font-family: 'Shippori Mincho', serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 500; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+  .page-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.9; max-width: 520px; margin: 0 auto 1.75rem; }
+
+  .diagnosis-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(201,168,76,0.06));
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.8rem 1.5rem; text-decoration: none; color: var(--ink);
+    font-size: 0.82rem; letter-spacing: 0.08em; transition: all 0.2s;
+  }
+  .diagnosis-cta:hover { border-color: var(--gold); color: var(--purple); }
+
+  /* 星グリッド */
+  .stars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.25rem; }
+
+  .star-card {
+    display: block; text-decoration: none;
+    border-radius: 20px; padding: 1.75rem 1.5rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s; position: relative; overflow: hidden;
+    border: 1px solid;
+  }
+  .star-card::after {
+    content: '→';
+    position: absolute; right: 1.25rem; bottom: 1.25rem;
+    font-size: 0.85rem; opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .star-card:hover::after { opacity: 0.5; transform: translateX(4px); }
+  .star-card:hover { transform: translateY(-5px); }
+
+  /* 各星のカラー */
+  .star-ippaku   { background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(14,165,233,0.05)); border-color: rgba(59,130,246,0.25); }
+  .star-jikoku   { background: linear-gradient(135deg, rgba(120,53,15,0.07), rgba(180,83,9,0.05));   border-color: rgba(120,53,15,0.2); }
+  .star-sanpeki  { background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(16,185,129,0.05)); border-color: rgba(34,197,94,0.25); }
+  .star-siroku   { background: linear-gradient(135deg, rgba(52,211,153,0.08), rgba(16,185,129,0.05));border-color: rgba(52,211,153,0.25); }
+  .star-goo      { background: linear-gradient(135deg, rgba(234,179,8,0.1),  rgba(180,83,9,0.06));   border-color: rgba(234,179,8,0.3); }
+  .star-roppaku  { background: linear-gradient(135deg, rgba(148,163,184,0.1),rgba(100,116,139,0.07));border-color: rgba(148,163,184,0.3); }
+  .star-sichiseki{ background: linear-gradient(135deg, rgba(239,68,68,0.07), rgba(236,72,153,0.05)); border-color: rgba(239,68,68,0.22); }
+  .star-happaku  { background: linear-gradient(135deg, rgba(251,191,36,0.09),rgba(180,83,9,0.05));   border-color: rgba(251,191,36,0.28); }
+  .star-kyushi   { background: linear-gradient(135deg, rgba(239,68,68,0.09), rgba(124,58,237,0.06)); border-color: rgba(239,68,68,0.25); }
+
+  .star-num { font-size: 0.65rem; letter-spacing: 0.2em; margin-bottom: 0.6rem; display: block; }
+  .star-ippaku   .star-num { color: #3b82f6; }
+  .star-jikoku   .star-num { color: #78350f; }
+  .star-sanpeki  .star-num { color: #22c55e; }
+  .star-siroku   .star-num { color: #34d399; }
+  .star-goo      .star-num { color: #d97706; }
+  .star-roppaku  .star-num { color: #64748b; }
+  .star-sichiseki .star-num { color: #ef4444; }
+  .star-happaku  .star-num { color: #d97706; }
+  .star-kyushi   .star-num { color: #ef4444; }
+
+  .star-icon { font-size: 2.2rem; display: block; margin-bottom: 0.75rem; }
+  .star-name { font-family: 'Shippori Mincho', serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 0.3rem; color: var(--ink); }
+  .star-yomi { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .star-element { font-size: 0.68rem; display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; margin-bottom: 0.75rem; }
+  .star-ippaku   .star-element { background: rgba(59,130,246,0.1);  color: #1d4ed8; }
+  .star-jikoku   .star-element { background: rgba(120,53,15,0.1);   color: #78350f; }
+  .star-sanpeki  .star-element { background: rgba(34,197,94,0.12);  color: #166534; }
+  .star-siroku   .star-element { background: rgba(52,211,153,0.12); color: #065f46; }
+  .star-goo      .star-element { background: rgba(234,179,8,0.12);  color: #713f12; }
+  .star-roppaku  .star-element { background: rgba(148,163,184,0.2); color: #334155; }
+  .star-sichiseki .star-element { background: rgba(239,68,68,0.1);  color: #991b1b; }
+  .star-happaku  .star-element { background: rgba(251,191,36,0.15); color: #713f12; }
+  .star-kyushi   .star-element { background: rgba(239,68,68,0.1);   color: #991b1b; }
+
+  .star-keyword { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+
+  .ad-area { margin: 2rem 0; padding: 1rem; background: rgba(255,255,255,0.5); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+  .ad-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+  footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; }
+  .footer-nav { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .footer-nav a { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-decoration: none; }
+  .footer-nav a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.68rem; color: var(--muted); opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <a href="/" class="back-link">← トップに戻る</a>
+
+  <div class="page-hero">
+    <span class="page-label">STARS</span>
+    <span class="page-emoji">⭐</span>
+    <h1 class="page-title">9つの星を知る</h1>
+    <p class="page-desc">
+      九星気学の本命星は9種類。それぞれの星に固有のエネルギーがあり、<br>
+      四柱推命の日干と組み合わせることで、あなただけの運気が見えてきます。<br>
+      まず自分の本命星を確認して、該当する星のページをチェックしてみてね✨
+    </p>
+    <a href="/diagnosis.html" class="diagnosis-cta">🦦 はじめての方は→ 無料診断で本命星を調べる</a>
+  </div>
+
+  <div class="stars-grid">
+
+    <a href="/stars/ippaku.html" class="star-card star-ippaku">
+      <span class="star-num">本命星 ①</span>
+      <span class="star-icon">💧</span>
+      <div class="star-name">一白水星</div>
+      <div class="star-yomi">いっぱくすいせい</div>
+      <span class="star-element">五行：水</span>
+      <p class="star-keyword">柔軟性・適応力・流れに乗る。水のように形を変え、どんな環境にも馴染める</p>
+    </a>
+
+    <a href="/stars/jikoku.html" class="star-card star-jikoku">
+      <span class="star-num">本命星 ②</span>
+      <span class="star-icon">🌱</span>
+      <div class="star-name">二黒土星</div>
+      <div class="star-yomi">じこくどせい</div>
+      <span class="star-element">五行：土</span>
+      <p class="star-keyword">安定・勤勉・献身。地道な努力を惜しまず、人を支えることに喜びを感じる</p>
+    </a>
+
+    <a href="/stars/sanpeki.html" class="star-card star-sanpeki">
+      <span class="star-num">本命星 ③</span>
+      <span class="star-icon">⚡</span>
+      <div class="star-name">三碧木星</div>
+      <div class="star-yomi">さんぺきもくせい</div>
+      <span class="star-element">五行：木</span>
+      <p class="star-keyword">行動力・革新・情熱。雷のようなエネルギーで新しいことへ突き進む</p>
+    </a>
+
+    <a href="/stars/siroku.html" class="star-card star-siroku">
+      <span class="star-num">本命星 ④</span>
+      <span class="star-icon">🌿</span>
+      <div class="star-name">四緑木星</div>
+      <div class="star-yomi">しりょくもくせい</div>
+      <span class="star-element">五行：木</span>
+      <p class="star-keyword">調和・信頼・縁。風のように広がる社交性と、人とのつながりを大切にする</p>
+    </a>
+
+    <a href="/stars/goo.html" class="star-card star-goo">
+      <span class="star-num">本命星 ⑤</span>
+      <span class="star-icon">🌍</span>
+      <div class="star-name">五黄土星</div>
+      <div class="star-yomi">ごおうどせい</div>
+      <span class="star-element">五行：土</span>
+      <p class="star-keyword">リーダーシップ・カリスマ・中心。強い存在感で周囲に大きな影響を与える</p>
+    </a>
+
+    <a href="/stars/roppaku.html" class="star-card star-roppaku">
+      <span class="star-num">本命星 ⑥</span>
+      <span class="star-icon">⚙️</span>
+      <div class="star-name">六白金星</div>
+      <div class="star-yomi">ろっぱくきんせい</div>
+      <span class="star-element">五行：金</span>
+      <p class="star-keyword">完璧・気品・知恵。高い理想と品格を持ち、周囲から尊敬されるリーダー</p>
+    </a>
+
+    <a href="/stars/sichiseki.html" class="star-card star-sichiseki">
+      <span class="star-num">本命星 ⑦</span>
+      <span class="star-icon">✨</span>
+      <div class="star-name">七赤金星</div>
+      <div class="star-yomi">しちせききんせい</div>
+      <span class="star-element">五行：金</span>
+      <p class="star-keyword">喜び・社交・輝き。楽しさを求め、場を盛り上げる天性の才能を持つ</p>
+    </a>
+
+    <a href="/stars/happaku.html" class="star-card star-happaku">
+      <span class="star-num">本命星 ⑧</span>
+      <span class="star-icon">🏔️</span>
+      <div class="star-name">八白土星</div>
+      <div class="star-yomi">はっぱくどせい</div>
+      <span class="star-element">五行：土</span>
+      <p class="star-keyword">変化・継承・発展。粘り強さと革新性を兼ね備え、困難を乗り越える力を持つ</p>
+    </a>
+
+    <a href="/stars/kyushi.html" class="star-card star-kyushi">
+      <span class="star-num">本命星 ⑨</span>
+      <span class="star-icon">🔥</span>
+      <div class="star-name">九紫火星</div>
+      <div class="star-yomi">きゅうしかせい</div>
+      <span class="star-element">五行：火</span>
+      <p class="star-keyword">知性・美意識・情熱。洗練された感性と深い洞察力で才能が花開く</p>
+    </a>
+
+  </div>
+
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931"
+      data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <footer>
+    <nav class="footer-nav"></nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+</div>
+
+<script src="../nav.js"></script>
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div'); s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    const colors = ['#c9a84c','#7c3aed','#0d9488','#3b82f6','#ef4444'];
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${Math.random()*4+2}s;--delay:${Math.random()*6}s;--op:${Math.random()*0.5+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+</script>
+</body>
+</html>
