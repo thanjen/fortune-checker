@@ -4,7 +4,9 @@
   // ============================================================
   const NAV_ITEMS = [
     { label: '診断トップ',           href: '/' },
+    { label: '無料診断',             href: '/diagnosis.html' },
     { label: '相性診断',             href: '/compatibility.html' },
+    { label: '9つの星',             href: '/stars/index.html' },
     { label: '鑑定一覧',             href: '/fortunes.html' },
     { label: 'このサイトについて',   href: '/about.html' },
     { label: 'お問い合わせ',         href: '/contact.html' },
@@ -33,11 +35,19 @@
     },
   ];
 
-  // 現在のページを判定
+  // ============================================================
+  // 現在のページを判定してアクティブ表示
+  // ============================================================
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+
   function isActive(href) {
     if (href === '/') return currentPath === '' || currentPath === '/';
-    return currentPath.endsWith(href.replace(/^\//, ''));
+    const hrefPath = href.replace(/\/$/, '');
+    // 完全一致
+    if (currentPath === hrefPath) return true;
+    // /stars/index.html は /stars/ 配下のページでもアクティブに
+    if (hrefPath === '/stars/index.html' && currentPath.startsWith('/stars/')) return true;
+    return false;
   }
 
   // ============================================================

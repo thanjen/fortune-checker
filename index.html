@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>星詠み診断｜星詠みの海獺</title>
+<title>星詠みの海獺｜九星気学×四柱推命 組み合わせ診断</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://rakko-kora-rakko.life/">
-<!-- Google tag (gtag.js) -->
+<meta name="description" content="生年月日を入力するだけで、九星気学の本命星と四柱推命の日干を組み合わせた90パターンの本格診断。あなたの本当の運気が見えてくる。">
+<meta property="og:title" content="星詠みの海獺｜九星気学×四柱推命 組み合わせ診断">
+<meta property="og:description" content="生年月日を入力するだけ。九星気学×四柱推命の90パターン本格診断。">
+<meta property="og:url" content="https://rakko-kora-rakko.life/">
+<meta property="og:type" content="website">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,8 +18,7 @@
   gtag('js', new Date());
   gtag('config', 'G-97D73QKGJ0');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931"
-     crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
 <meta name="google-adsense-account" content="ca-pub-1736527039172931">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -27,6 +30,10 @@
     --muted: #6b6b7a;
     --border: rgba(201,168,76,0.25);
     --surface: rgba(255,255,255,0.7);
+    --purple: #7c3aed;
+    --teal: #0d9488;
+    --indigo: #312e81;
+    --navy: #1e2a4a;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,795 +44,609 @@
     font-family: 'Zen Kaku Gothic New', sans-serif;
     font-weight: 300;
     min-height: 100vh;
-    background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%);
+    overflow-x: hidden;
   }
 
-  .stars {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    overflow: hidden;
-  }
+  /* ===== 星背景 ===== */
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
   .star {
-    position: absolute;
-    width: 2px; height: 2px;
-    background: var(--gold);
-    border-radius: 50%;
-    opacity: 0;
-    animation: twinkle var(--d, 4s) ease-in-out infinite var(--delay, 0s);
+    position: absolute; border-radius: 50%; opacity: 0;
+    animation: twinkle var(--d,3s) var(--delay,0s) infinite;
   }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: var(--op, 0.4); transform: scale(1); }
-  }
+  @keyframes twinkle { 0%,100%{opacity:0;} 50%{opacity:var(--op,0.6);} }
 
-  .wrap {
+  /* ===== ナビ ===== */
+  .site-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,248,243,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1rem;
+  }
+  .site-nav-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between; height: 48px;
+  }
+  .site-nav-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--ink); letter-spacing: 0.1em;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  }
+  .site-nav-logo:hover { color: var(--gold); }
+  .site-nav-links {
+    display: flex; align-items: center;
+    gap: 0; list-style: none;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .site-nav-links::-webkit-scrollbar { display: none; }
+  .site-nav-links li a {
+    display: block; padding: 0.35rem 0.6rem;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.05em; text-decoration: none;
+    border-radius: 6px; white-space: nowrap; transition: all 0.2s;
+  }
+  .site-nav-links li a:hover { color: var(--gold); background: rgba(201,168,76,0.08); }
+  .site-nav-links li a.nav-active { color: var(--gold); font-weight: 500; }
+
+  /* ===== ヒーロー ===== */
+  .hero {
     position: relative; z-index: 1;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem 5rem;
+    min-height: 90vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem 5rem;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(124,58,237,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 10%, rgba(201,168,76,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 90%, rgba(13,148,136,0.08) 0%, transparent 50%);
   }
 
-  header {
-    text-align: center;
-    margin-bottom: 3rem;
-    animation: fadeUp 0.8s ease both;
-  }
-  .otter {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 0.75rem;
+  .hero-emoji {
+    font-size: 4rem; display: block;
+    margin-bottom: 1.5rem;
     animation: float 4s ease-in-out infinite;
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  h1 {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .subtitle {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-    letter-spacing: 0.15em;
-  }
-  .divider {
-    width: 60px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 1rem auto;
-  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
 
-  .card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    backdrop-filter: blur(8px);
-    animation: fadeUp 0.8s ease both;
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(124,58,237,0.1));
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
     margin-bottom: 1.5rem;
   }
-  .card:nth-child(2) { animation-delay: 0.1s; }
-  .card:nth-child(3) { animation-delay: 0.2s; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+  .hero-title .accent { color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
   }
 
+  .hero-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 520px;
+    margin: 1rem auto 2.5rem;
+  }
+
+  .hero-btns {
+    display: flex; flex-wrap: wrap;
+    gap: 0.75rem; justify-content: center;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, var(--purple), #4f46e5);
+    color: #fff; border: none; border-radius: 12px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.95rem; letter-spacing: 0.15em;
+    text-decoration: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    transition: all 0.25s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,0.35); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: rgba(255,255,255,0.7);
+    color: var(--ink); border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.88rem; letter-spacing: 0.1em;
+    text-decoration: none; cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* ===== 波区切り ===== */
+  .wave-divider {
+    width: 100%; overflow: hidden;
+    line-height: 0; margin-top: -2px;
+  }
+  .wave-divider svg { display: block; width: 100%; }
+
+  /* ===== セクション共通 ===== */
+  .section {
+    position: relative; z-index: 1;
+    padding: 5rem 1.5rem;
+  }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
   .section-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
-    background: var(--border);
-  }
-
-  .field { margin-bottom: 1.25rem; }
-  .field:last-child { margin-bottom: 0; }
-
-  label {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-  }
-  .required {
-    color: var(--gold);
-    margin-left: 2px;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="time"],
-  select {
-    width: 100%;
-    padding: 0.65rem 0.9rem;
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.8);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-align: center;
+    margin-bottom: 0.6rem;
     color: var(--ink);
-    font-family: 'Zen Kaku Gothic New', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 300;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
   }
-  input:focus, select:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
-  }
-  select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a84c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.9rem center;
-    padding-right: 2.5rem;
-    cursor: pointer;
-  }
-
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .checkbox-group {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-  }
-  .checkbox-group label {
-    display: flex; align-items: center; gap: 0.4rem;
-    padding: 0.4rem 0.8rem;
-    border: 0.5px solid var(--border);
-    border-radius: 20px;
-    font-size: 0.8rem;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-bottom: 0;
-    letter-spacing: 0.05em;
-  }
-  .checkbox-group input[type="checkbox"] { display: none; }
-  .checkbox-group input[type="checkbox"]:checked + span {
-    color: var(--gold);
-  }
-  .checkbox-group label:has(input:checked) {
-    background: rgba(201,168,76,0.08);
-    border-color: var(--gold);
-  }
-
-  .note {
-    font-size: 0.72rem;
+  .section-desc {
+    text-align: center;
+    font-size: 0.88rem;
     color: var(--muted);
-    margin-top: 0.35rem;
-    letter-spacing: 0.05em;
+    line-height: 1.9;
+    max-width: 560px;
+    margin: 0 auto 3rem;
   }
 
-  .btn {
-    width: 100%;
-    padding: 1rem;
-    background: var(--ink);
-    color: var(--gold-light);
-    border: none;
-    border-radius: 10px;
+  /* ===== Aboutセクション ===== */
+  .about-section {
+    background:
+      radial-gradient(ellipse at 0% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 50%, rgba(124,58,237,0.06) 0%, transparent 60%);
+  }
+
+  .points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .point-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .point-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+
+  .point-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .point-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    cursor: pointer;
-    transition: all 0.3s;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem; color: var(--ink);
+  }
+  .point-text { font-size: 0.82rem; color: var(--muted); line-height: 1.9; }
+
+  /* ===== クイックリンク ===== */
+  .links-section {
+    background: linear-gradient(180deg, #fff 0%, var(--cream) 100%);
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .link-card {
+    display: block;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.25rem 1.75rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s;
     position: relative;
     overflow: hidden;
   }
-  .btn:hover { background: #2d2d45; transform: translateY(-1px); }
-  .btn:active { transform: scale(0.99); }
-  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .link-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .link-card:hover::before { opacity: 1; }
+  .link-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
 
-  /* 結果表示 */
-  #result {
-    display: none;
-    text-align: center;
-    animation: fadeUp 0.6s ease both;
-  }
-  .result-star {
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-  .result-main {
+  .link-card.purple::before { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.08), transparent 70%); }
+  .link-card.teal::before   { background: radial-gradient(circle at 50% 0%, rgba(13,148,136,0.08), transparent 70%); }
+  .link-card.gold::before   { background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08), transparent 70%); }
+
+  .link-icon { font-size: 2.8rem; display: block; margin-bottom: 1rem; }
+  .link-title {
     font-family: 'Shippori Mincho', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.4;
+    font-size: 1.05rem; font-weight: 600;
+    letter-spacing: 0.12em;
     margin-bottom: 0.5rem;
   }
-  .result-code {
+  .link-card.purple .link-title { color: var(--purple); }
+  .link-card.teal   .link-title { color: var(--teal); }
+  .link-card.gold   .link-title { color: var(--gold); }
+
+  .link-text { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+  .link-arrow {
     display: inline-block;
-    padding: 0.3rem 1rem;
-    border: 0.5px solid var(--gold);
-    border-radius: 20px;
-    font-size: 0.8rem;
-    color: var(--gold);
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-  }
-  .result-msg {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-  .note-link {
-    display: block;
-    padding: 0.9rem 1.5rem;
-    background: linear-gradient(135deg, #c9a84c, #e8d5a3);
-    color: var(--ink);
-    border-radius: 10px;
-    font-family: 'Shippori Mincho', serif;
-    font-size: 0.95rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ===== 記事リンク ===== */
+  .articles-section {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .article-card {
+    display: block;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); border-color: var(--gold-light); }
+
+  .article-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .article-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .article-text { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+
+  /* ===== Note告知 ===== */
+  .note-section {
+    background: linear-gradient(135deg, rgba(49,46,129,0.04) 0%, rgba(201,168,76,0.04) 100%);
+  }
+
+  .note-cta {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+  .note-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .note-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
+  .note-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.2rem; font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
     margin-bottom: 0.75rem;
   }
-  .note-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
-  .register-no {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 1rem;
-    letter-spacing: 0.1em;
+  .note-text { font-size: 0.85rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.75rem; }
+
+  .note-features {
+    display: flex; flex-wrap: wrap;
+    gap: 0.5rem; justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .note-feature-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.72rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
   }
 
-  .loading-dots::after {
-    content: '';
-    animation: dots 1.2s steps(4, end) infinite;
-  }
-  @keyframes dots {
-    0%,20% { content: ''; }
-    40% { content: '.'; }
-    60% { content: '..'; }
-    80%,100% { content: '...'; }
-  }
-
+  /* ===== フッター ===== */
   footer {
+    position: relative; z-index: 1;
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
     text-align: center;
-    margin-top: 3rem;
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
+    padding: 3rem 1.5rem 2rem;
   }
+  .footer-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-desc { font-size: 0.75rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .footer-nav {
+    display: flex; justify-content: center;
+    gap: 1.25rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .footer-nav a {
+    font-size: 0.72rem; color: rgba(255,255,255,0.5);
+    text-decoration: none; letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.3); }
 
-  @media (max-width: 480px) {
-    .grid2 { grid-template-columns: 1fr; }
-    h1 { font-size: 1.3rem; }
-    .card { padding: 1.5rem; }
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem 4rem; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-ghost { width: 100%; max-width: 300px; justify-content: center; }
+    .section { padding: 3.5rem 1.25rem; }
   }
 </style>
 </head>
 <body>
 
+<!-- 星背景 -->
 <div class="stars" id="stars"></div>
 
-<div class="wrap">
-  <header>
-    <span class="otter">🦦</span>
-    <h1>星詠み診断</h1>
-    <p class="subtitle">九星気学 × 四柱推命</p>
-    <div class="divider"></div>
-    <p style="font-size:0.8rem; color:var(--muted); line-height:1.8;">
-      生年月日と性別から、あなたの<br>「本命星」と「日干」を導き出します。
-    </p>
-  </header>
-
-  <!-- フォーム -->
-  <form id="form">
-
-    <div class="card">
-      <div class="section-title">基本情報</div>
-
-      <div class="field">
-        <label>お名前（ニックネームでも）<span class="required">*</span></label>
-        <input type="text" id="name" placeholder="例：ラッコ太郎" required>
-      </div>
-
-      <div class="grid2">
-        <div class="field">
-          <label>生年月日<span class="required">*</span></label>
-          <input type="date" id="birthdate" required>
-        </div>
-        <div class="field">
-          <label>性別<span class="required">*</span></label>
-          <select id="gender" required>
-            <option value="">選択してください</option>
-            <option value="男性">男性</option>
-            <option value="女性">女性</option>
-            <option value="その他">その他</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid2">
-        <div class="field">
-          <label>生まれた時間</label>
-          <input type="time" id="birthtime">
-          <p class="note">不明の場合は空欄でOK</p>
-        </div>
-        <div class="field">
-          <label>血液型</label>
-          <select id="bloodtype">
-            <option value="">選択してください</option>
-            <option>A型</option>
-            <option>B型</option>
-            <option>O型</option>
-            <option>AB型</option>
-            <option>不明</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="section-title">出身・居住地</div>
-
-      <div class="field">
-        <label>生まれた場所</label>
-        <input type="text" id="birthplace" placeholder="例：東京都、大阪府、海外など">
-      </div>
-
-      <div class="field">
-        <label>現在お住まいの都道府県</label>
-        <select id="prefecture">
-          <option value="">選択してください</option>
-          <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option>
-          <option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option>
-          <option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option>
-          <option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option>
-          <option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option>
-          <option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option>
-          <option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option>
-          <option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option>
-          <option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option>
-          <option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option>
-          <option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option>
-          <option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option><option>海外</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="section-title">SNS・きっかけ</div>
-
-      <div class="field">
-        <label>よく使うSNS（複数選択可）</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" value="X（旧Twitter）"><span>X（旧Twitter）</span></label>
-          <label><input type="checkbox" value="Instagram"><span>Instagram</span></label>
-          <label><input type="checkbox" value="Threads"><span>Threads</span></label>
-          <label><input type="checkbox" value="TikTok"><span>TikTok</span></label>
-          <label><input type="checkbox" value="YouTube"><span>YouTube</span></label>
-          <label><input type="checkbox" value="Facebook"><span>Facebook</span></label>
-          <label><input type="checkbox" value="LINE"><span>LINE</span></label>
-          <label><input type="checkbox" value="その他"><span>その他</span></label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>このアカウントを知ったきっかけ</label>
-        <select id="trigger">
-          <option value="">選択してください</option>
-          <option>X（旧Twitter）</option>
-          <option>Instagram</option>
-          <option>Threads</option>
-          <option>TikTok</option>
-          <option>YouTube</option>
-          <option>知人・友人の紹介</option>
-          <option>note</option>
-          <option>検索エンジン</option>
-          <option>その他</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>メールアドレス（任意）</label>
-        <input type="email" id="email" placeholder="example@email.com">
-        <p class="note">鑑定情報のお知らせ等に使用することがあります</p>
-      </div>
-    </div>
-
-    <button type="submit" class="btn" id="submit-btn">
-      ✦ 星を詠む ✦
-    </button>
-  </form>
-
-  <!-- 鑑定中画面（広告表示） -->
-  <div id="loading-screen" class="card" style="display:none; text-align:center;">
-    <span style="font-size:2rem; display:block; margin-bottom:1rem; animation:float 2s ease-in-out infinite;">🦦</span>
-    <p style="font-family:'Shippori Mincho',serif; font-size:1.1rem; letter-spacing:0.2em; margin-bottom:0.5rem;">星を詠んでいます</p>
-    <p style="font-size:0.8rem; color:var(--muted); margin-bottom:1.5rem; letter-spacing:0.1em;">あなたの運命の星を読み解いています<span class="loading-dots"></span></p>
-    <div class="divider"></div>
-
-    <!-- AdSenseディスプレイ広告 -->
-    <div style="margin:1.5rem 0;">
-      <p style="font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem;">スポンサー</p>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-1736527039172931"
-           data-ad-slot="5698827070"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <div class="divider"></div>
-    <p style="font-size:0.72rem; color:var(--muted); margin-top:1rem; letter-spacing:0.05em;">しばらくお待ちください</p>
+<!-- ナビゲーション（nav.jsで上書きされる） -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-logo">🦦 星詠みの海獺</a>
+    <ul class="site-nav-links">
+      <li><a href="/" class="nav-active">診断トップ</a></li>
+      <li><a href="/diagnosis.html">無料診断</a></li>
+      <li><a href="/compatibility.html">相性診断</a></li>
+      <li><a href="/stars/index.html">9つの星</a></li>
+      <li><a href="/about.html">このサイトについて</a></li>
+      <li><a href="/contact.html">お問い合わせ</a></li>
+      <li><a href="/privacy.html">プライバシーポリシー</a></li>
+    </ul>
   </div>
+</nav>
 
-  <!-- 広告中間ページ -->
-  <div id="ad-bridge" class="card" style="display:none; text-align:center;">
-    <span style="font-size:2rem; display:block; margin-bottom:1rem;">🦦</span>
-    <p style="font-family:'Shippori Mincho',serif; font-size:1rem; letter-spacing:0.15em; margin-bottom:0.5rem;">まとめページへ移動します</p>
-    <p style="font-size:0.8rem; color:var(--muted); margin-bottom:1.5rem;">
-      <span id="ad-countdown" style="font-size:1.5rem; color:var(--gold); font-weight:bold;">5</span>
-      秒後に自動で移動します
-    </p>
-    <div class="divider"></div>
-    <!-- AdSenseディスプレイ広告 -->
-    <div style="margin:1.5rem 0;">
-      <p style="font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem;">スポンサー</p>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-1736527039172931"
-           data-ad-slot="5698827070"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    <div class="divider"></div>
-    <p style="font-size:0.72rem; color:var(--muted); margin-top:1rem;">広告が表示されない場合はしばらくお待ちください</p>
+<!-- ===== ヒーロー ===== -->
+<section class="hero" id="top">
+  <span class="hero-badge">✦ 九星気学 × 四柱推命 ✦</span>
+  <span class="hero-emoji">🦦</span>
+  <h1 class="hero-title">
+    あなたの<span class="accent">本当の運気</span>が<br>見えてくる
+  </h1>
+  <p class="hero-sub">星詠みの海獺｜Hoshi Yomi no Rakko</p>
+  <p class="hero-desc">
+    生年月日を入力するだけで、<br>
+    九星気学の「本命星」と四柱推命の「日干」を組み合わせた<br>
+    90パターンの本格診断ができます。
+  </p>
+  <div class="hero-btns">
+    <a href="/diagnosis.html" class="btn-primary">📊 今すぐ診断してみる</a>
+    <a href="#about" class="btn-ghost">詳しく知る ↓</a>
   </div>
+</section>
 
-  <!-- 結果表示 -->
-  <div id="result" class="card">
-    <p class="result-star">✦ あなたの星が導き出されました ✦</p>
-    <div class="divider"></div>
-    <p class="result-main" id="result-text"></p>
-    <span class="result-code" id="result-code"></span>
-    <p class="result-msg" id="result-msg"></p>
-
-    <button onclick="goToSummaryPage()" class="note-link" style="border:none; cursor:pointer; width:100%;">
-      🌟 あなたの特徴はこちら
-    </button>
-    <a href="https://note.com/by_nature" class="note-link" id="note-link" target="_blank" style="display:block; text-align:center; margin-top:0.75rem; font-size:0.8rem; background:rgba(201,168,76,0.15); color:var(--ink);">
-      📖 上記ボタンで見れない方はこちら（一覧ページ）
-    </a>
-    <p class="register-no" id="register-no"></p>
-
-    <!-- アフィリエイト -->
-    <div style="margin-top:2rem;">
-      <div class="section-title">✦ 開運アイテム ✦</div>
-      <p style="font-size:0.75rem; color:var(--muted); margin-bottom:1rem; letter-spacing:0.05em;">あなたの運気をさらに高めるアイテムをご紹介します</p>
-      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:0.75rem;">
-
-        <!-- 商品1：パワーストーンブレスレット -->
-        <div style="border:0.5px solid var(--border); border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.8);">
-          <a href="https://rpx.a8.net/svt/ejp?a8mat=4B3MEQ+BZ1UR6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00qdds4.2bo11a61.g00qdds4.2bo12b13%2Fa26050911337_4B3MEQ_BZ1UR6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fobutsudanhonpo%252Forder%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fobutsudanhonpo%252Fi%252F10004428%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow" target="_blank">
-            <img src="https://thumbnail.image.rakuten.co.jp/@0_mall/obutsudanhonpo/cabinet/ps15/orderxx1-1.jpg?_ex=128x128" alt="パワーストーンブレスレット" style="width:100%; aspect-ratio:1; object-fit:cover;">
-            <p style="font-size:0.65rem; color:var(--ink); padding:0.5rem; line-height:1.4;">天然石ブレスレット オーダーメイド</p>
-          </a>
-        </div>
-
-        <!-- 商品2：浄化セット -->
-        <div style="border:0.5px solid var(--border); border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.8);">
-          <a href="https://rpx.a8.net/svt/ejp?a8mat=4B3MEQ+BZ1UR6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00td1g4.2bo1121a.g00td1g4.2bo122ac%2Fa26050911337_4B3MEQ_BZ1UR6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fnaturegems%252Fj-0033%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fnaturegems%252Fi%252F10000431%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow" target="_blank">
-            <img src="https://thumbnail.image.rakuten.co.jp/@0_mall/naturegems/cabinet/j/j-1/j-0033_1-9.jpg?_ex=128x128" alt="天然石浄化セット" style="width:100%; aspect-ratio:1; object-fit:cover;">
-            <p style="font-size:0.65rem; color:var(--ink); padding:0.5rem; line-height:1.4;">天然石 パワーストーン 浄化セット</p>
-          </a>
-        </div>
-
-        <!-- 商品3：レインボー水晶 -->
-        <div style="border:0.5px solid var(--border); border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.8);">
-          <a href="https://rpx.a8.net/svt/ejp?a8mat=4B3MEQ+BZ1UR6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q9as4.2bo1188f.g00q9as4.2bo1281c%2Fa26050911337_4B3MEQ_BZ1UR6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fs-o-r-a%252F33329%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fs-o-r-a%252Fi%252F10017344%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow" target="_blank">
-            <img src="https://thumbnail.image.rakuten.co.jp/@0_mall/s-o-r-a/cabinet/201812/0910-1.jpg?_ex=128x128" alt="レインボー水晶" style="width:100%; aspect-ratio:1; object-fit:cover;">
-            <p style="font-size:0.65rem; color:var(--ink); padding:0.5rem; line-height:1.4;">レインボー水晶 天然石 原石</p>
-          </a>
-        </div>
-
-      </div>
-      <p style="font-size:0.65rem; color:var(--muted); margin-top:0.75rem; text-align:right;">※ 広告・アフィリエイトリンクを含みます</p>
-    </div>
-    <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4B3MEQ+BZ1UR6+2HOM+BWGDT" alt="">
-  </div>
-
-  <footer>
-    © 星詠みの海獺 by_nature<br>
-    <a href="https://note.com/by_nature" target="_blank" style="color:var(--gold); text-decoration:none;">note.com/by_nature</a>
-  </footer>
+<!-- 波区切り -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#faf8f3"/>
+  </svg>
 </div>
 
+<!-- ===== About ===== -->
+<section class="section about-section" id="about">
+  <div class="section-inner">
+    <p class="section-label">ABOUT</p>
+    <h2 class="section-title">このサイトでできること</h2>
+    <p class="section-desc">
+      九星気学だけ、四柱推命だけでは見えない「あなた本来の運気」を、<br>
+      2つの東洋占いの組み合わせで読み解きます。
+    </p>
+
+    <div class="points-grid">
+      <div class="point-card">
+        <span class="point-icon">⭐</span>
+        <h3 class="point-title">本命星診断</h3>
+        <p class="point-text">生まれ年から導く九星気学の「本命星」。あなたが持つ基本的なエネルギーと環境との関わり方が見えてきます。</p>
+      </div>
+      <div class="point-card">
+        <span class="point-icon">🌟</span>
+        <h3 class="point-title">日干診断</h3>
+        <p class="point-text">生まれた日から導く四柱推命の「日干」。あなたの性格の本質・内側のエネルギーが見えてきます。</p>
+      </div>
+      <div class="point-card">
+        <span class="point-icon">💑</span>
+        <h3 class="point-title">相性診断</h3>
+        <p class="point-text">2人の本命星×日干の組み合わせから、恋愛・友人・仕事・家族など4つの関係タイプで相性を鑑定します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== クイックリンク ===== -->
+<section class="section links-section">
+  <div class="section-inner">
+    <p class="section-label">MENU</p>
+    <h2 class="section-title">さっそく試してみる</h2>
+    <p class="section-desc">気になるところから始めてみてください。</p>
+
+    <div class="links-grid">
+      <a href="/diagnosis.html" class="link-card purple">
+        <span class="link-icon">📊</span>
+        <div class="link-title">無料診断</div>
+        <p class="link-text">生年月日を入力して、あなたの本命星と日干を調べる。</p>
+        <span class="link-arrow">診断ページへ →</span>
+      </a>
+      <a href="/compatibility.html" class="link-card teal">
+        <span class="link-icon">💑</span>
+        <div class="link-title">相性診断</div>
+        <p class="link-text">2人の生年月日から、4つの関係タイプで相性を鑑定する。</p>
+        <span class="link-arrow">相性診断へ →</span>
+      </a>
+      <a href="/stars/index.html" class="link-card gold">
+        <span class="link-icon">⭐</span>
+        <div class="link-title">9つの星を知る</div>
+        <p class="link-text">一白水星から九紫火星まで、各星×日干の特徴を詳しく読む。</p>
+        <span class="link-arrow">星ページへ →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 記事リンク ===== -->
+<section class="section articles-section">
+  <div class="section-inner">
+    <p class="section-label">LEARN</p>
+    <h2 class="section-title">占いについて知る</h2>
+    <p class="section-desc">九星気学と四柱推命の基礎を学んで、診断をもっと深く活かしましょう。</p>
+
+    <div class="articles-grid">
+      <a href="/kiyusei.html" class="article-card">
+        <span class="article-num">ARTICLE 01</span>
+        <div class="article-title">九星気学とは</div>
+        <p class="article-text">あなたの本命星が決まる仕組み、9つの星の特徴、計算方法をやさしく解説。</p>
+      </a>
+      <a href="/shichu.html" class="article-card">
+        <span class="article-num">ARTICLE 02</span>
+        <div class="article-title">四柱推命とは</div>
+        <p class="article-text">日干が決まる仕組み、10干の特徴と意味をわかりやすく解説。</p>
+      </a>
+      <a href="/kiyusei.html#combination" class="article-card">
+        <span class="article-num">ARTICLE 03</span>
+        <div class="article-title">組み合わせの意味</div>
+        <p class="article-text">なぜ「本命星×日干」で見るのか。組み合わせることで見えてくるものとは。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Note告知 ===== -->
+<section class="section note-section">
+  <div class="section-inner">
+    <div class="note-cta">
+      <span class="note-emoji">📖</span>
+      <h2 class="note-title">詳細鑑定レポートはnoteで</h2>
+      <p class="note-text">
+        各組み合わせの特徴・強み・向いている仕事・恋愛傾向・金運・<br>
+        ラッキーカラーまで、6,000文字超えのボリュームでお伝えしています。
+      </p>
+      <div class="note-features">
+        <span class="note-feature-tag">組み合わせの特徴</span>
+        <span class="note-feature-tag">強み・注意点</span>
+        <span class="note-feature-tag">向いている仕事</span>
+        <span class="note-feature-tag">恋愛傾向</span>
+        <span class="note-feature-tag">金運</span>
+        <span class="note-feature-tag">ラッキーカラー</span>
+        <span class="note-feature-tag">開運アドバイス</span>
+      </div>
+      <a href="https://note.com/by_nature" target="_blank" rel="noopener" class="btn-primary">
+        📖 noteで詳細鑑定を読む
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 広告・アフィリエイト（nav.jsで自動挿入） ===== -->
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="footer-title">🦦 星詠みの海獺</div>
+  <p class="footer-desc">九星気学 × 四柱推命の組み合わせ診断サイト</p>
+  <nav class="footer-nav">
+    <a href="/">診断トップ</a>
+    <a href="/diagnosis.html">無料診断</a>
+    <a href="/compatibility.html">相性診断</a>
+    <a href="/stars/index.html">9つの星</a>
+    <a href="/about.html">このサイトについて</a>
+    <a href="/contact.html">お問い合わせ</a>
+    <a href="/privacy.html">プライバシーポリシー</a>
+  </nav>
+  <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+</footer>
+
+<script src="/nav.js"></script>
 <script>
-// ============================================================
-// 設定
-// ============================================================
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiGd-DULfEAn5T4D6UOAxaDUW1aReloVfCjUGR3jwZvG0Gr9g/exec';
-const NOTE_BASE_URL = 'https://note.com/by_nature'; // 記事URLのベース
-
-// ============================================================
-// 星名別 noteまとめページURL
-// ============================================================
-const KYUSEI_NOTE_URLS = {
-  '一白水星': 'https://note.com/by_nature/n/n1ae55303ca6d',
-  '二黒土星': 'https://note.com/by_nature/n/n7ed66035aee0',
-  '三碧木星': 'https://note.com/by_nature/n/ne752fa6bd42b',
-  '四緑木星': 'https://note.com/by_nature/n/nfe3a6af73709',
-  '五黄土星': 'https://note.com/by_nature/n/n747bc65ac43c',
-  '六白金星': 'https://note.com/by_nature/n/n90e6f76f2ff5',
-  '七赤金星': 'https://note.com/by_nature/n/n0fe029ff036c',
-  '八白土星': 'https://note.com/by_nature/n/n6120cd5b4e14',
-  '九紫火星': 'https://note.com/by_nature/n/n86837353792d',
-};
-
-// 現在の診断結果の星名を保持
-let currentKyuseiName = '';
-
-// ============================================================
-// 星名まとめページへ遷移（広告を挟む）
-// ============================================================
-function goToSummaryPage() {
-  const url = KYUSEI_NOTE_URLS[currentKyuseiName];
-  if (!url) return;
-
-  // 広告中間ページを表示
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('ad-bridge').style.display = 'block';
-
-  // カウントダウン
-  let count = 5;
-  const countEl = document.getElementById('ad-countdown');
-  countEl.textContent = count;
-
-  const timer = setInterval(() => {
-    count--;
-    countEl.textContent = count;
-    if (count <= 0) {
-      clearInterval(timer);
-      location.href = url;  // 同じタブで遷移（ポップアップブロック対策）
-    }
-  }, 1000);
-}
+// 星を生成
 const starsEl = document.getElementById('stars');
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 60; i++) {
   const s = document.createElement('div');
   s.className = 'star';
-  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${3+Math.random()*5}s;--delay:${Math.random()*6}s;--op:${0.2+Math.random()*0.5}`;
+  const size = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    width:${size}px; height:${size}px;
+    background:${Math.random()>0.5?'#c9a84c':'#7c3aed'};
+    --d:${Math.random()*4+2}s;
+    --delay:${Math.random()*5}s;
+    --op:${Math.random()*0.5+0.2};
+  `;
   starsEl.appendChild(s);
 }
 
-// ============================================================
-// 九星気学：本命星の計算（性別に関係なく共通）
-// ============================================================
-function calcKyusei(birthdate) {
-  const date = new Date(birthdate);
-  let year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-
-  // 節分（2月4日）前は前年として計算
-  if (month < 2 || (month === 2 && day < 4)) year--;
-
-  // 各桁の和を1桁になるまで繰り返す
-  let sum = String(year).split('').reduce((a, b) => a + parseInt(b), 0);
-  while (sum >= 10) {
-    sum = String(sum).split('').reduce((a, b) => a + parseInt(b), 0);
-  }
-
-  // 11 - sum で本命星を算出（性別不問）
-  let starNum = 11 - sum;
-  if (starNum <= 0) starNum += 9;
-  if (starNum > 9) starNum -= 9;
-
-  const stars = {
-    1: { name: '一白水星', code: 'A' },
-    2: { name: '二黒土星', code: 'B' },
-    3: { name: '三碧木星', code: 'C' },
-    4: { name: '四緑木星', code: 'D' },
-    5: { name: '五黄土星', code: 'E' },
-    6: { name: '六白金星', code: 'F' },
-    7: { name: '七赤金星', code: 'G' },
-    8: { name: '八白土星', code: 'H' },
-    9: { name: '九紫火星', code: 'I' },
-  };
-  return stars[starNum];
-}
-
-// ============================================================
-// 四柱推命：日干の計算
-// ============================================================
-function calcJikkan(birthdate) {
-  const date = new Date(birthdate);
-  // 基準日：1900年1月1日は庚（かのえ）= index 6
-  const base = new Date('1900-01-01');
-  const diff = Math.floor((date - base) / (1000 * 60 * 60 * 24));
-  const jikkanList = [
-    { name: '甲', reading: 'きのえ', code: '01' },
-    { name: '乙', reading: 'きのと', code: '02' },
-    { name: '丙', reading: 'ひのえ', code: '03' },
-    { name: '丁', reading: 'ひのと', code: '04' },
-    { name: '戊', reading: 'つちのえ', code: '05' },
-    { name: '己', reading: 'つちのと', code: '06' },
-    { name: '庚', reading: 'かのえ', code: '07' },
-    { name: '辛', reading: 'かのと', code: '08' },
-    { name: '壬', reading: 'みずのえ', code: '09' },
-    { name: '癸', reading: 'みずのと', code: '10' },
-  ];
-  const idx = ((diff % 10) + 10) % 10;
-  return jikkanList[idx];
-}
-
-// ============================================================
-// フォーム送信
-// ============================================================
-document.getElementById('form').addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="loading-dots">鑑定中</span>';
-
-  // フォームを隠して鑑定中画面を表示
-  document.getElementById('form').style.display = 'none';
-  document.getElementById('loading-screen').style.display = 'block';
-
-  const birthdate = document.getElementById('birthdate').value;
-  const gender = document.getElementById('gender').value;
-
-  // 計算
-  const kyusei = calcKyusei(birthdate);
-  const jikkan = calcJikkan(birthdate);
-  const diagCode = `${kyusei.code}-${jikkan.code}`;
-
-  // SNSチェックボックス収集
-  const snsChecked = [...document.querySelectorAll('.checkbox-group input:checked')]
-    .map(el => el.value).join('、') || '未選択';
-
-  // デバイス情報取得
-  function getDeviceInfo() {
-    const ua = navigator.userAgent;
-
-    // OS判定
-    let os = '不明';
-    if (/Windows NT 10/.test(ua)) os = 'Windows 10/11';
-    else if (/Windows NT 6/.test(ua)) os = 'Windows 旧バージョン';
-    else if (/Mac OS X/.test(ua)) {
-      const match = ua.match(/Mac OS X ([\d_]+)/);
-      os = 'macOS ' + (match ? match[1].replace(/_/g, '.') : '');
-    }
-    else if (/iPhone OS/.test(ua)) {
-      const match = ua.match(/iPhone OS ([\d_]+)/);
-      os = 'iOS ' + (match ? match[1].replace(/_/g, '.') : '');
-    }
-    else if (/Android/.test(ua)) {
-      const match = ua.match(/Android ([\d.]+)/);
-      os = 'Android ' + (match ? match[1] : '');
-    }
-    else if (/CrOS/.test(ua)) os = 'ChromeOS';
-    else if (/Linux/.test(ua)) os = 'Linux';
-
-    // デバイス種別判定
-    let device = 'PC';
-    if (/iPhone/.test(ua)) device = 'スマートフォン（iPhone）';
-    else if (/Android.*Mobile/.test(ua)) device = 'スマートフォン（Android）';
-    else if (/iPad/.test(ua)) device = 'タブレット（iPad）';
-    else if (/Android/.test(ua)) device = 'タブレット（Android）';
-
-    // ブラウザ判定
-    let browser = '不明';
-    if (/Edg\//.test(ua)) browser = 'Edge';
-    else if (/OPR\//.test(ua)) browser = 'Opera';
-    else if (/Chrome\//.test(ua)) browser = 'Chrome';
-    else if (/Firefox\//.test(ua)) browser = 'Firefox';
-    else if (/Safari\//.test(ua)) browser = 'Safari';
-
-    return { os, device, browser };
-  }
-
-  const deviceInfo = getDeviceInfo();
-
-  // GASに送信
-  const payload = {
-    name: document.getElementById('name').value,
-    birthdate: birthdate,
-    gender: gender,
-    birthtime: document.getElementById('birthtime').value || '不明',
-    birthplace: document.getElementById('birthplace').value,
-    prefecture: document.getElementById('prefecture').value || '未選択',
-    bloodtype: document.getElementById('bloodtype').value || '未選択',
-    email: document.getElementById('email').value || '',
-    sns: snsChecked,
-    trigger: document.getElementById('trigger').value || '未選択',
-    kyusei: kyusei.name,
-    jikkan: `${jikkan.name}（${jikkan.reading}）`,
-    code: diagCode,
-    os: deviceInfo.os,
-    device: deviceInfo.device,
-    browser: deviceInfo.browser,
-  };
-
-  let registerNo = '';
-  let callbackDone = false;
-
-  // 結果表示関数
-  function showResult() {
-    if (callbackDone) return;
-    callbackDone = true;
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('form').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-    document.getElementById('result-text').textContent =
-      `${kyusei.name} × ${jikkan.name}（${jikkan.reading}）`;
-    document.getElementById('result-code').textContent = `診断コード：${diagCode}`;
-    document.getElementById('result-msg').textContent =
-      `あなたは「${kyusei.name}」の本命星と「${jikkan.name}（${jikkan.reading}）」の日干を持っています。この組み合わせだけの詳細な鑑定レポートをnoteで公開中です。ぜひご覧ください。`;
-    // 星名を保持（まとめページ遷移用）
-    currentKyuseiName = kyusei.name;
-  }
-
-  // iframe方式でGASに送信（AdSenseの干渉を回避）
-  window.gasCallback = function(json) {
-    if (json.status === 'success') registerNo = `登録番号：${json.no}`;
-    showResult();
-  };
-
-  const params = new URLSearchParams({
-    name: payload.name,
-    birthdate: payload.birthdate,
-    gender: payload.gender,
-    birthtime: payload.birthtime,
-    birthplace: payload.birthplace,
-    prefecture: payload.prefecture,
-    bloodtype: payload.bloodtype,
-    email: payload.email,
-    sns: payload.sns,
-    trigger: payload.trigger,
-    kyusei: payload.kyusei,
-    jikkan: payload.jikkan,
-    code: payload.code,
-    os: payload.os,
-    device: payload.device,
-    browser: payload.browser,
-    callback: 'parent.gasCallback',
-    _t: Date.now(),
+// スムーススクロール
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
   });
-
-  // 既存のiframeを削除
-  const oldFrame = document.getElementById('gas-iframe');
-  if (oldFrame) oldFrame.remove();
-
-  // iframeでGASを呼び出す（AdSenseはiframe内を監視しない）
-  const iframe = document.createElement('iframe');
-  iframe.id = 'gas-iframe';
-  iframe.style.display = 'none';
-  iframe.src = `${GAS_URL}?${params.toString()}`;
-  document.body.appendChild(iframe);
-
-  // タイムアウト（15秒で結果表示）
-  setTimeout(() => { showResult(); }, 15000);
 });
 </script>
-<script src="/nav.js"></script>
 </body>
 </html>
