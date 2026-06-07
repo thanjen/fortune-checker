@@ -83,7 +83,6 @@
   .btn:active { transform: scale(0.99); }
   .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   #loading-screen { display: none; text-align: center; }
-  #ad-bridge      { display: none; text-align: center; }
   #result         { display: none; animation: fadeUp 0.6s ease both; }
   .scene-art { font-size: 2.5rem; display: block; margin-bottom: 1rem; animation: float 3s ease-in-out infinite; letter-spacing: 0.15em; }
   .loading-title { font-family: 'Shippori Mincho', serif; font-size: 1.1rem; letter-spacing: 0.2em; margin-bottom: 0.5rem; }
@@ -248,26 +247,6 @@
     <p style="font-size:0.72rem;color:var(--muted);margin-top:0.75rem;letter-spacing:0.06em;">しばらくお待ちください</p>
   </div>
 
-  <!-- 広告中間ページ -->
-  <div id="ad-bridge" class="card">
-    <span class="scene-art">🦦</span>
-    <p class="loading-title">まとめページへ移動します</p>
-    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;">
-      noteは別タブで開きました。<br>
-      <span class="countdown-num" id="ad-countdown">5</span>
-      <span class="countdown-text">秒後に診断ページに戻ります</span>
-    </p>
-    <div class="divider"></div>
-    <div class="ad-area">
-      <div class="ad-label">スポンサー</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931" data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    <div class="divider"></div>
-    <p style="font-size:0.7rem;color:var(--muted);margin-top:0.75rem;margin-bottom:1rem;">広告が表示されない場合はしばらくお待ちください</p>
-    <button onclick="showDiagnosisForm()" style="padding:0.6rem 1.5rem;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:8px;font-size:0.78rem;color:var(--muted);cursor:pointer;transition:all 0.2s;letter-spacing:0.08em;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">← 診断に戻る</button>
-  </div>
-
   <!-- 結果 -->
   <div id="result" class="card">
     <div class="result-center">
@@ -276,9 +255,9 @@
       <p class="result-main" id="result-text"></p>
       <span class="result-code" id="result-code"></span>
       <p class="result-msg" id="result-msg"></p>
-      <button onclick="goToSummaryPage()" class="note-link-primary">🌟 あなたの特徴はこちら</button>
-      <a href="https://note.com/by_nature" class="note-link-sub" id="note-link" target="_blank" rel="noopener">
-        📖 上記ボタンで見れない方はこちら（一覧ページ）
+      <button onclick="goToStarPage()" class="note-link-primary">🌟 あなたの特徴はこちら</button>
+      <a href="#" class="note-link-sub" id="note-article-link" target="_blank" rel="noopener noreferrer">
+        📖 もっと詳しく有料記事でみる
       </a>
       <p class="register-no" id="register-no"></p>
     </div>
@@ -330,54 +309,74 @@ for (let i = 0; i < 40; i++) {
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxVIifoRjcwuHqKP7bP5CiGd-DULfEAn5T4D6UOAxaDUW1aReloVfCjUGR3jwZvG0Gr9g/exec';
 
-const KYUSEI_NOTE_URLS = {
-  '一白水星': 'https://note.com/by_nature/n/n1ae55303ca6d',
-  '二黒土星': 'https://note.com/by_nature/n/n7ed66035aee0',
-  '三碧木星': 'https://note.com/by_nature/n/ne752fa6bd42b',
-  '四緑木星': 'https://note.com/by_nature/n/nfe3a6af73709',
-  '五黄土星': 'https://note.com/by_nature/n/n747bc65ac43c',
-  '六白金星': 'https://note.com/by_nature/n/n90e6f76f2ff5',
-  '七赤金星': 'https://note.com/by_nature/n/n0fe029ff036c',
-  '八白土星': 'https://note.com/by_nature/n/n6120cd5b4e14',
-  '九紫火星': 'https://note.com/by_nature/n/n86837353792d',
+// 星ページURL（内部リンク）
+const STAR_PAGE_URLS = {
+  '一白水星': '/stars/ippaku.html',
+  '二黒土星': '/stars/jikoku.html',
+  '三碧木星': '/stars/sanpeki.html',
+  '四緑木星': '/stars/siroku.html',
+  '五黄土星': '/stars/goo.html',
+  '六白金星': '/stars/roppaku.html',
+  '七赤金星': '/stars/sichiseki.html',
+  '八白土星': '/stars/happaku.html',
+  '九紫火星': '/stars/kyushi.html',
+};
+
+// note個別記事URL（90パターン：星コード-日干コード）
+const NOTE_ARTICLE_URLS = {
+  'A-01':'https://note.com/by_nature/n/ndf642bfe80ea','A-02':'https://note.com/by_nature/n/n204f151d1672',
+  'A-03':'https://note.com/by_nature/n/na8c7f24d68da','A-04':'https://note.com/by_nature/n/ncaac56f8d4d3',
+  'A-05':'https://note.com/by_nature/n/n6efbf7b60d2e','A-06':'https://note.com/by_nature/n/nd6dea2c22404',
+  'A-07':'https://note.com/by_nature/n/n4b8ee0208225','A-08':'https://note.com/by_nature/n/n54b8930629bc',
+  'A-09':'https://note.com/by_nature/n/n0c5660073722','A-10':'https://note.com/by_nature/n/na35ae88c3a6e',
+  'B-01':'https://note.com/by_nature/n/n5d6a53d038be','B-02':'https://note.com/by_nature/n/nf29b98a45bd1',
+  'B-03':'https://note.com/by_nature/n/n2818038b7e25','B-04':'https://note.com/by_nature/n/n45621587f04f',
+  'B-05':'https://note.com/by_nature/n/n08ff0c477f23','B-06':'https://note.com/by_nature/n/n7a182c37f012',
+  'B-07':'https://note.com/by_nature/n/n3c82d89b303e','B-08':'https://note.com/by_nature/n/n2a129613bdbd',
+  'B-09':'https://note.com/by_nature/n/n589af3b8b19a','B-10':'https://note.com/by_nature/n/n039328783b89',
+  'C-01':'https://note.com/by_nature/n/nc25a5823cdf1','C-02':'https://note.com/by_nature/n/n6780080c652d',
+  'C-03':'https://note.com/by_nature/n/n3cb30d58b396','C-04':'https://note.com/by_nature/n/n8af3a92b84dc',
+  'C-05':'https://note.com/by_nature/n/n59069051e91f','C-06':'https://note.com/by_nature/n/n236d014350b9',
+  'C-07':'https://note.com/by_nature/n/nead7dcb8ce75','C-08':'https://note.com/by_nature/n/n497cc6a91c1b',
+  'C-09':'https://note.com/by_nature/n/nebd7169d84bc','C-10':'https://note.com/by_nature/n/n14cb3846d7a2',
+  'D-01':'https://note.com/by_nature/n/n8d0fdefa6a08','D-02':'https://note.com/by_nature/n/ne7cb8ff2b665',
+  'D-03':'https://note.com/by_nature/n/n56da01d7c394','D-04':'https://note.com/by_nature/n/n31f247dc8f30',
+  'D-05':'https://note.com/by_nature/n/n7bd56a36cfc6','D-06':'https://note.com/by_nature/n/n7d565031b1e9',
+  'D-07':'https://note.com/by_nature/n/n51575b555de9','D-08':'https://note.com/by_nature/n/n09598efdfcfe',
+  'D-09':'https://note.com/by_nature/n/naf0d71cd2a3e','D-10':'https://note.com/by_nature/n/nacbaa521477d',
+  'E-01':'https://note.com/by_nature/n/n7822862e4bfe','E-02':'https://note.com/by_nature/n/n33d59b8d3844',
+  'E-03':'https://note.com/by_nature/n/n079567aeb44a','E-04':'https://note.com/by_nature/n/na274c0a22047',
+  'E-05':'https://note.com/by_nature/n/nd22cb2c1c868','E-06':'https://note.com/by_nature/n/ndf1a029a1b67',
+  'E-07':'https://note.com/by_nature/n/nd004a6799f34','E-08':'https://note.com/by_nature/n/nf76916556b7f',
+  'E-09':'https://note.com/by_nature/n/n56ea1cfb1e92','E-10':'https://note.com/by_nature/n/nafb7c839fff5',
+  'F-01':'https://note.com/by_nature/n/n6d4311cc4eb2','F-02':'https://note.com/by_nature/n/n3b810e8db4f1',
+  'F-03':'https://note.com/by_nature/n/n1925766c4d7d','F-04':'https://note.com/by_nature/n/n7ac305991003',
+  'F-05':'https://note.com/by_nature/n/n36a7783e2e9c','F-06':'https://note.com/by_nature/n/nccb6a4725966',
+  'F-07':'https://note.com/by_nature/n/nf9757fa87d8b','F-08':'https://note.com/by_nature/n/n73444235e368',
+  'F-09':'https://note.com/by_nature/n/nccad5db057f0','F-10':'https://note.com/by_nature/n/n13cbd3956596',
+  'G-01':'https://note.com/by_nature/n/n81f791b569d2','G-02':'https://note.com/by_nature/n/n25eea0a67d0f',
+  'G-03':'https://note.com/by_nature/n/n5c2008079e2f','G-04':'https://note.com/by_nature/n/n81c5445ae62a',
+  'G-05':'https://note.com/by_nature/n/n0dc1d2e7a8c2','G-06':'https://note.com/by_nature/n/n55b34667c871',
+  'G-07':'https://note.com/by_nature/n/n94263f48d45a','G-08':'https://note.com/by_nature/n/nf8feaa916fe5',
+  'G-09':'https://note.com/by_nature/n/nd75768e24cd4','G-10':'https://note.com/by_nature/n/nfa09d0856a45',
+  'H-01':'https://note.com/by_nature/n/n756fe8fbb0ab','H-02':'https://note.com/by_nature/n/n145a0b30045',
+  'H-03':'https://note.com/by_nature/n/nbeb3bd5bfb49','H-04':'https://note.com/by_nature/n/n71bc6fa10b9d',
+  'H-05':'https://note.com/by_nature/n/na5cd8e3d3dc5','H-06':'https://note.com/by_nature/n/nba938c43b31a',
+  'H-07':'https://note.com/by_nature/n/n73f7d6492f27','H-08':'https://note.com/by_nature/n/nc70c7e974316',
+  'H-09':'https://note.com/by_nature/n/nd8f6346ab748','H-10':'https://note.com/by_nature/n/n25700d484a9e',
+  'I-01':'https://note.com/by_nature/n/n01a01c404edc','I-02':'https://note.com/by_nature/n/nba145e566460',
+  'I-03':'https://note.com/by_nature/n/needf870597ad','I-04':'https://note.com/by_nature/n/n27900f743146',
+  'I-05':'https://note.com/by_nature/n/n1841da2c0972','I-06':'https://note.com/by_nature/n/n94c50bf4c502',
+  'I-07':'https://note.com/by_nature/n/n0d2238d49dfb','I-08':'https://note.com/by_nature/n/n1781b10179dc',
+  'I-09':'https://note.com/by_nature/n/n589f5d71819d','I-10':'https://note.com/by_nature/n/nc1eccdb7c9b9',
 };
 
 let currentKyuseiName = '';
+let currentDiagCode = '';
 
-function goToSummaryPage() {
-  const url = KYUSEI_NOTE_URLS[currentKyuseiName];
-  if (!url) return;
-
-  // 別タブで即時開く
-  window.open(url, '_blank', 'noopener,noreferrer');
-
-  // 広告中間ページを表示（診断ページ自体は残す）
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('ad-bridge').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  let count = 5;
-  const countEl = document.getElementById('ad-countdown');
-  countEl.textContent = count;
-  const timer = setInterval(() => {
-    count--;
-    countEl.textContent = count;
-    if (count <= 0) {
-      clearInterval(timer);
-      // カウントダウン後は診断ページに戻る
-      showDiagnosisForm();
-    }
-  }, 1000);
-}
-
-function showDiagnosisForm() {
-  document.getElementById('ad-bridge').style.display = 'none';
-  document.getElementById('form').style.display = 'block';
-  // ボタンをリセット
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = false;
-  btn.innerHTML = '✦ 星を詠む ✦';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function goToStarPage() {
+  const url = STAR_PAGE_URLS[currentKyuseiName];
+  if (url) location.href = url;
 }
 
 function calcKyusei(birthdate) {
@@ -484,6 +483,11 @@ document.getElementById('form').addEventListener('submit', (e) => {
     document.getElementById('result-code').textContent = `診断コード：${diagCode}`;
     document.getElementById('result-msg').textContent = `あなたは「${kyusei.name}」の本命星と「${jikkan.name}（${jikkan.reading}）」の日干を持っています。この組み合わせだけの詳細な鑑定レポートをnoteで公開中です。ぜひご覧ください。`;
     currentKyuseiName = kyusei.name;
+    currentDiagCode = diagCode;
+
+    // 有料記事リンクをセット（別タブ）
+    const noteUrl = NOTE_ARTICLE_URLS[diagCode] || 'https://note.com/by_nature';
+    document.getElementById('note-article-link').href = noteUrl;
   }
 
   window.gasCallback = function(json) {
