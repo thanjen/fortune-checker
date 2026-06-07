@@ -223,25 +223,35 @@
   .heart-icon { font-size:1.5rem; text-align:center; }
 
   /* スコア */
-  .score-grid {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.25rem;
+  .score-total-wrap {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(13,148,136,0.08));
+    border: 2px solid rgba(124,58,237,0.2);
+    border-radius: 16px; padding: 1.5rem 1rem 1.25rem;
+    text-align: center; margin-bottom: 1rem;
   }
-  @media(max-width:400px){
-    .score-grid { grid-template-columns:1fr; }
+  .score-total-label {
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; margin-bottom: 0.6rem;
   }
-  .score-item { border-radius:12px; padding:1rem 0.5rem; text-align:center; }
-  .score-item.kyusei { background:var(--purple-light); }
-  .score-item.jikkan { background:var(--teal-light); }
-  .score-item.total  { background:linear-gradient(135deg,var(--purple-light),var(--teal-light)); }
-  .score-label { font-size:0.65rem; color:var(--muted); margin-bottom:0.5rem; letter-spacing:0.05em; }
-  .score-stars { font-size:0.9rem; line-height:1; margin-bottom:0.3rem; min-height:1.2rem; }
+  .score-total-stars { font-size: 1.1rem; line-height: 1; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+  .score-total-num {
+    font-family: 'Shippori Mincho', serif; font-size: 3rem; font-weight: 600;
+    line-height: 1; color: var(--ink);
+  }
+  .score-total-unit { font-size: 0.8rem; color: var(--muted); margin-left: 0.2rem; }
+  .score-sub-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;
+  }
+  .score-item { border-radius: 12px; padding: 1rem 0.5rem; text-align: center; }
+  .score-item.kyusei { background: var(--purple-light); }
+  .score-item.jikkan { background: var(--teal-light); }
+  .score-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+  .score-stars { font-size: 0.85rem; line-height: 1; margin-bottom: 0.3rem; min-height: 1.2rem; }
   .score-num {
-    font-family:'Shippori Mincho',serif; font-size:1.4rem; font-weight:600; line-height:1;
+    font-family: 'Shippori Mincho', serif; font-size: 1.4rem; font-weight: 600; line-height: 1;
   }
-  .score-item.kyusei .score-num{color:var(--purple);}
-  .score-item.jikkan .score-num{color:var(--teal);}
-  .score-item.total  .score-num{color:var(--ink);}
-  .score-unit { font-size:0.65rem; color:var(--muted); }
+  .score-item.kyusei .score-num { color: var(--purple); }
+  .score-item.jikkan .score-num { color: var(--teal); }
+  .score-unit { font-size: 0.65rem; color: var(--muted); }
 
   .score-bar-wrap { margin-bottom:1rem; }
   .score-bar-label {
@@ -271,25 +281,25 @@
     background:rgba(255,255,255,0.5); border-radius:8px; padding:0.75rem 1rem;
   }
 
-  /* note誘導 */
-  .note-cta-grid {
-    display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:1.5rem;
+  /* 特徴ページ誘導（stars/）*/
+  .star-cta-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem;
   }
-  .note-cta-btn {
-    display:block; padding:1rem 0.75rem; border-radius:12px; text-align:center;
-    text-decoration:none; transition:opacity 0.2s;
+  .star-cta-btn {
+    display: block; padding: 1rem 0.75rem; border-radius: 12px; text-align: center;
+    text-decoration: none; transition: all 0.2s;
   }
-  .note-cta-btn:hover{opacity:0.85; text-decoration:none;}
-  .note-cta-btn.my-btn {
-    background:linear-gradient(135deg,#1a1a2e,#2d1b69);
+  .star-cta-btn:hover { opacity: 0.85; transform: translateY(-2px); text-decoration: none; }
+  .star-cta-btn.my-btn {
+    background: linear-gradient(135deg, #1a1a2e, #2d1b69);
   }
-  .note-cta-btn.target-btn {
-    background:linear-gradient(135deg,#1a1a2e,#064e3b);
+  .star-cta-btn.target-btn {
+    background: linear-gradient(135deg, #1a1a2e, #064e3b);
   }
-  .note-cta-label { font-size:0.65rem; color:rgba(255,255,255,0.6); margin-bottom:0.3rem; }
-  .note-cta-text {
-    font-family:'Shippori Mincho',serif; font-size:0.8rem;
-    color:var(--gold-light); letter-spacing:0.05em;
+  .star-cta-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
+  .star-cta-text {
+    font-family: 'Shippori Mincho', serif; font-size: 0.8rem;
+    color: var(--gold-light); letter-spacing: 0.05em;
   }
 
   .retry-btn {
@@ -324,7 +334,7 @@
   @media(max-width:480px){
     .relation-grid{grid-template-columns:repeat(2,1fr);}
     .field-row{grid-template-columns:1fr;}
-    .note-cta-grid{grid-template-columns:1fr;}
+    .star-cta-grid{grid-template-columns:1fr;}
     .score-grid{grid-template-columns:1fr;}
     .result-pair{grid-template-columns:1fr; grid-template-rows:auto auto auto;}
     .heart-icon{text-align:center; padding:0.5rem 0;}
@@ -498,7 +508,28 @@
 
     <!-- スコア -->
     <div class="card">
-      <div class="score-grid">
+      <!-- 総合スコア（上段・大きく） -->
+      <div class="score-total-wrap">
+        <div class="score-total-label">✦ 総合相性スコア ✦</div>
+        <div class="score-total-stars" id="stars-total"></div>
+        <div>
+          <span class="score-total-num" id="result-total-score">-</span><span class="score-total-unit">点</span>
+        </div>
+      </div>
+
+      <!-- スコアバー -->
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">
+          <span></span>
+          <span id="result-score-pct">-%</span>
+        </div>
+        <div class="score-bar">
+          <div class="score-bar-fill" id="result-bar" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- 九星・四柱（下段・2列） -->
+      <div class="score-sub-grid">
         <div class="score-item kyusei">
           <div class="score-label">九星気学</div>
           <div class="score-stars" id="stars-kyusei"></div>
@@ -510,22 +541,6 @@
           <div class="score-stars" id="stars-jikkan"></div>
           <div class="score-num" id="result-jikkan-score">-</div>
           <div class="score-unit">点</div>
-        </div>
-        <div class="score-item total">
-          <div class="score-label">総合相性</div>
-          <div class="score-stars" id="stars-total"></div>
-          <div class="score-num" id="result-total-score">-</div>
-          <div class="score-unit">点</div>
-        </div>
-      </div>
-
-      <div class="score-bar-wrap">
-        <div class="score-bar-label">
-          <span>総合相性スコア</span>
-          <span id="result-score-pct">-%</span>
-        </div>
-        <div class="score-bar">
-          <div class="score-bar-fill" id="result-bar" style="width:0%"></div>
         </div>
       </div>
     </div>
@@ -550,15 +565,15 @@
       </div>
     </div>
 
-    <!-- note誘導 -->
-    <div class="note-cta-grid">
-      <a href="#" id="note-my-link" target="_blank" class="note-cta-btn my-btn">
-        <div class="note-cta-label">あなたの詳細鑑定</div>
-        <div class="note-cta-text" id="note-my-text">noteで読む →</div>
+    <!-- 特徴ページ誘導（stars/） -->
+    <div class="star-cta-grid">
+      <a href="#" id="star-my-link" class="star-cta-btn my-btn">
+        <div class="star-cta-label">⭐ あなたの特徴ページ</div>
+        <div class="star-cta-text" id="star-my-text">詳しく見る →</div>
       </a>
-      <a href="#" id="note-target-link" target="_blank" class="note-cta-btn target-btn">
-        <div class="note-cta-label">相手の詳細鑑定</div>
-        <div class="note-cta-text" id="note-target-text">noteで読む →</div>
+      <a href="#" id="star-target-link" class="star-cta-btn target-btn">
+        <div class="star-cta-label">⭐ 相手の特徴ページ</div>
+        <div class="star-cta-text" id="star-target-text">詳しく見る →</div>
       </a>
     </div>
 
@@ -594,16 +609,17 @@ const JIKKAN_NAMES = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸
 const JIKKAN_CODES = ['01','02','03','04','05','06','07','08','09','10'];
 const HEART_ICONS  = {'恋愛':'💕','友人':'🤝','仕事':'💼','家族':'🏠'};
 
-const NOTE_URLS = {
-  '一白水星': 'https://note.com/by_nature/n/n1ae55303ca6d',
-  '二黒土星': 'https://note.com/by_nature/n/n7ed66035aee0',
-  '三碧木星': 'https://note.com/by_nature/n/ne752fa6bd42b',
-  '四緑木星': 'https://note.com/by_nature/n/nfe3a6af73709',
-  '五黄土星': 'https://note.com/by_nature/n/n747bc65ac43c',
-  '六白金星': 'https://note.com/by_nature/n/n90e6f76f2ff5',
-  '七赤金星': 'https://note.com/by_nature/n/n0fe029ff036c',
-  '八白土星': 'https://note.com/by_nature/n/n6120cd5b4e14',
-  '九紫火星': 'https://note.com/by_nature/n/n86837353792d',
+// stars/ページURL（内部リンク）
+const STAR_PAGE_URLS = {
+  '一白水星': '/stars/ippaku.html',
+  '二黒土星': '/stars/jikoku.html',
+  '三碧木星': '/stars/sanpeki.html',
+  '四緑木星': '/stars/siroku.html',
+  '五黄土星': '/stars/goo.html',
+  '六白金星': '/stars/roppaku.html',
+  '七赤金星': '/stars/sichiseki.html',
+  '八白土星': '/stars/happaku.html',
+  '九紫火星': '/stars/kyushi.html',
 };
 
 let selectedRelation = '';
@@ -804,13 +820,15 @@ function showResult({ myName, myStarIdx, myJikkanIdx, targetName, targetStarIdx,
   document.getElementById('result-caution').textContent      = data.caution;
   document.getElementById('result-advice').textContent       = data.advice;
 
-  // note誘導
-  const myNoteUrl     = NOTE_URLS[myStarName]     || 'https://note.com/by_nature';
-  const targetNoteUrl = NOTE_URLS[targetStarName] || 'https://note.com/by_nature';
-  document.getElementById('note-my-link').href     = myNoteUrl;
-  document.getElementById('note-target-link').href = targetNoteUrl;
-  document.getElementById('note-my-text').textContent     = myStarName + 'の鑑定を読む →';
-  document.getElementById('note-target-text').textContent = targetStarName + 'の鑑定を読む →';
+  // stars/ページへのリンク（アンカー付き）
+  const myJikkanCode     = JIKKAN_CODES[myJikkanIdx];
+  const targetJikkanCode = JIKKAN_CODES[targetJikkanIdx];
+  const myStarUrl     = (STAR_PAGE_URLS[myStarName]     || '/stars/index.html') + '#combo-' + myJikkanCode;
+  const targetStarUrl = (STAR_PAGE_URLS[targetStarName] || '/stars/index.html') + '#combo-' + targetJikkanCode;
+  document.getElementById('star-my-link').href     = myStarUrl;
+  document.getElementById('star-target-link').href = targetStarUrl;
+  document.getElementById('star-my-text').textContent     = myStarName + 'の特徴を見る →';
+  document.getElementById('star-target-text').textContent = targetStarName + 'の特徴を見る →';
 
   showPage('page-result');
 }
