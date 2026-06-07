@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>九星気学とは｜基礎から学ぶ占いの仕組み｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/kiyusei.html">
+<meta name="description" content="九星気学とは何か、本命星の計算方法、9つの星の特徴をやさしく解説。四柱推命との組み合わせで見えてくることも紹介します。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e; --gold: #c9a84c; --gold-light: #e8d5a3;
+    --cream: #faf8f3; --muted: #6b6b7a; --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7); --purple: #7c3aed; --teal: #0d9488;
+    --rose: #e11d48;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 300;
+    min-height: 100vh; overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 5% 10%, rgba(201,168,76,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 95% 10%, rgba(124,58,237,0.06) 0%, transparent 50%);
+  }
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star { position: absolute; border-radius: 50%; opacity: 0; animation: twinkle var(--d,3s) var(--delay,0s) infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0;} 50%{opacity:var(--op,0.6);} }
+
+  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.08em; margin-bottom: 1.5rem; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--gold); }
+
+  /* ヘッダー */
+  .article-hero {
+    text-align: center; padding: 2rem 0 2.5rem;
+    border-bottom: 1px solid var(--border); margin-bottom: 2.5rem;
+  }
+  .article-label {
+    display: inline-block; font-size: 0.68rem; letter-spacing: 0.2em;
+    color: var(--gold); border: 1px solid var(--border);
+    border-radius: 999px; padding: 0.25rem 0.8rem; margin-bottom: 1rem;
+  }
+  .article-title {
+    font-family: 'Shippori Mincho', serif; font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 500; letter-spacing: 0.1em; line-height: 1.5;
+    margin-bottom: 0.75rem; color: var(--ink);
+  }
+  .article-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+  .article-emoji { font-size: 2.5rem; display: block; margin-bottom: 1rem;
+    animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+  /* 本文 */
+  .article-body { font-size: 0.9rem; line-height: 2; color: var(--ink); }
+  .article-body p { margin-bottom: 1.25rem; }
+  .article-body h2 {
+    font-family: 'Shippori Mincho', serif; font-size: 1.15rem;
+    font-weight: 600; letter-spacing: 0.1em;
+    margin: 2.5rem 0 1rem; padding: 0.6rem 0 0.6rem 1rem;
+    border-left: 3px solid var(--gold); color: var(--ink);
+  }
+  .article-body h3 {
+    font-family: 'Shippori Mincho', serif; font-size: 1rem;
+    font-weight: 600; letter-spacing: 0.08em;
+    margin: 1.75rem 0 0.6rem; color: var(--purple);
+  }
+  .article-body strong { font-weight: 500; }
+  .article-body ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+  .article-body ul li { margin-bottom: 0.4rem; }
+
+  /* 星グリッド */
+  .star-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem; margin: 1.5rem 0;
+  }
+  .star-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem;
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .star-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); }
+  .star-card-num { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 0.25rem; }
+  .star-card-icon { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; line-height: 1; }
+  .star-card-name { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .star-card-keyword { font-size: 0.72rem; color: var(--muted); }
+
+  /* 計算ボックス */
+  .calc-box {
+    background: linear-gradient(135deg, rgba(124,58,237,0.05), rgba(13,148,136,0.04));
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.5rem; margin: 1.5rem 0;
+  }
+  .calc-box-title {
+    font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.1em; color: var(--purple); margin-bottom: 1rem;
+  }
+  .calc-example {
+    background: rgba(255,255,255,0.6); border-radius: 10px;
+    padding: 1rem 1.25rem; margin-bottom: 0.75rem; font-size: 0.82rem;
+    border-left: 3px solid var(--teal); line-height: 1.9;
+  }
+  .calc-example-title { font-weight: 500; margin-bottom: 0.4rem; color: var(--teal); }
+
+  /* 比較テーブル */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.82rem; }
+  .compare-table th {
+    background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+    padding: 0.7rem 0.75rem; font-family: 'Shippori Mincho', serif;
+    font-weight: 600; letter-spacing: 0.08em; text-align: left;
+  }
+  .compare-table td {
+    border: 1px solid var(--border); padding: 0.65rem 0.75rem;
+    background: rgba(255,255,255,0.5); vertical-align: top; line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(124,58,237,0.07), rgba(201,168,76,0.06));
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.75rem; text-align: center; margin: 2rem 0;
+  }
+  .cta-box-title { font-family: 'Shippori Mincho', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .cta-box-text { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    background: linear-gradient(135deg, var(--purple), #4f46e5);
+    color: #fff; border-radius: 10px;
+    font-family: 'Shippori Mincho', serif; font-size: 0.88rem;
+    letter-spacing: 0.15em; text-decoration: none; transition: opacity 0.2s;
+    box-shadow: 0 4px 14px rgba(124,58,237,0.25);
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--gold); color: #fff; border-radius: 10px;
+    font-size: 0.85rem; letter-spacing: 0.1em; text-decoration: none;
+    transition: opacity 0.2s; margin-top: 0.5rem;
+  }
+  .btn-gold:hover { opacity: 0.85; }
+
+  /* 注意書き */
+  .note-box {
+    background: rgba(201,168,76,0.06); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.9rem 1rem; font-size: 0.78rem;
+    color: var(--muted); line-height: 1.8; margin: 1rem 0;
+  }
+
+  /* 関連リンク */
+  .related-links { margin: 2rem 0; }
+  .related-title { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 1rem; color: var(--muted); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+  .related-card {
+    display: block; text-decoration: none;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem;
+    font-size: 0.82rem; color: var(--ink);
+    transition: all 0.2s;
+  }
+  .related-card:hover { border-color: var(--gold-light); transform: translateY(-2px); }
+  .related-card-label { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+
+  .ad-area { margin: 1.5rem 0; padding: 1rem; background: rgba(255,255,255,0.5); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+  .ad-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+  footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; }
+  .footer-nav { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .footer-nav a { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-decoration: none; transition: color 0.2s; }
+  .footer-nav a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.68rem; color: var(--muted); opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <a href="/" class="back-link">← トップに戻る</a>
+
+  <!-- ヘッダー -->
+  <div class="article-hero">
+    <span class="article-label">ARTICLE 01｜九星気学</span>
+    <span class="article-emoji">⭐</span>
+    <h1 class="article-title">九星気学とは<br>基礎から学ぶ占いの仕組み</h1>
+    <p class="article-sub">こんにちは🦦です。<br>「九星気学」という言葉を聞いたことがありますか？</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>占いの話題になると「九星気学」「四柱推命」という言葉がよく出てきますが、「正体がよく分からない」という方も多いかもしれません。</p>
+    <p>このページでは、九星気学がどんな占いなのか、シンプルに解説していきます。</p>
+
+    <h2>九星気学って何？シンプルな説明</h2>
+    <p><strong>九星気学（きゅうせいきがく）</strong>は、あなたが生まれた「年」から、9つの星のいずれかを割り当てる東洋占いです。</p>
+    <p>簡単に言うと：あなたの生年月日を計算し、「本命星」が決まる。その本命星の特徴から、あなたの性格や運勢が見える、という仕組みです。</p>
+
+    <h2>9つの星の特徴</h2>
+    <p>各星について、ざっくりとした特徴をご紹介します。</p>
+
+    <div class="star-grid">
+      <div class="star-card">
+        <div class="star-card-num">①</div>
+        <div class="star-card-icon">💧</div>
+        <div class="star-card-name">一白水星</div>
+        <div class="star-card-keyword">柔軟性・適応力・流れに乗る</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">②</div>
+        <div class="star-card-icon">🌱</div>
+        <div class="star-card-name">二黒土星</div>
+        <div class="star-card-keyword">安定・勤勉・献身</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">③</div>
+        <div class="star-card-icon">⚡</div>
+        <div class="star-card-name">三碧木星</div>
+        <div class="star-card-keyword">行動力・革新・情熱</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">④</div>
+        <div class="star-card-icon">🌿</div>
+        <div class="star-card-name">四緑木星</div>
+        <div class="star-card-keyword">調和・信頼・縁</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">⑤</div>
+        <div class="star-card-icon">🌍</div>
+        <div class="star-card-name">五黄土星</div>
+        <div class="star-card-keyword">リーダーシップ・カリスマ・中心</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">⑥</div>
+        <div class="star-card-icon">⚙️</div>
+        <div class="star-card-name">六白金星</div>
+        <div class="star-card-keyword">完璧・気品・知恵</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">⑦</div>
+        <div class="star-card-icon">✨</div>
+        <div class="star-card-name">七赤金星</div>
+        <div class="star-card-keyword">喜び・社交・輝き</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">⑧</div>
+        <div class="star-card-icon">🏔️</div>
+        <div class="star-card-name">八白土星</div>
+        <div class="star-card-keyword">変化・継承・発展</div>
+      </div>
+      <div class="star-card">
+        <div class="star-card-num">⑨</div>
+        <div class="star-card-icon">🔥</div>
+        <div class="star-card-name">九紫火星</div>
+        <div class="star-card-keyword">知性・美意識・情熱</div>
+      </div>
+    </div>
+
+    <h2>本命星の計算方法</h2>
+    <p>「自分は何星なんだろう？」という方のために、本命星の計算方法を説明します。</p>
+
+    <div class="calc-box">
+      <div class="calc-box-title">🔢 計算のステップ</div>
+      <p style="font-size:0.82rem;line-height:1.9;margin-bottom:1rem;">
+        ① 生年月日の西暦を4桁で用意する<br>
+        ② その4桁を足して、1桁になるまで足し続ける<br>
+        ③ その結果の数字を「11から引く」<br>
+        ④ 9より大きければ−9、0以下になれば+9する<br>
+        ⑤ 出た数字があなたの本命星
+      </p>
+
+      <div class="calc-example">
+        <div class="calc-example-title">例：1990年5月20日生まれ</div>
+        1 + 9 + 9 + 0 = 19 → 1 + 9 = 10 → 1 + 0 = 1<br>
+        11 − 1 = 10 → 10 − 9 = <strong>1</strong>（一白水星）
+      </div>
+      <div class="calc-example">
+        <div class="calc-example-title">例：2005年3月15日生まれ</div>
+        2 + 0 + 0 + 5 = 7<br>
+        11 − 7 = <strong>4</strong>（四緑木星）
+      </div>
+    </div>
+
+    <div class="note-box">
+      ⚠️ 節分（2月4日の立春）前に生まれた人は「前年」として計算します。例：1990年2月3日生まれ → 1989年として計算。
+    </div>
+
+    <h2 id="combination">「九星気学だけ」では見えない話</h2>
+    <p>同じ本命星の人でも、人によって性格や運勢は大きく異なります。なぜかというと、九星気学は「生まれた年」を基準にした占いのため、同じ年生まれの人は全員同じ本命星になるからです。</p>
+    <p>そこで重要になるのが、もう一つの視点——生まれた「日」から導く四柱推命の鑑定結果です。これをあわせて読み解くことで、同じ本命星を持っていても一人ひとり異なる、あなた自身の性格・才能・運勢の傾向がより深く見えてくるようになります。</p>
+
+    <!-- 相性診断CTA -->
+    <div class="cta-box">
+      <div class="cta-box-title">💑 相手との相性を診断する</div>
+      <p class="cta-box-text">2人の生年月日を入力するだけで、恋愛・友人・仕事・家族の4タイプで相性を鑑定できます。</p>
+      <a href="/compatibility.html" class="btn-primary">2人の相性を無料診断する</a>
+    </div>
+
+    <h2>九星気学×四柱推命の組み合わせ</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>項目</th>
+        <th>九星気学</th>
+        <th>四柱推命</th>
+      </tr>
+      <tr>
+        <td>判定軸</td>
+        <td>生まれた「年」</td>
+        <td>生まれた「日」</td>
+      </tr>
+      <tr>
+        <td>焦点</td>
+        <td>環境・時間・運勢の流れ</td>
+        <td>性格・質・適合性</td>
+      </tr>
+      <tr>
+        <td>得意な判定</td>
+        <td>今年の運勢・方位</td>
+        <td>性格・相性・適職</td>
+      </tr>
+      <tr>
+        <td>複雑度</td>
+        <td>シンプル（9パターン）</td>
+        <td>複雑（60パターン以上）</td>
+      </tr>
+    </table>
+
+    <p>両方を組み合わせることで、初めて「完全な診断」が可能になります。</p>
+
+    <div class="cta-box">
+      <div class="cta-box-title">📊 あなたの本命星×日干を診断してみよう</div>
+      <p class="cta-box-text">生年月日を入力するだけで、あなたの「本命星」と「日干」が判定されます。</p>
+      <a href="/diagnosis.html" class="btn-primary">🔮 あなたの本当の運気を無料診断する</a>
+    </div>
+
+    <h2>さらに詳しく学ぶには</h2>
+    <p>各星の詳細や、note有料記事での詳細鑑定についてはこちら。</p>
+
+    <div style="text-align:center;margin-top:1rem;">
+      <a href="/stars/index.html" class="btn-gold">⭐ 9つの星を詳しく見る</a>
+    </div>
+
+    <div class="related-links" style="margin-top:2rem;">
+      <div class="related-title">関連ページ</div>
+      <div class="related-grid">
+        <a href="/shichu.html" class="related-card">
+          <div class="related-card-label">ARTICLE 02</div>
+          四柱推命とは →
+        </a>
+        <a href="/diagnosis.html" class="related-card">
+          <div class="related-card-label">DIAGNOSIS</div>
+          無料診断ページ →
+        </a>
+        <a href="/compatibility.html" class="related-card">
+          <div class="related-card-label">COMPATIBILITY</div>
+          相性診断ページ →
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /.article-body -->
+
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931"
+      data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <footer>
+    <nav class="footer-nav"></nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+</div>
+
+<script src="nav.js"></script>
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div'); s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${Math.random()>0.5?'#c9a84c':'#7c3aed'};--d:${Math.random()*4+2}s;--delay:${Math.random()*5}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+</script>
+</body>
+</html>

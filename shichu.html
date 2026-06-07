@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四柱推命とは｜日干から読み解く性格と運勢｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/shichu.html">
+<meta name="description" content="四柱推命とは何か、なぜ「日干」に注目するのか、10干の特徴をわかりやすく解説。九星気学との組み合わせで見えてくることも紹介します。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e; --gold: #c9a84c; --gold-light: #e8d5a3;
+    --cream: #faf8f3; --muted: #6b6b7a; --border: rgba(201,168,76,0.25);
+    --surface: rgba(255,255,255,0.7); --purple: #7c3aed; --teal: #0d9488;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif; font-weight: 300;
+    min-height: 100vh; overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 10% 15%, rgba(13,148,136,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 15%, rgba(201,168,76,0.06) 0%, transparent 50%);
+  }
+  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star { position: absolute; border-radius: 50%; opacity: 0; animation: twinkle var(--d,3s) var(--delay,0s) infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0;} 50%{opacity:var(--op,0.6);} }
+
+  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; margin-bottom: 1.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .article-hero { text-align: center; padding: 2rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-label { display: inline-block; font-size: 0.68rem; letter-spacing: 0.2em; color: var(--teal); border: 1px solid rgba(13,148,136,0.3); border-radius: 999px; padding: 0.25rem 0.8rem; margin-bottom: 1rem; }
+  .article-title { font-family: 'Shippori Mincho', serif; font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 500; letter-spacing: 0.1em; line-height: 1.5; margin-bottom: 0.75rem; }
+  .article-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+  .article-emoji { font-size: 2.5rem; display: block; margin-bottom: 1rem; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+  .article-body { font-size: 0.9rem; line-height: 2; color: var(--ink); }
+  .article-body p { margin-bottom: 1.25rem; }
+  .article-body h2 { font-family: 'Shippori Mincho', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.1em; margin: 2.5rem 0 1rem; padding: 0.6rem 0 0.6rem 1rem; border-left: 3px solid var(--teal); }
+  .article-body h3 { font-family: 'Shippori Mincho', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; margin: 1.75rem 0 0.6rem; color: var(--teal); }
+
+  /* 四柱図 */
+  .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1.5rem 0; }
+  .pillar-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 0.5rem; text-align: center; backdrop-filter: blur(6px); }
+  .pillar-name { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .pillar-year { color: var(--teal); }
+  .pillar-month { color: var(--purple); }
+  .pillar-day { color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; }
+  .pillar-time { color: var(--muted); }
+  .pillar-desc { font-size: 0.68rem; color: var(--muted); line-height: 1.6; margin-top: 0.3rem; }
+  .pillar-highlight { font-size: 0.65rem; color: var(--gold); font-weight: 500; margin-top: 0.3rem; }
+
+  /* 10干グリッド */
+  .jikkan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
+  .jikkan-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; backdrop-filter: blur(6px); transition: transform 0.2s; }
+  .jikkan-card:hover { transform: translateY(-3px); }
+  .jikkan-num { font-size: 0.65rem; color: var(--teal); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+  .jikkan-name { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .jikkan-yomi { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .jikkan-keyword { font-size: 0.72rem; color: var(--ink); line-height: 1.6; }
+  .jikkan-gogyo { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.4rem; border-radius: 4px; margin-top: 0.3rem; }
+  .gogyo-ki { background: rgba(34,197,94,0.1); color: #166534; }
+  .gogyo-hi { background: rgba(239,68,68,0.1); color: #991b1b; }
+  .gogyo-tsuchi { background: rgba(234,179,8,0.12); color: #713f12; }
+  .gogyo-kin { background: rgba(156,163,175,0.2); color: #374151; }
+  .gogyo-mizu { background: rgba(59,130,246,0.1); color: #1e40af; }
+
+  .info-box { background: linear-gradient(135deg, rgba(13,148,136,0.06), rgba(201,168,76,0.05)); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin: 1.5rem 0; }
+  .info-box-title { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; color: var(--teal); margin-bottom: 0.75rem; }
+
+  .cta-box { background: linear-gradient(135deg, rgba(124,58,237,0.07), rgba(201,168,76,0.06)); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; text-align: center; margin: 2rem 0; }
+  .cta-box-title { font-family: 'Shippori Mincho', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .cta-box-text { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem; background: linear-gradient(135deg, var(--purple), #4f46e5); color: #fff; border-radius: 10px; font-family: 'Shippori Mincho', serif; font-size: 0.88rem; letter-spacing: 0.15em; text-decoration: none; transition: opacity 0.2s; box-shadow: 0 4px 14px rgba(124,58,237,0.25); }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-teal { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--teal); color: #fff; border-radius: 10px; font-size: 0.85rem; letter-spacing: 0.1em; text-decoration: none; transition: opacity 0.2s; }
+  .btn-teal:hover { opacity: 0.85; }
+
+  .related-links { margin: 2rem 0; }
+  .related-title { font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 1rem; color: var(--muted); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+  .related-card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; font-size: 0.82rem; color: var(--ink); transition: all 0.2s; }
+  .related-card:hover { border-color: var(--gold-light); transform: translateY(-2px); }
+  .related-card-label { font-size: 0.65rem; color: var(--teal); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+
+  .ad-area { margin: 1.5rem 0; padding: 1rem; background: rgba(255,255,255,0.5); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+  .ad-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 0.5rem; }
+  footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; }
+  .footer-nav { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .footer-nav a { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-decoration: none; }
+  .footer-nav a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.68rem; color: var(--muted); opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <a href="/" class="back-link">← トップに戻る</a>
+
+  <div class="article-hero">
+    <span class="article-label">ARTICLE 02｜四柱推命</span>
+    <span class="article-emoji">🌟</span>
+    <h1 class="article-title">四柱推命とは<br>日干から読み解く性格と運勢</h1>
+    <p class="article-sub">こんにちは🦦です。<br>「占いの帝王」と呼ばれる四柱推命、その本質をやさしく解説します。</p>
+  </div>
+
+  <div class="article-body">
+
+    <p><strong>四柱推命（しちゅうすいめい）</strong>は、古代中国で生まれた占いです。あなたが生まれた「年・月・日・時間」の4つの要素（四柱）から、性格、才能、運勢を読み解く占術です。</p>
+
+    <h2>四柱推命の4つの柱</h2>
+    <p>「四柱」とは、生年・生月・生日・生時の4つの柱のこと。それぞれの柱に「天干（てんかん）」と「地支（ちし）」の2つが割り当てられるため、4柱×2＝<strong>合計8つの要素</strong>であなたの人生が分析されます。</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-box">
+        <div class="pillar-name pillar-year">年柱</div>
+        <div class="pillar-desc">生まれた年の干支。先祖・社会との関係性。</div>
+        <div style="font-size:0.6rem;color:var(--muted);margin-top:0.4rem;">天干＋地支の2要素</div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-name pillar-month">月柱</div>
+        <div class="pillar-desc">生まれた月の干支。親・仕事・才能を表す。</div>
+      </div>
+      <div class="pillar-box" style="background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.05));border-color:rgba(201,168,76,0.4);">
+        <div class="pillar-name pillar-day">日柱</div>
+        <div class="pillar-desc">生まれた日の干支。<strong>自分自身</strong>を表す最重要の柱。</div>
+        <div class="pillar-highlight">★ このサイトで使う「日干」はここ</div>
+      </div>
+      <div class="pillar-box">
+        <div class="pillar-name pillar-time">時柱</div>
+        <div class="pillar-desc">生まれた時間の干支。子ども・晩年・理想を表す。</div>
+      </div>
+    </div>
+
+    <h2>なぜ「日干」に注目するのか</h2>
+    <p>四柱推命では「日干（にっかん）」—— 生まれた日の「天干」部分 —— が、その人自身の本質を表すとされています。</p>
+
+    <div class="info-box">
+      <div class="info-box-title">🌟 日干が「自分自身」を表す理由</div>
+      <p style="font-size:0.85rem;line-height:1.9;">
+        四柱推命では、日柱の天干（日干）が「命主（めいしゅ）」= あなた自身を表します。年干・月干・時干は、日干に対してどんな影響を与えるかで解釈するため、日干が出発点になります。<br><br>
+        また、誕生日さえ分かれば計算できるため、「生まれた時間が不明」な場合でも使えるシンプルさも、日干に注目する理由の一つです。
+      </p>
+    </div>
+
+    <h2>10干（じっかん）の種類と特徴</h2>
+    <p>日干は「十干（じっかん）」と呼ばれる10種類のいずれかになります。木・火・土・金・水の5つの五行に、陰陽の2つが組み合わさって10種類になります。</p>
+
+    <div class="jikkan-grid">
+      <div class="jikkan-card">
+        <div class="jikkan-num">01</div>
+        <div class="jikkan-name">甲</div>
+        <div class="jikkan-yomi">きのえ</div>
+        <div class="jikkan-keyword">大木のような力強い向上心。まっすぐに目標を目指す。</div>
+        <span class="jikkan-gogyo gogyo-ki">木（陽）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">02</div>
+        <div class="jikkan-name">乙</div>
+        <div class="jikkan-yomi">きのと</div>
+        <div class="jikkan-keyword">草花のようなしなやかさ。柔軟に環境に適応する。</div>
+        <span class="jikkan-gogyo gogyo-ki">木（陰）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">03</div>
+        <div class="jikkan-name">丙</div>
+        <div class="jikkan-yomi">ひのえ</div>
+        <div class="jikkan-keyword">太陽のような明るさ。情熱的で周囲を照らす存在。</div>
+        <span class="jikkan-gogyo gogyo-hi">火（陽）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">04</div>
+        <div class="jikkan-name">丁</div>
+        <div class="jikkan-yomi">ひのと</div>
+        <div class="jikkan-keyword">ろうそくのような繊細な灯火。深い洞察力と感受性。</div>
+        <span class="jikkan-gogyo gogyo-hi">火（陰）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">05</div>
+        <div class="jikkan-name">戊</div>
+        <div class="jikkan-yomi">つちのえ</div>
+        <div class="jikkan-keyword">山のような安定感と包容力。頼れる大きな存在。</div>
+        <span class="jikkan-gogyo gogyo-tsuchi">土（陽）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">06</div>
+        <div class="jikkan-name">己</div>
+        <div class="jikkan-yomi">つちのと</div>
+        <div class="jikkan-keyword">田畑のような育む力。面倒見がよく地道な努力家。</div>
+        <span class="jikkan-gogyo gogyo-tsuchi">土（陰）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">07</div>
+        <div class="jikkan-name">庚</div>
+        <div class="jikkan-yomi">かのえ</div>
+        <div class="jikkan-keyword">鋼のような強さと決断力。正義感が強く実行力抜群。</div>
+        <span class="jikkan-gogyo gogyo-kin">金（陽）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">08</div>
+        <div class="jikkan-name">辛</div>
+        <div class="jikkan-yomi">かのと</div>
+        <div class="jikkan-keyword">宝石のような繊細な輝き。美意識が高く洗練された感性。</div>
+        <span class="jikkan-gogyo gogyo-kin">金（陰）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">09</div>
+        <div class="jikkan-name">壬</div>
+        <div class="jikkan-yomi">みずのえ</div>
+        <div class="jikkan-keyword">大河のようなスケール。知性と行動力を兼ね備える。</div>
+        <span class="jikkan-gogyo gogyo-mizu">水（陽）</span>
+      </div>
+      <div class="jikkan-card">
+        <div class="jikkan-num">10</div>
+        <div class="jikkan-name">癸</div>
+        <div class="jikkan-yomi">みずのと</div>
+        <div class="jikkan-keyword">雨露のような繊細さ。豊かな感受性と深い洞察力。</div>
+        <span class="jikkan-gogyo gogyo-mizu">水（陰）</span>
+      </div>
+    </div>
+
+    <h2>九星気学との組み合わせで見えること</h2>
+    <p>九星気学（本命星）と四柱推命（日干）を組み合わせることで、9 × 10 = <strong>90パターン</strong>の鑑定が可能になります。</p>
+    <p>同じ「一白水星」でも、日干が甲の人と癸の人では、性格も適職も恋愛傾向もまったく異なります。2つを組み合わせることで、「あなただけの運気」が初めて見えてくるのです。</p>
+
+    <div class="cta-box">
+      <div class="cta-box-title">📊 あなたの本命星×日干を診断してみよう</div>
+      <p class="cta-box-text">生年月日を入力するだけで、あなたの「本命星」と「日干」が自動で計算されます。</p>
+      <a href="/diagnosis.html" class="btn-primary">🔮 あなたの本当の運気を無料診断する</a>
+    </div>
+
+    <h2>さらに詳しく学ぶには</h2>
+    <p>各星×日干の組み合わせの詳細は、9星ページでお読みいただけます。note有料記事では、6,000文字超えの詳細鑑定レポートを公開しています。</p>
+
+    <div style="text-align:center;margin-top:1rem;">
+      <a href="/stars/index.html" class="btn-teal">⭐ 9つの星ページへ</a>
+    </div>
+
+    <div class="related-links" style="margin-top:2rem;">
+      <div class="related-title">関連ページ</div>
+      <div class="related-grid">
+        <a href="/kiyusei.html" class="related-card">
+          <div class="related-card-label">ARTICLE 01</div>
+          九星気学とは →
+        </a>
+        <a href="/diagnosis.html" class="related-card">
+          <div class="related-card-label">DIAGNOSIS</div>
+          無料診断ページ →
+        </a>
+        <a href="/compatibility.html" class="related-card">
+          <div class="related-card-label">COMPATIBILITY</div>
+          相性診断ページ →
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931"
+      data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <footer>
+    <nav class="footer-nav"></nav>
+    <p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p>
+  </footer>
+</div>
+
+<script src="nav.js"></script>
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const s = document.createElement('div'); s.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${Math.random()>0.5?'#0d9488':'#c9a84c'};--d:${Math.random()*4+2}s;--delay:${Math.random()*5}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+</script>
+</body>
+</html>
