@@ -253,8 +253,9 @@
     <span class="scene-art">🦦</span>
     <p class="loading-title">まとめページへ移動します</p>
     <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;">
+      noteは別タブで開きました。<br>
       <span class="countdown-num" id="ad-countdown">5</span>
-      <span class="countdown-text">秒後に自動で移動します</span>
+      <span class="countdown-text">秒後に診断ページに戻ります</span>
     </p>
     <div class="divider"></div>
     <div class="ad-area">
@@ -263,7 +264,8 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
     <div class="divider"></div>
-    <p style="font-size:0.7rem;color:var(--muted);margin-top:0.75rem;">広告が表示されない場合はしばらくお待ちください</p>
+    <p style="font-size:0.7rem;color:var(--muted);margin-top:0.75rem;margin-bottom:1rem;">広告が表示されない場合はしばらくお待ちください</p>
+    <button onclick="showDiagnosisForm()" style="padding:0.6rem 1.5rem;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:8px;font-size:0.78rem;color:var(--muted);cursor:pointer;transition:all 0.2s;letter-spacing:0.08em;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">← 診断に戻る</button>
   </div>
 
   <!-- 結果 -->
@@ -345,17 +347,37 @@ let currentKyuseiName = '';
 function goToSummaryPage() {
   const url = KYUSEI_NOTE_URLS[currentKyuseiName];
   if (!url) return;
+
+  // 別タブで即時開く
+  window.open(url, '_blank', 'noopener,noreferrer');
+
+  // 広告中間ページを表示（診断ページ自体は残す）
   document.getElementById('result').style.display = 'none';
   document.getElementById('ad-bridge').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
   let count = 5;
   const countEl = document.getElementById('ad-countdown');
   countEl.textContent = count;
   const timer = setInterval(() => {
     count--;
     countEl.textContent = count;
-    if (count <= 0) { clearInterval(timer); location.href = url; }
+    if (count <= 0) {
+      clearInterval(timer);
+      // カウントダウン後は診断ページに戻る
+      showDiagnosisForm();
+    }
   }, 1000);
+}
+
+function showDiagnosisForm() {
+  document.getElementById('ad-bridge').style.display = 'none';
+  document.getElementById('form').style.display = 'block';
+  // ボタンをリセット
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = false;
+  btn.innerHTML = '✦ 星を詠む ✦';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function calcKyusei(birthdate) {
