@@ -81,38 +81,26 @@
     transition: opacity 0.2s;
   }
   .cta-banner:hover { opacity: 0.88; text-decoration: none; }
-  .cta-banner.diagnosis {
-    background: linear-gradient(135deg, #1a1a2e, #2d4a6b);
-  }
-  .cta-banner.compat {
-    background: linear-gradient(135deg, #4c1d95, #7c3aed);
-  }
+  .cta-banner.diagnosis { background: linear-gradient(135deg, #1a1a2e, #2d4a6b); }
+  .cta-banner.compat    { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
   .cta-banner p { color: var(--gold-light); font-size: 0.75rem; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
   .cta-banner strong {
     color: var(--gold); font-family: 'Shippori Mincho', serif;
     font-size: 0.9rem; letter-spacing: 0.12em;
   }
 
-  /* マガジンタブ */
-  .tab-wrap {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
+  /* タブ */
+  .tab-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
   .tab-btn {
-    padding: 0.4rem 0.85rem;
-    border: 1px solid var(--border);
+    padding: 0.4rem 0.85rem; border: 1px solid var(--border);
     border-radius: 20px; background: var(--surface);
     font-size: 0.78rem; color: var(--muted);
     cursor: pointer; transition: all 0.2s;
     font-family: 'Zen Kaku Gothic New', sans-serif;
   }
   .tab-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .tab-btn.active {
-    background: var(--gold); border-color: var(--gold);
-    color: #fff; font-weight: 500;
-  }
+  .tab-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; font-weight: 500; }
 
-  /* 記事カード */
   .articles-wrap { min-height: 200px; }
   .magazine-title {
     font-family: 'Shippori Mincho', serif; font-size: 1rem;
@@ -121,25 +109,49 @@
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 0.5rem;
   }
+
+  /* ===== まずは見てほしい記事：星カード ===== */
+  .star-card-link {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.1rem 1.25rem;
+    margin-bottom: 0.75rem; text-decoration: none;
+    transition: all 0.25s; backdrop-filter: blur(8px);
+    gap: 1rem;
+  }
+  .star-card-link:hover {
+    border-color: var(--gold); transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.15); text-decoration: none;
+  }
+  .star-card-left { display: flex; align-items: center; gap: 0.75rem; }
+  .star-card-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .star-card-name {
+    font-family: 'Shippori Mincho', serif; font-size: 1rem;
+    font-weight: 600; letter-spacing: 0.08em; color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .star-card-keyword { font-size: 0.72rem; color: var(--muted); }
+  .star-card-arrow {
+    font-size: 0.78rem; color: var(--gold);
+    white-space: nowrap; flex-shrink: 0;
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+
+  /* ===== 星マガジン：記事カード ===== */
   .article-card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem; display: block;
-    text-decoration: none; transition: all 0.2s;
-    backdrop-filter: blur(8px); cursor: pointer;
+    border-radius: 14px; padding: 1.25rem;
+    margin-bottom: 1rem; backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s;
   }
-  .article-card:hover {
-    border-color: var(--gold); transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(201,168,76,0.15);
-    text-decoration: none;
-  }
+  .article-card:hover { box-shadow: 0 4px 16px rgba(201,168,76,0.12); }
   .article-title {
     font-size: 0.9rem; color: var(--ink);
-    line-height: 1.6; margin-bottom: 0.4rem; font-weight: 400;
+    line-height: 1.6; margin-bottom: 0.5rem; font-weight: 400;
   }
   .article-meta {
-    display: flex; align-items: center; gap: 0.75rem;
-    flex-wrap: wrap;
+    display: flex; align-items: center; gap: 0.6rem;
+    flex-wrap: wrap; margin-bottom: 1rem;
   }
   .article-date { font-size: 0.72rem; color: var(--muted); }
   .article-badge {
@@ -149,27 +161,47 @@
   .badge-free { background: rgba(65,201,180,0.15); color: #41C9B4; border: 1px solid rgba(65,201,180,0.3); }
   .badge-paid { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border); }
 
-  /* 星ページリンク（星マガジン用） */
-  .star-page-link {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    font-size: 0.7rem; color: var(--purple);
-    background: rgba(124,58,237,0.07); border: 1px solid rgba(124,58,237,0.2);
-    border-radius: 6px; padding: 0.15rem 0.5rem;
-    text-decoration: none; transition: all 0.2s;
+  /* 記事カード内ボタン2つ並び */
+  .article-btn-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;
   }
-  .star-page-link:hover { background: rgba(124,58,237,0.12); text-decoration: none; }
+  .article-btn {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.4rem; padding: 0.75rem 0.5rem;
+    border-radius: 10px; text-decoration: none;
+    font-size: 0.82rem; font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.08em; transition: all 0.2s; text-align: center;
+    font-weight: 500;
+  }
+  .article-btn:hover { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
+  .article-btn.free {
+    background: linear-gradient(135deg, rgba(13,148,136,0.1), rgba(13,148,136,0.06));
+    border: 1px solid rgba(13,148,136,0.3); color: var(--teal);
+  }
+  .article-btn.paid {
+    background: linear-gradient(135deg, var(--gold), #d4a843);
+    border: none; color: #fff;
+    box-shadow: 0 3px 10px rgba(201,168,76,0.3);
+  }
 
-  /* noteリンク */
-  .note-link-row {
+  /* 星マガジン上部バナー */
+  .star-page-banner {
+    background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(201,168,76,0.05));
+    border: 1px solid rgba(124,58,237,0.2); border-radius: 12px;
+    padding: 1rem 1.25rem; margin-bottom: 1.25rem;
     display: flex; align-items: center; justify-content: space-between;
-    gap: 0.5rem; flex-wrap: wrap;
+    flex-wrap: wrap; gap: 0.75rem;
   }
-  .note-external-link {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    font-size: 0.7rem; color: var(--muted);
-    text-decoration: none; transition: color 0.2s;
+  .star-page-banner-text { font-size: 0.82rem; color: var(--ink); }
+  .star-page-banner-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff; border-radius: 8px; font-size: 0.78rem;
+    letter-spacing: 0.08em; text-decoration: none; transition: opacity 0.2s;
+    white-space: nowrap;
   }
-  .note-external-link:hover { color: var(--gold); }
+  .star-page-banner-btn:hover { opacity: 0.85; text-decoration: none; }
 
   .loading {
     text-align: center; padding: 3rem 0;
@@ -178,14 +210,10 @@
   .loading-spinner {
     display: inline-block; width: 24px; height: 24px;
     border: 2px solid var(--border); border-top-color: var(--gold);
-    border-radius: 50%; animation: spin 0.8s linear infinite;
-    margin-bottom: 0.75rem;
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 0.75rem;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .error-msg {
-    text-align: center; padding: 2rem;
-    font-size: 0.85rem; color: var(--muted);
-  }
+  .error-msg { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); }
 
   footer {
     text-align: center; padding: 2rem 0 1rem;
@@ -198,6 +226,8 @@
 
   @media (max-width: 480px) {
     .cta-grid { grid-template-columns: 1fr; }
+    .article-btn-grid { grid-template-columns: 1fr; }
+    .star-page-banner { flex-direction: column; }
   }
 </style>
 </head>
@@ -218,7 +248,6 @@
     九星気学×四柱推命の詳細鑑定レポートをお読みいただけます。
   </p>
 
-  <!-- CTAバナー（診断＋相性） -->
   <div class="cta-grid">
     <a href="/diagnosis.html" class="cta-banner diagnosis">
       <p>本命星・日干がわからない方はこちら</p>
@@ -230,15 +259,9 @@
     </a>
   </div>
 
-  <!-- マガジンタブ -->
   <div class="tab-wrap" id="tabs"></div>
-
-  <!-- 記事一覧 -->
   <div class="articles-wrap" id="articles">
-    <div class="loading">
-      <div class="loading-spinner"></div><br>
-      読み込み中…
-    </div>
+    <div class="loading"><div class="loading-spinner"></div><br>読み込み中…</div>
   </div>
 
   <footer>
@@ -258,30 +281,41 @@
     starsEl.appendChild(s);
   }
 
-  // マガジン定義
-  const MAGAZINES = [
-    { id: 'first',       name: 'まずは見てほしい記事', emoji: '📖', starPage: null },
-    { id: 'ichihaku',    name: '一白水星×〇〇', emoji: '💧', starPage: '/stars/ippaku.html' },
-    { id: 'nikoku',      name: '二黒土星×〇〇', emoji: '🌱', starPage: '/stars/jikoku.html' },
-    { id: 'sanpeki',     name: '三碧木星×〇〇', emoji: '⚡', starPage: '/stars/sanpeki.html' },
-    { id: 'shuroku',     name: '四緑木星×〇〇', emoji: '🌿', starPage: '/stars/siroku.html' },
-    { id: 'goko',        name: '五黄土星×〇〇', emoji: '🌍', starPage: '/stars/goo.html' },
-    { id: 'roppaku',     name: '六白金星×〇〇', emoji: '⚙️', starPage: '/stars/roppaku.html' },
-    { id: 'shichiseki',  name: '七赤金星×〇〇', emoji: '✨', starPage: '/stars/sichiseki.html' },
-    { id: 'happaku',     name: '八白土星×〇〇', emoji: '🏔️', starPage: '/stars/happaku.html' },
-    { id: 'kyushi',      name: '九紫火星×〇〇', emoji: '🔥', starPage: '/stars/kyushi.html' },
+  // ===== まずは見てほしい記事：固定データ =====
+  const FIRST_STARS = [
+    { icon:'💧', name:'一白水星', keyword:'柔軟性・適応力・流れに乗る',   page:'/stars/ippaku.html' },
+    { icon:'🌱', name:'二黒土星', keyword:'安定・勤勉・献身',             page:'/stars/jikoku.html' },
+    { icon:'⚡', name:'三碧木星', keyword:'行動力・革新・情熱',           page:'/stars/sanpeki.html' },
+    { icon:'🌿', name:'四緑木星', keyword:'調和・信頼・縁',               page:'/stars/siroku.html' },
+    { icon:'🌍', name:'五黄土星', keyword:'リーダーシップ・カリスマ・中心', page:'/stars/goo.html' },
+    { icon:'⚙️', name:'六白金星', keyword:'完璧・気品・知恵',             page:'/stars/roppaku.html' },
+    { icon:'✨', name:'七赤金星', keyword:'喜び・社交・輝き',             page:'/stars/sichiseki.html' },
+    { icon:'🏔️', name:'八白土星', keyword:'変化・継承・発展',             page:'/stars/happaku.html' },
+    { icon:'🔥', name:'九紫火星', keyword:'知性・美意識・情熱',           page:'/stars/kyushi.html' },
   ];
 
-  // 十干→アンカーコード変換
+  // ===== マガジン定義 =====
+  const MAGAZINES = [
+    { id:'first',       name:'まずは見てほしい記事', emoji:'📖', starPage: null },
+    { id:'ichihaku',    name:'一白水星×〇〇',  emoji:'💧', starPage:'/stars/ippaku.html' },
+    { id:'nikoku',      name:'二黒土星×〇〇',  emoji:'🌱', starPage:'/stars/jikoku.html' },
+    { id:'sanpeki',     name:'三碧木星×〇〇',  emoji:'⚡', starPage:'/stars/sanpeki.html' },
+    { id:'shuroku',     name:'四緑木星×〇〇',  emoji:'🌿', starPage:'/stars/siroku.html' },
+    { id:'goko',        name:'五黄土星×〇〇',  emoji:'🌍', starPage:'/stars/goo.html' },
+    { id:'roppaku',     name:'六白金星×〇〇',  emoji:'⚙️', starPage:'/stars/roppaku.html' },
+    { id:'shichiseki',  name:'七赤金星×〇〇',  emoji:'✨', starPage:'/stars/sichiseki.html' },
+    { id:'happaku',     name:'八白土星×〇〇',  emoji:'🏔️', starPage:'/stars/happaku.html' },
+    { id:'kyushi',      name:'九紫火星×〇〇',  emoji:'🔥', starPage:'/stars/kyushi.html' },
+  ];
+
   const JIKKAN_ANCHOR = {
-    '甲': '01', '乙': '02', '丙': '03', '丁': '04', '戊': '05',
-    '己': '06', '庚': '07', '辛': '08', '壬': '09', '癸': '10',
+    '甲':'01','乙':'02','丙':'03','丁':'04','戊':'05',
+    '己':'06','庚':'07','辛':'08','壬':'09','癸':'10',
   };
 
-  // 記事タイトルから日干コードを抽出してアンカーを生成
   function getStarAnchor(title) {
-    for (const [kanji, code] of Object.entries(JIKKAN_ANCHOR)) {
-      if (title.includes(kanji)) return '#combo-' + code;
+    for (const [k, v] of Object.entries(JIKKAN_ANCHOR)) {
+      if (title.includes(k)) return '#combo-' + v;
     }
     return '';
   }
@@ -301,36 +335,61 @@
     tabsEl.appendChild(btn);
   });
 
-  // マガジン選択
   function selectMagazine(id) {
     currentId = id;
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + id).classList.add('active');
-    loadArticles(id);
+    if (id === 'first') {
+      renderFirstTab();
+    } else {
+      loadArticles(id);
+    }
   }
 
-  // 記事取得
+  // ===== 「まずは見てほしい記事」固定表示 =====
+  function renderFirstTab() {
+    const mag = MAGAZINES[0];
+    let html = `<div class="magazine-title">${mag.emoji} ${mag.name}</div>`;
+    html += '<p style="font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;">あなたの本命星のページで、日干との組み合わせ診断を無料でご覧いただけます。</p>';
+    FIRST_STARS.forEach(s => {
+      html += `
+        <a href="${s.page}" class="star-card-link">
+          <div class="star-card-left">
+            <span class="star-card-icon">${s.icon}</span>
+            <div>
+              <div class="star-card-name">${s.name}のあなたへ</div>
+              <div class="star-card-keyword">${s.keyword}</div>
+            </div>
+          </div>
+          <span class="star-card-arrow">詳しく見る →</span>
+        </a>`;
+    });
+    document.getElementById('articles').innerHTML = html;
+  }
+
+  // ===== 星マガジン：GASから記事取得 =====
   function loadArticles(id) {
     if (cache[id]) { renderArticles(id, cache[id]); return; }
-    const articlesEl = document.getElementById('articles');
-    articlesEl.innerHTML = '<div class="loading"><div class="loading-spinner"></div><br>読み込み中…</div>';
-    const callbackName = 'cb_' + id + '_' + Date.now();
-    window[callbackName] = function(data) {
+    document.getElementById('articles').innerHTML =
+      '<div class="loading"><div class="loading-spinner"></div><br>読み込み中…</div>';
+    const cbName = 'cb_' + id + '_' + Date.now();
+    window[cbName] = function(data) {
       document.getElementById('script-' + id)?.remove();
       if (data.status === 'success') {
         cache[id] = data;
         renderArticles(id, data);
       } else {
-        articlesEl.innerHTML = '<div class="error-msg">記事の読み込みに失敗しました。<br><a href="https://note.com/by_nature" target="_blank" rel="noopener noreferrer">noteで直接ご覧ください →</a></div>';
+        document.getElementById('articles').innerHTML =
+          '<div class="error-msg">記事の読み込みに失敗しました。<br><a href="https://note.com/by_nature" target="_blank" rel="noopener noreferrer">noteで直接ご覧ください →</a></div>';
       }
     };
     const script = document.createElement('script');
     script.id = 'script-' + id;
-    script.src = `${GAS_URL}?type=magazine&id=${id}&callback=${callbackName}`;
+    script.src = `${GAS_URL}?type=magazine&id=${id}&callback=${cbName}`;
     document.body.appendChild(script);
   }
 
-  // 記事レンダリング
+  // ===== 星マガジン：記事レンダリング =====
   function renderArticles(id, data) {
     const mag = MAGAZINES.find(m => m.id === id);
     const articlesEl = document.getElementById('articles');
@@ -341,13 +400,13 @@
 
     let html = `<div class="magazine-title">${mag.emoji} ${data.magazine}</div>`;
 
-    // 星マガジン（first以外）の場合、星ページへの誘導バナーを追加
+    // 星ページへの誘導バナー
     if (mag.starPage) {
       html += `
-        <div style="background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(201,168,76,0.05));border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
-          <span style="font-size:0.82rem;color:var(--ink);">無料で読める組み合わせ診断はこちら</span>
-          <a href="${mag.starPage}" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border-radius:8px;font-size:0.78rem;letter-spacing:0.08em;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-            ${mag.emoji} ${mag.name.replace('×〇〇', '')}のページを見る →
+        <div class="star-page-banner">
+          <span class="star-page-banner-text">組み合わせ診断の無料版はこちら</span>
+          <a href="${mag.starPage}" class="star-page-banner-btn">
+            ${mag.emoji} ${mag.name.replace('×〇〇','')}のページを見る →
           </a>
         </div>`;
     }
@@ -359,14 +418,16 @@
         ? '<span class="article-badge badge-free">無料</span>'
         : '<span class="article-badge badge-paid">有料 500円</span>';
 
-      // 星ページへのアンカーリンク生成
-      let starLink = '';
+      // 無料版（stars/）アンカーリンク
+      let freeBtnHtml = '';
       if (mag.starPage) {
         const anchor = getStarAnchor(article.title);
-        if (anchor) {
-          starLink = `<a href="${mag.starPage}${anchor}" class="star-page-link">⭐ 無料版を見る</a>`;
-        }
+        const freeUrl = anchor ? mag.starPage + anchor : mag.starPage;
+        freeBtnHtml = `<a href="${freeUrl}" class="article-btn free">⭐ 無料版を見る</a>`;
       }
+
+      // 詳細鑑定（note外部リンク）
+      const paidBtnHtml = `<a href="${article.link}" target="_blank" rel="noopener noreferrer" class="article-btn paid">📖 詳細鑑定へ</a>`;
 
       html += `
         <div class="article-card">
@@ -374,12 +435,10 @@
           <div class="article-meta">
             <span class="article-date">${date}</span>
             ${badge}
-            ${starLink}
           </div>
-          <div class="note-link-row" style="margin-top:0.6rem;">
-            <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="note-external-link">
-              📖 noteで読む →
-            </a>
+          <div class="article-btn-grid">
+            ${freeBtnHtml || ''}
+            ${paidBtnHtml}
           </div>
         </div>`;
     });
@@ -387,8 +446,8 @@
     articlesEl.innerHTML = html;
   }
 
-  // 初期ロード
-  loadArticles('first');
+  // 初期表示
+  renderFirstTab();
 </script>
 </body>
 </html>
