@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四緑木星のあなたへ｜九星×四柱推命 組み合わせ診断｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/stars/siroku.html">
+<meta name="description" content="四緑木星と十干10種類の組み合わせ特徴をまとめています。自分の日干を確認して詳細ページで運気を読み解こう。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1a1a2e;--gold:#c9a84c;--gold-light:#e8d5a3;--cream:#faf8f3;--muted:#6b6b7a;
+    --border:rgba(201,168,76,0.25);--surface:rgba(255,255,255,0.7);--purple:#7c3aed;
+    --star-color:#0d9488;--star-bg:rgba(13,148,136,0.08);--star-border:rgba(13,148,136,0.25);--star-light:rgba(13,148,136,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;
+    background-image:radial-gradient(ellipse at 10% 5%,var(--star-bg) 0%,transparent 50%),radial-gradient(ellipse at 90% 5%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+  .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .star{position:absolute;border-radius:50%;opacity:0;animation:twinkle var(--d,3s) var(--delay,0s) infinite;}
+  @keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.6);}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+  .breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;flex-wrap:wrap;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{opacity:0.5;}
+  .page-hero{text-align:center;padding:2rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+  .page-label{display:inline-block;font-size:0.68rem;letter-spacing:0.2em;color:var(--star-color);border:1px solid var(--star-border);border-radius:999px;padding:0.25rem 0.8rem;margin-bottom:1rem;}
+  .page-icon{font-size:3.5rem;display:block;margin-bottom:0.75rem;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  .page-title{font-family:'Shippori Mincho',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:500;letter-spacing:0.12em;margin-bottom:0.4rem;color:var(--star-color);}
+  .page-yomi{font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;margin-bottom:0.75rem;}
+  .page-keyword{display:inline-block;background:var(--star-bg);border:1px solid var(--star-border);border-radius:999px;padding:0.3rem 1rem;font-size:0.75rem;color:var(--star-color);margin-bottom:1rem;}
+  .page-desc{font-size:0.85rem;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto;}
+  .intro-cta{background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(201,168,76,0.05));border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;text-align:center;margin-bottom:2rem;}
+  .intro-cta-title{font-family:'Shippori Mincho',serif;font-size:0.88rem;font-weight:600;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .intro-cta-text{font-size:0.78rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;}
+  .btn-diagnosis{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.5rem;background:linear-gradient(135deg,var(--purple),#4f46e5);color:#fff;border-radius:8px;text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-diagnosis:hover{opacity:0.85;}
+  .jump-nav{margin-bottom:2rem;}
+  .jump-nav-title{font-size:0.72rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.6rem;}
+  .jump-links{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .jump-link{display:inline-block;padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.72rem;color:var(--muted);text-decoration:none;transition:all 0.2s;}
+  .jump-link:hover{border-color:var(--star-color);color:var(--star-color);}
+  .section-heading{font-family:'Shippori Mincho',serif;font-size:1.05rem;font-weight:600;letter-spacing:0.1em;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--star-bg);color:var(--star-color);}
+  .combo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;backdrop-filter:blur(8px);transition:box-shadow 0.2s;}
+  .combo-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.07);}
+  .combo-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.7rem;border-bottom:2px solid var(--star-light);}
+  .combo-code{font-size:0.68rem;letter-spacing:0.15em;color:var(--star-color);background:var(--star-bg);border:1px solid var(--star-border);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;}
+  .combo-title{font-family:'Shippori Mincho',serif;font-size:0.95rem;font-weight:600;letter-spacing:0.08em;color:var(--ink);}
+  .combo-body{font-size:0.87rem;line-height:2;color:var(--ink);margin-bottom:1rem;}
+  .combo-note-btn{display:inline-flex;align-items:center;gap:0.3rem;padding:0.5rem 1rem;background:var(--star-bg);border:1px solid var(--star-border);border-radius:8px;color:var(--star-color);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;transition:all 0.2s;}
+  .combo-note-btn:hover{opacity:0.8;}
+  .detail-cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(124,58,237,0.05));border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:2rem 0;}
+  .detail-cta-title{font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;letter-spacing:0.12em;margin-bottom:0.75rem;}
+  .detail-features{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;margin-bottom:1.25rem;}
+  .detail-feature{display:inline-block;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.7rem;font-size:0.7rem;color:var(--ink);}
+  .btn-note{display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.75rem;background:var(--gold);color:#fff;border-radius:10px;text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-note:hover{opacity:0.85;}
+  .nav-links{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:2rem;}
+  .nav-link{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;font-size:0.82rem;color:var(--ink);transition:all 0.2s;}
+  .nav-link:hover{border-color:var(--gold-light);transform:translateY(-2px);}
+  .nav-link-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.3rem;}
+  .ad-area{margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.5);border:1px solid var(--border);border-radius:12px;text-align:center;}
+  .ad-label{font-size:0.65rem;color:var(--muted);margin-bottom:0.5rem;}
+  footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .footer-nav{display:flex;justify-content:center;gap:1.25rem;margin-bottom:1rem;flex-wrap:wrap;}
+  .footer-nav a{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-decoration:none;}
+  .footer-nav a:hover{color:var(--gold);}
+  .footer-copy{font-size:0.68rem;color:var(--muted);opacity:0.6;}
+  @media(max-width:480px){.nav-links{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="stars-bg" id="stars-bg"></div>
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>›</span>
+    <a href="/stars/index.html">9つの星を知る</a><span>›</span>
+    <span>四緑木星</span>
+  </div>
+  <div class="page-hero">
+    <span class="page-label">本命星 D</span>
+    <span class="page-icon">🌿</span>
+    <h1 class="page-title">四緑木星のあなたへ</h1>
+    <div class="page-yomi">しりょくもくせい / 五行：木</div>
+    <span class="page-keyword">調和・信頼・縁</span>
+    <p class="page-desc">
+      このページでは「四緑木星」の本命星を持つあなたと、<br>
+      十干10種類それぞれの組み合わせの特徴をまとめているよ🌙<br>
+      自分の日干を確認したら、該当する組み合わせをチェックしてみてね✨
+    </p>
+  </div>
+  <div class="intro-cta">
+    <div class="intro-cta-title">🦦 はじめてこのページに来たあなたへ</div>
+    <p class="intro-cta-text">まずは無料診断で、自分の本命星と日干を調べてみてね！</p>
+    <a href="/diagnosis.html" class="btn-diagnosis">★ 無料診断ページはこちら</a>
+  </div>
+  <div class="jump-nav">
+    <div class="jump-nav-title">▼ 日干で絞り込む</div>
+    <div class="jump-links">
+      <a href="#combo-01" class="jump-link">甲（きのえ）</a>
+      <a href="#combo-02" class="jump-link">乙（きのと）</a>
+      <a href="#combo-03" class="jump-link">丙（ひのえ）</a>
+      <a href="#combo-04" class="jump-link">丁（ひのと）</a>
+      <a href="#combo-05" class="jump-link">戊（つちのえ）</a>
+      <a href="#combo-06" class="jump-link">己（つちのと）</a>
+      <a href="#combo-07" class="jump-link">庚（かのえ）</a>
+      <a href="#combo-08" class="jump-link">辛（かのと）</a>
+      <a href="#combo-09" class="jump-link">壬（みずのえ）</a>
+      <a href="#combo-10" class="jump-link">癸（みずのと）</a>
+    </div>
+  </div>
+  <div class="section-heading">四緑木星と十干の組み合わせ</div>
+
+    <div class="combo-card" id="combo-01">
+      <div class="combo-header">
+        <span class="combo-code">D-01</span>
+        <span class="combo-title">四緑木星 × 甲（きのえ）</span>
+      </div>
+      <p class="combo-body">四緑木星に甲が加わると、まさに「大樹のごとく堂々とした風の人」になるんだよ。四緑木星が持つ柔軟な社交性に、甲の真っすぐで力強いエネルギーがプラスされるから、リーダーシップを発揮しながらも人の輪を広げていける才能があるんだ。自分の信念を大切にしつつ、周囲との調和も図れる絶妙なバランス感覚の持ち主だね。ただ、時として「こうあるべき」という理想が強くなりすぎて、柔軟性を失ってしまうことも。風のように自由な四緑木星の良さを活かすには、時に肩の力を抜くことが大切だよ。仕事では営業や広報、教育分野で力を発揮しやすいんだ。人を導きながら成長できる環境が向いているよ！</p>
+      <a href="https://note.com/by_nature/n/n8d0fdefa6a08" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-02">
+      <div class="combo-header">
+        <span class="combo-code">D-02</span>
+        <span class="combo-title">四緑木星 × 乙（きのと）</span>
+      </div>
+      <p class="combo-body">四緑木星に乙が組み合わさると、「しなやかな草花のような柔らかさ」が際立つんだよ。もともと協調性のある四緑木星に、乙の繊細で適応力の高いエネルギーが加わるから、どんな環境にも馴染める天性の才能があるんだ。人の気持ちを察する力が抜群で、相談役として頼られることも多いはず。争いを好まず、平和的な解決策を見つけるのが得意だね。ただ、周囲に合わせすぎて自分の意見を飲み込んでしまう傾向があるから要注意だよ。「NO」と言える勇気を持つことで、もっと自分らしく輝けるんだ。クリエイティブな分野や接客業、カウンセラーなど人に寄り添う仕事で才能を発揮しやすいよ。優しさこそが最大の武器だね！</p>
+      <a href="https://note.com/by_nature/n/ne7cb8ff2b665" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-03">
+      <div class="combo-header">
+        <span class="combo-code">D-03</span>
+        <span class="combo-title">四緑木星 × 丙（ひのえ）</span>
+      </div>
+      <p class="combo-body">四緑木星に丙が加わると、「太陽のように明るい風」を運ぶ人になるんだよ。四緑木星のコミュニケーション能力に、丙の華やかで情熱的なエネルギーがプラスされるから、どこにいても注目を集める存在感があるんだ。アイデアが豊富で、新しいことを始める行動力も抜群だね。人を元気にするオーラを持っていて、自然と人が集まってくるタイプだよ。ただ、熱しやすく冷めやすい面があるから、一つのことを継続する意識を持つといいんだ。また、目立ちたい気持ちが強くなりすぎると周囲との摩擦が生まれることも。謙虚さを忘れなければ、どんな分野でも成功できる可能性を秘めているよ。エンタメや企画、イベント関連の仕事で輝けるんだ！</p>
+      <a href="https://note.com/by_nature/n/n56da01d7c394" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-04">
+      <div class="combo-header">
+        <span class="combo-code">D-04</span>
+        <span class="combo-title">四緑木星 × 丁（ひのと）</span>
+      </div>
+      <p class="combo-body">四緑木星に丁が組み合わさると、「灯火のような温かさで人を照らす」存在になるんだよ。四緑木星の穏やかな社交性に、丁の繊細で情緒豊かなエネルギーが加わるから、深い人間関係を築ける才能があるんだ。表面的な付き合いではなく、心と心で繋がることを大切にするタイプだね。芸術的なセンスや直感力にも優れていて、美しいものを見抜く目を持っているよ。ただ、感受性が強い分、人間関係で傷つきやすい面もあるから注意が必要なんだ。自分を守る術を身につけることも大切だよ。また、考えすぎて行動が遅れることもあるから、時には直感を信じて動いてみてね。芸術、デザイン、セラピストなど繊細さを活かせる分野で力を発揮できるんだ！</p>
+      <a href="https://note.com/by_nature/n/n31f247dc8f30" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-05">
+      <div class="combo-header">
+        <span class="combo-code">D-05</span>
+        <span class="combo-title">四緑木星 × 戊（つちのえ）</span>
+      </div>
+      <p class="combo-body">四緑木星に戊が加わると、「山のような安定感を持つ風の人」になるんだよ。四緑木星の柔軟性に、戊のどっしりとした信頼感がプラスされるから、人から頼られるまとめ役になれる素質があるんだ。社交的でありながら、しっかりとした芯を持っているから、ブレない姿勢が周囲に安心感を与えるんだね。ただ、九星気学では木と土の関係は「木剋土」といって、エネルギーのぶつかり合いが生じることも。自由に動きたい気持ちと、安定を求める気持ちの間で葛藤を感じることがあるかもしれないよ。その矛盾を受け入れて、状況に応じて使い分けられるようになると最強なんだ。経営者やマネージャー、不動産関連など、信頼が重要な仕事で成功しやすいよ！</p>
+      <a href="https://note.com/by_nature/n/n7bd56a36cfc6" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-06">
+      <div class="combo-header">
+        <span class="combo-code">D-06</span>
+        <span class="combo-title">四緑木星 × 己（つちのと）</span>
+      </div>
+      <p class="combo-body">四緑木星に己が組み合わさると、「畑の土のように人を育てる」才能が開花するんだよ。四緑木星の人当たりの良さに、己の包容力と忍耐力が加わるから、後輩や部下の育成に向いているタイプなんだ。自分が目立つよりも、周囲をサポートすることに喜びを感じる人が多いよ。ただ、木と土の相剋関係があるから、自分の中で「もっと自由にしたい」という気持ちと「しっかり支えなければ」という責任感がせめぎ合うことも。無理をしすぎると疲れてしまうから、自分のケアも忘れないでね。控えめに見えて、実はしっかりとした価値観を持っているから、長期的には大きな信頼を得られるよ。教育、福祉、農業など人や物を育てる分野で才能を発揮できるんだ！</p>
+      <a href="https://note.com/by_nature/n/n7d565031b1e9" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-07">
+      <div class="combo-header">
+        <span class="combo-code">D-07</span>
+        <span class="combo-title">四緑木星 × 庚（かのえ）</span>
+      </div>
+      <p class="combo-body">四緑木星に庚が加わると、「鋭い刃を持つ風」のような個性が生まれるんだよ。四緑木星の柔らかさに、庚の決断力と行動力がプラスされるから、優しさと強さを兼ね備えた魅力的な人になるんだ。普段は穏やかだけど、いざという時には鋭い判断ができるタイプだね。ただ、九星気学では金剋木の関係にあたるから、時に自分の中で葛藤が生まれやすいんだ。「優しくしたい」気持ちと「はっきり言いたい」気持ちの間で揺れることもあるかも。でも、この二面性こそが大きな強みになるよ。交渉事やビジネスの場面では、柔軟さと決断力の両方を発揮できる貴重な存在なんだ。営業、法律、コンサルタントなど、切れ味が求められる分野で活躍できるよ！</p>
+      <a href="https://note.com/by_nature/n/n51575b555de9" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-08">
+      <div class="combo-header">
+        <span class="combo-code">D-08</span>
+        <span class="combo-title">四緑木星 × 辛（かのと）</span>
+      </div>
+      <p class="combo-body">四緑木星に辛が組み合わさると、「宝石のような繊細な輝きを持つ風」の人になるんだよ。四緑木星の社交性に、辛の美意識と完璧主義が加わるから、洗練された雰囲気を持つ人が多いんだ。センスが良くて、ファッションやインテリアにこだわりがあるタイプだね。人付き合いでも品の良さを大切にするよ。ただ、金剋木の相剋関係があるから、繊細すぎて傷つきやすい面も。人の言葉を気にしすぎたり、完璧を求めすぎて疲れてしまうこともあるから注意が必要だよ。自分に厳しくなりすぎず、たまには「まあいいか」と許せる心の余裕を持つといいんだ。美容、ジュエリー、ブランド関連など、美しさや上質さを扱う分野で才能を発揮できるよ！</p>
+      <a href="https://note.com/by_nature/n/n09598efdfcfe" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-09">
+      <div class="combo-header">
+        <span class="combo-code">D-09</span>
+        <span class="combo-title">四緑木星 × 壬（みずのえ）</span>
+      </div>
+      <p class="combo-body">四緑木星に壬が加わると、「大河のように雄大な風」を持つ人になるんだよ。四緑木星の柔軟性に、壬のスケールの大きさと知性がプラスされるから、視野が広くて大きな夢を描ける才能があるんだ。九星気学では水生木の相生関係だから、壬の水が四緑の木を育てる理想的な組み合わせなんだよ。アイデアが豊富で、情報を集めて発信する力も抜群だね。国際的な活動や、多くの人に影響を与える仕事に向いているよ。ただ、スケールが大きすぎて地に足がつかないことも。夢を語るだけでなく、コツコツと実現に向けて動く姿勢が大切なんだ。また、流されやすい面もあるから、自分の軸をしっかり持ってね。メディア、貿易、IT分野で大きく飛躍できる可能性があるよ！</p>
+      <a href="https://note.com/by_nature/n/naf0d71cd2a3e" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-10">
+      <div class="combo-header">
+        <span class="combo-code">D-10</span>
+        <span class="combo-title">四緑木星 × 癸（みずのと）</span>
+      </div>
+      <p class="combo-body">四緑木星に癸が組み合わさると、「雨露のように静かに潤す風」の人になるんだよ。四緑木星の穏やかさに、癸の知性と内省的なエネルギーが加わるから、深い洞察力を持った人になるんだ。水生木の相生関係で、癸の水が優しく四緑の木を育てる、とても調和の取れた組み合わせだよ。表面的には穏やかだけど、内面には豊かな感性と鋭い観察眼を秘めているんだ。学問や研究に向いていて、一つのことを深く掘り下げる才能があるね。ただ、内向的になりすぎて、せっかくの四緑木星の社交性を活かせないこともあるから注意が必要だよ。自分から発信する勇気を持つと、もっと可能性が広がるんだ。研究職、ライター、カウンセラーなど深い思考を活かせる分野で輝けるよ！
+以上が四緑木星と十干10種類の組み合わせの特徴だよ！もっと詳しく知りたいことがあったら、いつでも聞いてね。星詠みの海獺より🦦✨</p>
+      <a href="https://note.com/by_nature/n/nacbaa521477d" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+  <div class="detail-cta">
+    <div class="detail-cta-title">🔮 詳細鑑定レポートについて</div>
+    <div class="detail-features">
+      <span class="detail-feature">組み合わせの特徴</span><span class="detail-feature">強み・気をつけたいこと</span>
+      <span class="detail-feature">向いている仕事</span><span class="detail-feature">金運</span>
+      <span class="detail-feature">恋愛傾向</span><span class="detail-feature">人間関係</span>
+      <span class="detail-feature">ラッキーカラー</span><span class="detail-feature">開運アドバイス</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">6,000文字超えのボリュームでお伝えします。</p>
+    <a href="https://note.com/by_nature/n/nfe3a6af73709" target="_blank" rel="noopener noreferrer" class="btn-note">📖 記事一覧はこちら（四緑木星の記事を探してね）</a>
+  </div>
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931" data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <div class="nav-links">
+    <a href="/stars/index.html" class="nav-link"><div class="nav-link-label">← BACK</div>他の星を見る</a>
+    <a href="/diagnosis.html" class="nav-link"><div class="nav-link-label">DIAGNOSIS</div>無料診断ページ →</a>
+  </div>
+  <footer><nav class="footer-nav"></nav><p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p></footer>
+</div>
+<script src="../nav.js"></script>
+<script>
+  const starsEl=document.getElementById('stars-bg');
+  for(let i=0;i<45;i++){
+    const s=document.createElement('div');s.className='star';
+    const size=Math.random()*2.5+0.5;
+    const colors=['#0d9488','#c9a84c','#7c3aed'];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${Math.random()*4+2}s;--delay:${Math.random()*6}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
+</script>
+</body>
+</html>

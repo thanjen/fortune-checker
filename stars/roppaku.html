@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>六白金星のあなたへ｜九星×四柱推命 組み合わせ診断｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/stars/roppaku.html">
+<meta name="description" content="六白金星と十干10種類の組み合わせ特徴をまとめています。自分の日干を確認して詳細ページで運気を読み解こう。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1a1a2e;--gold:#c9a84c;--gold-light:#e8d5a3;--cream:#faf8f3;--muted:#6b6b7a;
+    --border:rgba(201,168,76,0.25);--surface:rgba(255,255,255,0.7);--purple:#7c3aed;
+    --star-color:#64748b;--star-bg:rgba(100,116,139,0.08);--star-border:rgba(100,116,139,0.25);--star-light:rgba(100,116,139,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;
+    background-image:radial-gradient(ellipse at 10% 5%,var(--star-bg) 0%,transparent 50%),radial-gradient(ellipse at 90% 5%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+  .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .star{position:absolute;border-radius:50%;opacity:0;animation:twinkle var(--d,3s) var(--delay,0s) infinite;}
+  @keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.6);}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+  .breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;flex-wrap:wrap;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{opacity:0.5;}
+  .page-hero{text-align:center;padding:2rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+  .page-label{display:inline-block;font-size:0.68rem;letter-spacing:0.2em;color:var(--star-color);border:1px solid var(--star-border);border-radius:999px;padding:0.25rem 0.8rem;margin-bottom:1rem;}
+  .page-icon{font-size:3.5rem;display:block;margin-bottom:0.75rem;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  .page-title{font-family:'Shippori Mincho',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:500;letter-spacing:0.12em;margin-bottom:0.4rem;color:var(--star-color);}
+  .page-yomi{font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;margin-bottom:0.75rem;}
+  .page-keyword{display:inline-block;background:var(--star-bg);border:1px solid var(--star-border);border-radius:999px;padding:0.3rem 1rem;font-size:0.75rem;color:var(--star-color);margin-bottom:1rem;}
+  .page-desc{font-size:0.85rem;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto;}
+  .intro-cta{background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(201,168,76,0.05));border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;text-align:center;margin-bottom:2rem;}
+  .intro-cta-title{font-family:'Shippori Mincho',serif;font-size:0.88rem;font-weight:600;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .intro-cta-text{font-size:0.78rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;}
+  .btn-diagnosis{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.5rem;background:linear-gradient(135deg,var(--purple),#4f46e5);color:#fff;border-radius:8px;text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-diagnosis:hover{opacity:0.85;}
+  .jump-nav{margin-bottom:2rem;}
+  .jump-nav-title{font-size:0.72rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.6rem;}
+  .jump-links{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .jump-link{display:inline-block;padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.72rem;color:var(--muted);text-decoration:none;transition:all 0.2s;}
+  .jump-link:hover{border-color:var(--star-color);color:var(--star-color);}
+  .section-heading{font-family:'Shippori Mincho',serif;font-size:1.05rem;font-weight:600;letter-spacing:0.1em;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--star-bg);color:var(--star-color);}
+  .combo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;backdrop-filter:blur(8px);transition:box-shadow 0.2s;}
+  .combo-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.07);}
+  .combo-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.7rem;border-bottom:2px solid var(--star-light);}
+  .combo-code{font-size:0.68rem;letter-spacing:0.15em;color:var(--star-color);background:var(--star-bg);border:1px solid var(--star-border);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;}
+  .combo-title{font-family:'Shippori Mincho',serif;font-size:0.95rem;font-weight:600;letter-spacing:0.08em;color:var(--ink);}
+  .combo-body{font-size:0.87rem;line-height:2;color:var(--ink);margin-bottom:1rem;}
+  .combo-note-btn{display:inline-flex;align-items:center;gap:0.3rem;padding:0.5rem 1rem;background:var(--star-bg);border:1px solid var(--star-border);border-radius:8px;color:var(--star-color);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;transition:all 0.2s;}
+  .combo-note-btn:hover{opacity:0.8;}
+  .detail-cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(124,58,237,0.05));border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:2rem 0;}
+  .detail-cta-title{font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;letter-spacing:0.12em;margin-bottom:0.75rem;}
+  .detail-features{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;margin-bottom:1.25rem;}
+  .detail-feature{display:inline-block;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.7rem;font-size:0.7rem;color:var(--ink);}
+  .btn-note{display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.75rem;background:var(--gold);color:#fff;border-radius:10px;text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-note:hover{opacity:0.85;}
+  .nav-links{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:2rem;}
+  .nav-link{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;font-size:0.82rem;color:var(--ink);transition:all 0.2s;}
+  .nav-link:hover{border-color:var(--gold-light);transform:translateY(-2px);}
+  .nav-link-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.3rem;}
+  .ad-area{margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.5);border:1px solid var(--border);border-radius:12px;text-align:center;}
+  .ad-label{font-size:0.65rem;color:var(--muted);margin-bottom:0.5rem;}
+  footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .footer-nav{display:flex;justify-content:center;gap:1.25rem;margin-bottom:1rem;flex-wrap:wrap;}
+  .footer-nav a{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-decoration:none;}
+  .footer-nav a:hover{color:var(--gold);}
+  .footer-copy{font-size:0.68rem;color:var(--muted);opacity:0.6;}
+  @media(max-width:480px){.nav-links{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="stars-bg" id="stars-bg"></div>
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>›</span>
+    <a href="/stars/index.html">9つの星を知る</a><span>›</span>
+    <span>六白金星</span>
+  </div>
+  <div class="page-hero">
+    <span class="page-label">本命星 F</span>
+    <span class="page-icon">⚙️</span>
+    <h1 class="page-title">六白金星のあなたへ</h1>
+    <div class="page-yomi">ろっぱくきんせい / 五行：金</div>
+    <span class="page-keyword">完璧・気品・知恵</span>
+    <p class="page-desc">
+      このページでは「六白金星」の本命星を持つあなたと、<br>
+      十干10種類それぞれの組み合わせの特徴をまとめているよ🌙<br>
+      自分の日干を確認したら、該当する組み合わせをチェックしてみてね✨
+    </p>
+  </div>
+  <div class="intro-cta">
+    <div class="intro-cta-title">🦦 はじめてこのページに来たあなたへ</div>
+    <p class="intro-cta-text">まずは無料診断で、自分の本命星と日干を調べてみてね！</p>
+    <a href="/diagnosis.html" class="btn-diagnosis">★ 無料診断ページはこちら</a>
+  </div>
+  <div class="jump-nav">
+    <div class="jump-nav-title">▼ 日干で絞り込む</div>
+    <div class="jump-links">
+      <a href="#combo-01" class="jump-link">甲（きのえ）</a>
+      <a href="#combo-02" class="jump-link">乙（きのと）</a>
+      <a href="#combo-03" class="jump-link">丙（ひのえ）</a>
+      <a href="#combo-04" class="jump-link">丁（ひのと）</a>
+      <a href="#combo-05" class="jump-link">戊（つちのえ）</a>
+      <a href="#combo-06" class="jump-link">己（つちのと）</a>
+      <a href="#combo-07" class="jump-link">庚（かのえ）</a>
+      <a href="#combo-08" class="jump-link">辛（かのと）</a>
+      <a href="#combo-09" class="jump-link">壬（みずのえ）</a>
+      <a href="#combo-10" class="jump-link">癸（みずのと）</a>
+    </div>
+  </div>
+  <div class="section-heading">六白金星と十干の組み合わせ</div>
+
+    <div class="combo-card" id="combo-01">
+      <div class="combo-header">
+        <span class="combo-code">F-01</span>
+        <span class="combo-title">六白金星 × 甲（きのえ）</span>
+      </div>
+      <p class="combo-body">六白金星の持つリーダーシップと、甲の真っ直ぐに伸びる大木のエネルギーが合わさると、とても頼もしい存在になるんだ。正義感が強くて、曲がったことが大嫌い。組織のトップや開拓者として活躍できる素質を持っているよ。ただ、自分の信念が強すぎて、周囲と衝突しやすい面もあるんだ。「自分が正しい」と思い込みすぎると、せっかくの人望を失ってしまうこともあるから注意してね。柔軟性を意識すると、持ち前のカリスマ性がもっと輝くよ。大きな志を持って進む姿は、多くの人を惹きつける力があるんだ。困難があっても折れない強さが魅力だね！</p>
+      <a href="https://note.com/by_nature/n/n6d4311cc4eb2" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-02">
+      <div class="combo-header">
+        <span class="combo-code">F-02</span>
+        <span class="combo-title">六白金星 × 乙（きのと）</span>
+      </div>
+      <p class="combo-body">六白金星の威厳と、乙のしなやかな草花のエネルギーが出会うと、柔らかさの中に芯の強さを持つ人になるよ。一見穏やかに見えるけど、内側には確固たる信念があるんだ。人に合わせながらも、最終的には自分の目標をしっかり達成していく粘り強さが特徴だよ。芸術的センスや美的感覚にも優れていて、クリエイティブな分野で才能を発揮することも多いんだ。ただ、優柔不断に見られがちだったり、本心を隠しすぎて誤解されることもあるから気をつけてね。時には六白金星らしく堂々と意見を伝えることで、より信頼される存在になれるよ！</p>
+      <a href="https://note.com/by_nature/n/n3b810e8db4f1" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-03">
+      <div class="combo-header">
+        <span class="combo-code">F-03</span>
+        <span class="combo-title">六白金星 × 丙（ひのえ）</span>
+      </div>
+      <p class="combo-body">六白金星の天の気高さと、丙の太陽のような明るさが組み合わさると、周囲を照らすカリスマ的存在になるんだ。華やかなオーラを持っていて、人が自然と集まってくるタイプだよ。情熱的で行動力があり、大きなプロジェクトを動かす力を持っているんだ。リーダーとして注目を浴びる場面も多いはず。ただ、目立ちすぎて妬まれたり、自信過剰になりやすい面もあるから注意が必要だよ。また、熱しやすく冷めやすい傾向もあるから、継続する力を意識するといいね。謙虚さを忘れずにいれば、その輝きは多くの人に希望を与える存在になれるよ！</p>
+      <a href="https://note.com/by_nature/n/n1925766c4d7d" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-04">
+      <div class="combo-header">
+        <span class="combo-code">F-04</span>
+        <span class="combo-title">六白金星 × 丁（ひのと）</span>
+      </div>
+      <p class="combo-body">六白金星の高貴な品格と、丁の灯火のような繊細さが合わさると、知性と洞察力に優れた人になるんだ。物事の本質を見抜く力があって、静かに周囲を導くタイプだよ。派手さはないけれど、深い思考と鋭い分析力で信頼を集めるんだ。研究職や専門分野で力を発揮することが多いよ。ただ、考えすぎて行動が遅れたり、神経質になりやすい面もあるから注意してね。また、プライドが高いのに表に出さないから、誤解を受けることもあるんだ。自分の気持ちを適度に表現することで、人間関係がもっとスムーズになるよ。内に秘めた情熱を大切にしてね！</p>
+      <a href="https://note.com/by_nature/n/n7ac305991003" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-05">
+      <div class="combo-header">
+        <span class="combo-code">F-05</span>
+        <span class="combo-title">六白金星 × 戊（つちのえ）</span>
+      </div>
+      <p class="combo-body">六白金星の天のエネルギーと、戊の大きな山のような安定感が合わさると、どっしりとした頼れる存在になるんだ。スケールの大きな考え方ができて、周囲から「この人についていきたい」と思われるタイプだよ。責任感が強く、一度引き受けたことは最後までやり遂げる誠実さがあるんだ。経営者や管理職として成功する人も多いよ。ただ、頑固すぎて融通が利かなかったり、変化を嫌う面もあるから注意してね。時代の流れに合わせる柔軟性を持つと、さらに大きく成長できるよ。その堂々とした存在感は、多くの人に安心感を与える素晴らしい才能なんだ！</p>
+      <a href="https://note.com/by_nature/n/n36a7783e2e9c" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-06">
+      <div class="combo-header">
+        <span class="combo-code">F-06</span>
+        <span class="combo-title">六白金星 × 己（つちのと）</span>
+      </div>
+      <p class="combo-body">六白金星の気品と、己の田畑のような包容力が組み合わさると、温かみのあるリーダーになれるんだ。人を育てる才能があって、面倒見がとても良いタイプだよ。自分が前に出るより、周囲をサポートして全体を底上げすることで力を発揮するんだ。教育者や相談役として活躍する人も多いよ。ただ、人に尽くしすぎて自分を犠牲にしたり、優柔不断になりやすい面もあるから気をつけてね。六白金星の持つ決断力を活かして、時にはビシッと意見を言うことも大切だよ。その優しさと強さのバランスが取れたとき、誰からも慕われる存在になれるんだ！</p>
+      <a href="https://note.com/by_nature/n/nccb6a4725966" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-07">
+      <div class="combo-header">
+        <span class="combo-code">F-07</span>
+        <span class="combo-title">六白金星 × 庚（かのえ）</span>
+      </div>
+      <p class="combo-body">六白金星の天の金と、庚の刀剣のような鋭さが合わさると、最強の実行力を持つ人になるんだ。決断が早く、目標に向かって一直線に突き進むタイプだよ。競争心が強く、困難な状況でも諦めない精神力があるんだ。ビジネスや勝負の世界で大きな成功を収める可能性を秘めているよ。ただ、攻撃的になりすぎたり、敵を作りやすい面もあるから注意してね。正義感が強いあまり、相手を傷つけてしまうこともあるんだ。その鋭さを「守るための強さ」として使うことで、真のリーダーになれるよ。時には立ち止まって周囲を見渡す余裕も大切にしてね！</p>
+      <a href="https://note.com/by_nature/n/nf9757fa87d8b" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-08">
+      <div class="combo-header">
+        <span class="combo-code">F-08</span>
+        <span class="combo-title">六白金星 × 辛（かのと）</span>
+      </div>
+      <p class="combo-body">六白金星の高貴さと、辛の宝石のような繊細な輝きが合わさると、洗練された美意識を持つ人になるんだ。完璧主義で、細部までこだわりを持つタイプだよ。上品で知的な雰囲気があり、センスの良さで周囲から一目置かれる存在なんだ。芸術やファッション、美容関係で才能を発揮することも多いよ。ただ、理想が高すぎて現実に不満を感じやすかったり、傷つきやすい繊細さもあるから注意してね。プライドが邪魔して素直になれないこともあるんだ。自分の弱さも受け入れることで、その美しい輝きがさらに増すよ。本物の価値がわかる目を持った素敵な人なんだ！</p>
+      <a href="https://note.com/by_nature/n/n73444235e368" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-09">
+      <div class="combo-header">
+        <span class="combo-code">F-09</span>
+        <span class="combo-title">六白金星 × 壬（みずのえ）</span>
+      </div>
+      <p class="combo-body">六白金星の統率力と、壬の大海のような広大なスケール感が合わさると、大きな夢を実現できる人になるんだ。発想力が豊かで、常識にとらわれない自由な考え方ができるタイプだよ。人脈を広げる才能があり、様々な分野の人とつながることで可能性を広げていくんだ。海外での活躍や、新しい分野の開拓に縁があることも多いよ。ただ、気が大きくなりすぎて現実離れしたり、飽きっぽい面もあるから注意してね。地に足をつけることを意識すると、夢を形にする力がさらに高まるよ。その器の大きさは、多くの人を受け入れられる素晴らしい才能なんだ！</p>
+      <a href="https://note.com/by_nature/n/nccad5db057f0" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-10">
+      <div class="combo-header">
+        <span class="combo-code">F-10</span>
+        <span class="combo-title">六白金星 × 癸（みずのと）</span>
+      </div>
+      <p class="combo-body">六白金星の威厳と、癸の雨露のような静かな知性が合わさると、深い洞察力を持つ賢者タイプになるんだ。表面的なことに惑わされず、物事の本質を見極める力があるよ。控えめに見えるけど、内側には強い意志と高い理想を秘めているんだ。研究者やカウンセラー、参謀として力を発揮することが多いよ。ただ、考えすぎて行動に移せなかったり、心配性になりやすい面もあるから注意してね。また、感情を内に溜め込みすぎることもあるんだ。時には六白金星らしく堂々と前に出ることで、その知恵が多くの人の役に立つよ。静かな強さを持った素敵な人なんだ！
+以上が六白金星と十干の組み合わせだよ！気になる組み合わせはあったかな？もっと詳しく知りたいことがあったら、いつでも聞いてね！🦦✨</p>
+      <a href="https://note.com/by_nature/n/n13cbd3956596" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+  <div class="detail-cta">
+    <div class="detail-cta-title">🔮 詳細鑑定レポートについて</div>
+    <div class="detail-features">
+      <span class="detail-feature">組み合わせの特徴</span><span class="detail-feature">強み・気をつけたいこと</span>
+      <span class="detail-feature">向いている仕事</span><span class="detail-feature">金運</span>
+      <span class="detail-feature">恋愛傾向</span><span class="detail-feature">人間関係</span>
+      <span class="detail-feature">ラッキーカラー</span><span class="detail-feature">開運アドバイス</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">6,000文字超えのボリュームでお伝えします。</p>
+    <a href="https://note.com/by_nature/n/n90e6f76f2ff5" target="_blank" rel="noopener noreferrer" class="btn-note">📖 記事一覧はこちら（六白金星の記事を探してね）</a>
+  </div>
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931" data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <div class="nav-links">
+    <a href="/stars/index.html" class="nav-link"><div class="nav-link-label">← BACK</div>他の星を見る</a>
+    <a href="/diagnosis.html" class="nav-link"><div class="nav-link-label">DIAGNOSIS</div>無料診断ページ →</a>
+  </div>
+  <footer><nav class="footer-nav"></nav><p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p></footer>
+</div>
+<script src="../nav.js"></script>
+<script>
+  const starsEl=document.getElementById('stars-bg');
+  for(let i=0;i<45;i++){
+    const s=document.createElement('div');s.className='star';
+    const size=Math.random()*2.5+0.5;
+    const colors=['#64748b','#c9a84c','#7c3aed'];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${Math.random()*4+2}s;--delay:${Math.random()*6}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
+</script>
+</body>
+</html>

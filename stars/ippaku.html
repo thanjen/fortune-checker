@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一白水星のあなたへ｜九星×四柱推命 組み合わせ診断｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/stars/ippaku.html">
+<meta name="description" content="一白水星と十干10種類の組み合わせ特徴をまとめています。自分の日干を確認して詳細ページで運気を読み解こう。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1a1a2e;--gold:#c9a84c;--gold-light:#e8d5a3;--cream:#faf8f3;--muted:#6b6b7a;
+    --border:rgba(201,168,76,0.25);--surface:rgba(255,255,255,0.7);--purple:#7c3aed;
+    --star-color:#3b82f6;--star-bg:rgba(59,130,246,0.08);--star-border:rgba(59,130,246,0.25);--star-light:rgba(59,130,246,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;
+    background-image:radial-gradient(ellipse at 10% 5%,var(--star-bg) 0%,transparent 50%),radial-gradient(ellipse at 90% 5%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+  .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .star{position:absolute;border-radius:50%;opacity:0;animation:twinkle var(--d,3s) var(--delay,0s) infinite;}
+  @keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.6);}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+  .breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;flex-wrap:wrap;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{opacity:0.5;}
+  .page-hero{text-align:center;padding:2rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+  .page-label{display:inline-block;font-size:0.68rem;letter-spacing:0.2em;color:var(--star-color);border:1px solid var(--star-border);border-radius:999px;padding:0.25rem 0.8rem;margin-bottom:1rem;}
+  .page-icon{font-size:3.5rem;display:block;margin-bottom:0.75rem;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  .page-title{font-family:'Shippori Mincho',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:500;letter-spacing:0.12em;margin-bottom:0.4rem;color:var(--star-color);}
+  .page-yomi{font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;margin-bottom:0.75rem;}
+  .page-keyword{display:inline-block;background:var(--star-bg);border:1px solid var(--star-border);border-radius:999px;padding:0.3rem 1rem;font-size:0.75rem;color:var(--star-color);margin-bottom:1rem;}
+  .page-desc{font-size:0.85rem;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto;}
+  .intro-cta{background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(201,168,76,0.05));border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;text-align:center;margin-bottom:2rem;}
+  .intro-cta-title{font-family:'Shippori Mincho',serif;font-size:0.88rem;font-weight:600;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .intro-cta-text{font-size:0.78rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;}
+  .btn-diagnosis{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.5rem;background:linear-gradient(135deg,var(--purple),#4f46e5);color:#fff;border-radius:8px;text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-diagnosis:hover{opacity:0.85;}
+  .jump-nav{margin-bottom:2rem;}
+  .jump-nav-title{font-size:0.72rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.6rem;}
+  .jump-links{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .jump-link{display:inline-block;padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.72rem;color:var(--muted);text-decoration:none;transition:all 0.2s;}
+  .jump-link:hover{border-color:var(--star-color);color:var(--star-color);}
+  .section-heading{font-family:'Shippori Mincho',serif;font-size:1.05rem;font-weight:600;letter-spacing:0.1em;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--star-bg);color:var(--star-color);}
+  .combo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;backdrop-filter:blur(8px);transition:box-shadow 0.2s;}
+  .combo-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.07);}
+  .combo-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.7rem;border-bottom:2px solid var(--star-light);}
+  .combo-code{font-size:0.68rem;letter-spacing:0.15em;color:var(--star-color);background:var(--star-bg);border:1px solid var(--star-border);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;}
+  .combo-title{font-family:'Shippori Mincho',serif;font-size:0.95rem;font-weight:600;letter-spacing:0.08em;color:var(--ink);}
+  .combo-body{font-size:0.87rem;line-height:2;color:var(--ink);margin-bottom:1rem;}
+  .combo-note-btn{display:inline-flex;align-items:center;gap:0.3rem;padding:0.5rem 1rem;background:var(--star-bg);border:1px solid var(--star-border);border-radius:8px;color:var(--star-color);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;transition:all 0.2s;}
+  .combo-note-btn:hover{opacity:0.8;}
+  .detail-cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(124,58,237,0.05));border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:2rem 0;}
+  .detail-cta-title{font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;letter-spacing:0.12em;margin-bottom:0.75rem;}
+  .detail-features{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;margin-bottom:1.25rem;}
+  .detail-feature{display:inline-block;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.7rem;font-size:0.7rem;color:var(--ink);}
+  .btn-note{display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.75rem;background:var(--gold);color:#fff;border-radius:10px;text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-note:hover{opacity:0.85;}
+  .nav-links{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:2rem;}
+  .nav-link{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;font-size:0.82rem;color:var(--ink);transition:all 0.2s;}
+  .nav-link:hover{border-color:var(--gold-light);transform:translateY(-2px);}
+  .nav-link-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.3rem;}
+  .ad-area{margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.5);border:1px solid var(--border);border-radius:12px;text-align:center;}
+  .ad-label{font-size:0.65rem;color:var(--muted);margin-bottom:0.5rem;}
+  footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .footer-nav{display:flex;justify-content:center;gap:1.25rem;margin-bottom:1rem;flex-wrap:wrap;}
+  .footer-nav a{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-decoration:none;}
+  .footer-nav a:hover{color:var(--gold);}
+  .footer-copy{font-size:0.68rem;color:var(--muted);opacity:0.6;}
+  @media(max-width:480px){.nav-links{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="stars-bg" id="stars-bg"></div>
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>›</span>
+    <a href="/stars/index.html">9つの星を知る</a><span>›</span>
+    <span>一白水星</span>
+  </div>
+  <div class="page-hero">
+    <span class="page-label">本命星 A</span>
+    <span class="page-icon">💧</span>
+    <h1 class="page-title">一白水星のあなたへ</h1>
+    <div class="page-yomi">いっぱくすいせい / 五行：水</div>
+    <span class="page-keyword">柔軟性・適応力・流れに乗る</span>
+    <p class="page-desc">
+      このページでは「一白水星」の本命星を持つあなたと、<br>
+      十干10種類それぞれの組み合わせの特徴をまとめているよ🌙<br>
+      自分の日干を確認したら、該当する組み合わせをチェックしてみてね✨
+    </p>
+  </div>
+  <div class="intro-cta">
+    <div class="intro-cta-title">🦦 はじめてこのページに来たあなたへ</div>
+    <p class="intro-cta-text">まずは無料診断で、自分の本命星と日干を調べてみてね！</p>
+    <a href="/diagnosis.html" class="btn-diagnosis">★ 無料診断ページはこちら</a>
+  </div>
+  <div class="jump-nav">
+    <div class="jump-nav-title">▼ 日干で絞り込む</div>
+    <div class="jump-links">
+      <a href="#combo-01" class="jump-link">甲（きのえ）</a>
+      <a href="#combo-02" class="jump-link">乙（きのと）</a>
+      <a href="#combo-03" class="jump-link">丙（ひのえ）</a>
+      <a href="#combo-04" class="jump-link">丁（ひのと）</a>
+      <a href="#combo-05" class="jump-link">戊（つちのえ）</a>
+      <a href="#combo-06" class="jump-link">己（つちのと）</a>
+      <a href="#combo-07" class="jump-link">庚（かのえ）</a>
+      <a href="#combo-08" class="jump-link">辛（かのと）</a>
+      <a href="#combo-09" class="jump-link">壬（みずのえ）</a>
+      <a href="#combo-10" class="jump-link">癸（みずのと）</a>
+    </div>
+  </div>
+  <div class="section-heading">一白水星と十干の組み合わせ</div>
+
+    <div class="combo-card" id="combo-01">
+      <div class="combo-header">
+        <span class="combo-code">A-01</span>
+        <span class="combo-title">一白水星 × 甲（きのえ）</span>
+      </div>
+      <p class="combo-body">一白水星の静かな水のエネルギーと、甲の大木のような力強さが組み合わさった人だよ。表面上は穏やかで控えめに見えるんだけど、内側には真っ直ぐな信念と向上心を秘めているんだ。まるで大地にしっかり根を張りながら、静かに成長していく樹木のようなイメージだね。人間関係では聞き上手でありながらも、自分の意見はブレずに持っているタイプ。ただし、頑固になりすぎると水の柔軟性が活かせなくなっちゃうから注意が必要だよ。リーダーシップを発揮する場面では、押しの強さよりも包容力で周りを導くと才能が開花するんだ。時間をかけて信頼を築いていく粘り強さが最大の武器になるよ！</p>
+      <a href="https://note.com/by_nature/n/ndf642bfe80ea" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-02">
+      <div class="combo-header">
+        <span class="combo-code">A-02</span>
+        <span class="combo-title">一白水星 × 乙（きのと）</span>
+      </div>
+      <p class="combo-body">一白水星の適応力と、乙の草花のようなしなやかさが融合した、とっても柔軟な人だよ。どんな環境にも馴染める順応性の高さが最大の魅力なんだ。人の気持ちを敏感に察知して、自然と周囲に溶け込んでいけるタイプだね。芸術的なセンスや繊細な感性にも恵まれていて、クリエイティブな分野で才能を発揮しやすいんだ。ただし、周りに合わせすぎて自分を見失いがちなところがあるから気をつけてね。「自分は本当はどうしたいの？」って時々立ち止まって考えることが大切だよ。優しさの中にも芯を持つことで、より魅力的に輝けるんだ。協調性を活かしながらも、自分らしさを忘れないでいてほしいな！</p>
+      <a href="https://note.com/by_nature/n/n204f151d1672" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-03">
+      <div class="combo-header">
+        <span class="combo-code">A-03</span>
+        <span class="combo-title">一白水星 × 丙（ひのえ）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、丙の太陽のような火が出会う、ちょっと不思議な組み合わせだよ。内面は冷静で思慮深いのに、外向きには明るくエネルギッシュに振る舞える二面性を持っているんだ。この対照的なエネルギーがあるからこそ、場面に応じて使い分けができる器用さが生まれるんだね。人前では華やかに輝きながらも、一人の時間には深く考え込む傾向があるよ。感情の波が激しくなりやすい面もあるから、自分なりのリラックス方法を見つけておくといいんだ。情熱と冷静さのバランスが取れた時、素晴らしいリーダーシップを発揮できるよ。自分の中の「火と水」を上手に調和させることが人生のテーマになるんだ！</p>
+      <a href="https://note.com/by_nature/n/na8c7f24d68da" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-04">
+      <div class="combo-header">
+        <span class="combo-code">A-04</span>
+        <span class="combo-title">一白水星 × 丁（ひのと）</span>
+      </div>
+      <p class="combo-body">一白水星の深い洞察力と、丁のロウソクのような穏やかな灯火が調和した人だよ。静かな情熱を内に秘めていて、周囲を優しく照らすような温かさを持っているんだ。派手さはないけれど、困っている人にそっと寄り添える繊細さが魅力だね。知的好奇心が強く、学ぶことや研究することに喜びを感じるタイプでもあるよ。ただし、考えすぎて行動に移せなかったり、心配性になりすぎたりする傾向があるから注意してね。自分の感情を信頼して、時には直感で動いてみることも大切なんだ。人の心の機微を読み取る力を活かして、カウンセラーや教育者として活躍する人も多いよ。静かに燃える炎のような生き方が似合うんだ！</p>
+      <a href="http://note.com/by_nature/n/ncaac56f8d4d3" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-05">
+      <div class="combo-header">
+        <span class="combo-code">A-05</span>
+        <span class="combo-title">一白水星 × 戊（つちのえ）</span>
+      </div>
+      <p class="combo-body">一白水星の水のエネルギーと、戊の山のような土のエネルギーが出会う組み合わせだよ。五行では土は水を剋す関係にあるから、内面に葛藤を抱えやすい傾向があるんだ。でもね、この緊張感があるからこそ、粘り強さと忍耐力という素晴らしい強みが生まれるんだよ。どっしりとした安定感がありながらも、水の柔軟性で臨機応変に対応できるバランス感覚の持ち主だね。責任感が強く、周囲から頼りにされることが多いタイプでもあるよ。注意点は、プレッシャーを溜め込みすぎてしまうこと。自分を追い込みすぎず、適度に息抜きすることを忘れないでね。困難を乗り越えるたびに大きく成長していける、晩成型の運勢を持っているんだ！</p>
+      <a href="https://note.com/by_nature/n/n6efbf7b60d2e" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-06">
+      <div class="combo-header">
+        <span class="combo-code">A-06</span>
+        <span class="combo-title">一白水星 × 己（つちのと）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、己の田畑のような柔らかい土が出会った組み合わせだよ。戊と同じく土と水の関係ではあるけれど、己は土の中でも穏やかな性質だから、比較的調和しやすいんだ。人を育てたり、サポートしたりすることに喜びを感じる、面倒見の良いタイプだね。控えめで謙虚な姿勢が好印象を与えて、自然と人が集まってくるよ。実務能力にも優れていて、コツコツと地道な努力を続けられる忍耐力があるんだ。ただし、自己主張が苦手で、つい自分を後回しにしてしまうところがあるから気をつけてね。「縁の下の力持ち」として評価されることが多いけど、たまには自分の功績をアピールしてもいいんだよ。包容力を武器に、着実に人生を築いていけるタイプなんだ！</p>
+      <a href="https://note.com/by_nature/n/nd6dea2c22404" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-07">
+      <div class="combo-header">
+        <span class="combo-code">A-07</span>
+        <span class="combo-title">一白水星 × 庚（かのえ）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、庚の鋼のような金のエネルギーが出会う、とても相性の良い組み合わせだよ。五行では金は水を生む関係にあって、庚のエネルギーが一白水星の力を引き出してくれるんだ。知性と行動力のバランスが取れていて、決断力にも優れているタイプだね。正義感が強く、曲がったことが嫌いで、筋の通らないことには毅然と立ち向かえる強さがあるよ。仕事面では、分析力と実行力を活かして成果を出しやすいんだ。ただし、正論を振りかざしすぎると周囲との摩擦が生まれやすいから、水の柔らかさも忘れないでね。厳しさと優しさを使い分けられるようになると、素晴らしいリーダーになれるよ。鋭い刃のような切れ味と、水の包容力を兼ね備えた人なんだ！</p>
+      <a href="https://note.com/by_nature/n/n4b8ee0208225" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-08">
+      <div class="combo-header">
+        <span class="combo-code">A-08</span>
+        <span class="combo-title">一白水星 × 辛（かのと）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、辛の宝石のような繊細な金が出会う組み合わせだよ。庚と同じく金生水の関係で、辛のエネルギーが水を潤してくれるんだ。美的センスが抜群で、洗練されたものや美しいものに敏感に反応する感性を持っているね。頭の回転が速く、本質を見抜く鋭い観察眼があるから、周囲の人の嘘や建前を簡単に見破ってしまうこともあるよ。繊細がゆえに傷つきやすい面もあって、ストレスを溜めやすいから要注意なんだ。完璧主義になりがちなところもあるから、自分にも他人にも少し甘くなることを心がけてみてね。クリエイティブな分野や、専門性の高い仕事で輝きやすいタイプだよ。磨けば磨くほど光る宝石のような存在なんだ！</p>
+      <a href="https://note.com/by_nature/n/n54b8930629bc" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-09">
+      <div class="combo-header">
+        <span class="combo-code">A-09</span>
+        <span class="combo-title">一白水星 × 壬（みずのえ）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、壬の大河のような水が出会う、水のエネルギーが強まった組み合わせだよ。直感力と知性が非常に高く、物事の本質を見抜く力に長けているんだ。スケールの大きな発想ができて、ビジョンを描く力は抜群だね。コミュニケーション能力も高く、人脈を広げていく才能もあるよ。ただし、水が強すぎると流されやすくなったり、優柔不断になったりする傾向があるから注意が必要なんだ。考えるだけで満足してしまい、行動に移せないこともあるかもしれないね。意識的に「決断する」「行動する」という火や木のエネルギーを取り入れることが大切だよ。大きな器を持っているからこそ、その器にふさわしい志を持つと運が開けていくんだ！</p>
+      <a href="https://note.com/by_nature/n/n0c5660073722" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-10">
+      <div class="combo-header">
+        <span class="combo-code">A-10</span>
+        <span class="combo-title">一白水星 × 癸（みずのと）</span>
+      </div>
+      <p class="combo-body">一白水星の水と、癸の雨露のような繊細な水が出会う、最も水の性質が純粋に表れる組み合わせだよ。感受性がとても豊かで、人の気持ちや場の空気を敏感に感じ取れる能力を持っているんだ。静かで控えめな印象だけど、内面には深い知恵と洞察力が秘められているね。芸術や学問など、精神的な深みを追求する分野で才能を発揮しやすいタイプだよ。ただし、繊細すぎるがゆえに、ネガティブな影響も受けやすいから、自分を守る術を身につけることが大切なんだ。一人の時間を大切にして、定期的にエネルギーを充電してね。水のように形を変えながら、どんな場所にも浸透していける適応力が最大の武器。静かに、でも確実に、周囲に影響を与えていける存在なんだよ！
+以上が一白水星と十干の組み合わせだよ！自分の十干を調べて、ぜひ参考にしてみてね。もっと詳しく知りたいことがあったら、いつでも聞いてほしいな！🦦✨</p>
+      <a href="https://note.com/by_nature/n/na35ae88c3a6e" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+  <div class="detail-cta">
+    <div class="detail-cta-title">🔮 詳細鑑定レポートについて</div>
+    <div class="detail-features">
+      <span class="detail-feature">組み合わせの特徴</span><span class="detail-feature">強み・気をつけたいこと</span>
+      <span class="detail-feature">向いている仕事</span><span class="detail-feature">金運</span>
+      <span class="detail-feature">恋愛傾向</span><span class="detail-feature">人間関係</span>
+      <span class="detail-feature">ラッキーカラー</span><span class="detail-feature">開運アドバイス</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">6,000文字超えのボリュームでお伝えします。</p>
+    <a href="https://note.com/by_nature/n/n1ae55303ca6d" target="_blank" rel="noopener noreferrer" class="btn-note">📖 記事一覧はこちら（一白水星の記事を探してね）</a>
+  </div>
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931" data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <div class="nav-links">
+    <a href="/stars/index.html" class="nav-link"><div class="nav-link-label">← BACK</div>他の星を見る</a>
+    <a href="/diagnosis.html" class="nav-link"><div class="nav-link-label">DIAGNOSIS</div>無料診断ページ →</a>
+  </div>
+  <footer><nav class="footer-nav"></nav><p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p></footer>
+</div>
+<script src="../nav.js"></script>
+<script>
+  const starsEl=document.getElementById('stars-bg');
+  for(let i=0;i<45;i++){
+    const s=document.createElement('div');s.className='star';
+    const size=Math.random()*2.5+0.5;
+    const colors=['#3b82f6','#c9a84c','#7c3aed'];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${Math.random()*4+2}s;--delay:${Math.random()*6}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
+</script>
+</body>
+</html>

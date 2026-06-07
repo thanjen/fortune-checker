@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七赤金星のあなたへ｜九星×四柱推命 組み合わせ診断｜星詠みの海獺</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="canonical" href="https://rakko-kora-rakko.life/stars/sichiseki.html">
+<meta name="description" content="七赤金星と十干10種類の組み合わせ特徴をまとめています。自分の日干を確認して詳細ページで運気を読み解こう。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97D73QKGJ0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-97D73QKGJ0');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1736527039172931" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-1736527039172931">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1a1a2e;--gold:#c9a84c;--gold-light:#e8d5a3;--cream:#faf8f3;--muted:#6b6b7a;
+    --border:rgba(201,168,76,0.25);--surface:rgba(255,255,255,0.7);--purple:#7c3aed;
+    --star-color:#ef4444;--star-bg:rgba(239,68,68,0.07);--star-border:rgba(239,68,68,0.22);--star-light:rgba(239,68,68,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--ink);font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;
+    background-image:radial-gradient(ellipse at 10% 5%,var(--star-bg) 0%,transparent 50%),radial-gradient(ellipse at 90% 5%,rgba(201,168,76,0.06) 0%,transparent 50%);}
+  .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .star{position:absolute;border-radius:50%;opacity:0;animation:twinkle var(--d,3s) var(--delay,0s) infinite;}
+  @keyframes twinkle{0%,100%{opacity:0;}50%{opacity:var(--op,0.6);}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+  .breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;flex-wrap:wrap;}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{opacity:0.5;}
+  .page-hero{text-align:center;padding:2rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+  .page-label{display:inline-block;font-size:0.68rem;letter-spacing:0.2em;color:var(--star-color);border:1px solid var(--star-border);border-radius:999px;padding:0.25rem 0.8rem;margin-bottom:1rem;}
+  .page-icon{font-size:3.5rem;display:block;margin-bottom:0.75rem;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  .page-title{font-family:'Shippori Mincho',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:500;letter-spacing:0.12em;margin-bottom:0.4rem;color:var(--star-color);}
+  .page-yomi{font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;margin-bottom:0.75rem;}
+  .page-keyword{display:inline-block;background:var(--star-bg);border:1px solid var(--star-border);border-radius:999px;padding:0.3rem 1rem;font-size:0.75rem;color:var(--star-color);margin-bottom:1rem;}
+  .page-desc{font-size:0.85rem;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto;}
+  .intro-cta{background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(201,168,76,0.05));border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;text-align:center;margin-bottom:2rem;}
+  .intro-cta-title{font-family:'Shippori Mincho',serif;font-size:0.88rem;font-weight:600;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .intro-cta-text{font-size:0.78rem;color:var(--muted);line-height:1.8;margin-bottom:0.75rem;}
+  .btn-diagnosis{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.5rem;background:linear-gradient(135deg,var(--purple),#4f46e5);color:#fff;border-radius:8px;text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-diagnosis:hover{opacity:0.85;}
+  .jump-nav{margin-bottom:2rem;}
+  .jump-nav-title{font-size:0.72rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.6rem;}
+  .jump-links{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .jump-link{display:inline-block;padding:0.3rem 0.7rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:0.72rem;color:var(--muted);text-decoration:none;transition:all 0.2s;}
+  .jump-link:hover{border-color:var(--star-color);color:var(--star-color);}
+  .section-heading{font-family:'Shippori Mincho',serif;font-size:1.05rem;font-weight:600;letter-spacing:0.1em;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--star-bg);color:var(--star-color);}
+  .combo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;backdrop-filter:blur(8px);transition:box-shadow 0.2s;}
+  .combo-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.07);}
+  .combo-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;padding-bottom:0.7rem;border-bottom:2px solid var(--star-light);}
+  .combo-code{font-size:0.68rem;letter-spacing:0.15em;color:var(--star-color);background:var(--star-bg);border:1px solid var(--star-border);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;}
+  .combo-title{font-family:'Shippori Mincho',serif;font-size:0.95rem;font-weight:600;letter-spacing:0.08em;color:var(--ink);}
+  .combo-body{font-size:0.87rem;line-height:2;color:var(--ink);margin-bottom:1rem;}
+  .combo-note-btn{display:inline-flex;align-items:center;gap:0.3rem;padding:0.5rem 1rem;background:var(--star-bg);border:1px solid var(--star-border);border-radius:8px;color:var(--star-color);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;transition:all 0.2s;}
+  .combo-note-btn:hover{opacity:0.8;}
+  .detail-cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(124,58,237,0.05));border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;margin:2rem 0;}
+  .detail-cta-title{font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;letter-spacing:0.12em;margin-bottom:0.75rem;}
+  .detail-features{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;margin-bottom:1.25rem;}
+  .detail-feature{display:inline-block;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.7rem;font-size:0.7rem;color:var(--ink);}
+  .btn-note{display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.75rem;background:var(--gold);color:#fff;border-radius:10px;text-decoration:none;font-size:0.85rem;letter-spacing:0.1em;transition:opacity 0.2s;}
+  .btn-note:hover{opacity:0.85;}
+  .nav-links{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:2rem;}
+  .nav-link{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;font-size:0.82rem;color:var(--ink);transition:all 0.2s;}
+  .nav-link:hover{border-color:var(--gold-light);transform:translateY(-2px);}
+  .nav-link-label{font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:0.3rem;}
+  .ad-area{margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,0.5);border:1px solid var(--border);border-radius:12px;text-align:center;}
+  .ad-label{font-size:0.65rem;color:var(--muted);margin-bottom:0.5rem;}
+  footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;}
+  .footer-nav{display:flex;justify-content:center;gap:1.25rem;margin-bottom:1rem;flex-wrap:wrap;}
+  .footer-nav a{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-decoration:none;}
+  .footer-nav a:hover{color:var(--gold);}
+  .footer-copy{font-size:0.68rem;color:var(--muted);opacity:0.6;}
+  @media(max-width:480px){.nav-links{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="stars-bg" id="stars-bg"></div>
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>›</span>
+    <a href="/stars/index.html">9つの星を知る</a><span>›</span>
+    <span>七赤金星</span>
+  </div>
+  <div class="page-hero">
+    <span class="page-label">本命星 G</span>
+    <span class="page-icon">✨</span>
+    <h1 class="page-title">七赤金星のあなたへ</h1>
+    <div class="page-yomi">しちせききんせい / 五行：金</div>
+    <span class="page-keyword">喜び・社交・輝き</span>
+    <p class="page-desc">
+      このページでは「七赤金星」の本命星を持つあなたと、<br>
+      十干10種類それぞれの組み合わせの特徴をまとめているよ🌙<br>
+      自分の日干を確認したら、該当する組み合わせをチェックしてみてね✨
+    </p>
+  </div>
+  <div class="intro-cta">
+    <div class="intro-cta-title">🦦 はじめてこのページに来たあなたへ</div>
+    <p class="intro-cta-text">まずは無料診断で、自分の本命星と日干を調べてみてね！</p>
+    <a href="/diagnosis.html" class="btn-diagnosis">★ 無料診断ページはこちら</a>
+  </div>
+  <div class="jump-nav">
+    <div class="jump-nav-title">▼ 日干で絞り込む</div>
+    <div class="jump-links">
+      <a href="#combo-01" class="jump-link">甲（きのえ）</a>
+      <a href="#combo-02" class="jump-link">乙（きのと）</a>
+      <a href="#combo-03" class="jump-link">丙（ひのえ）</a>
+      <a href="#combo-04" class="jump-link">丁（ひのと）</a>
+      <a href="#combo-05" class="jump-link">戊（つちのえ）</a>
+      <a href="#combo-06" class="jump-link">己（つちのと）</a>
+      <a href="#combo-07" class="jump-link">庚（かのえ）</a>
+      <a href="#combo-08" class="jump-link">辛（かのと）</a>
+      <a href="#combo-09" class="jump-link">壬（みずのえ）</a>
+      <a href="#combo-10" class="jump-link">癸（みずのと）</a>
+    </div>
+  </div>
+  <div class="section-heading">七赤金星と十干の組み合わせ</div>
+
+    <div class="combo-card" id="combo-01">
+      <div class="combo-header">
+        <span class="combo-code">G-01</span>
+        <span class="combo-title">七赤金星 × 甲（きのえ）</span>
+      </div>
+      <p class="combo-body">七赤金星の華やかな社交性に、甲の真っ直ぐな向上心が加わった組み合わせだよ。木が金を剋す関係だから、内面では常に自分を高めたいという強い意志が働いているんだ。人当たりは柔らかいのに、芯には折れない信念を持っているのが特徴。リーダーシップを発揮しながらも、周囲を楽しませる才能があるよ。ただ、理想が高すぎて自分を追い込みやすい傾向も。楽しむことが得意な七赤の力を活かして、時には肩の力を抜くことが大切なんだ。ビジネスと遊び心を両立できる稀有な存在で、起業家や営業職で才能を発揮する人が多いよ。自分の「楽しい」を大切にしながら成長していくと、もっと魅力が輝くんだ。</p>
+      <a href="https://note.com/by_nature/n/n81f791b569d2" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-02">
+      <div class="combo-header">
+        <span class="combo-code">G-02</span>
+        <span class="combo-title">七赤金星 × 乙（きのと）</span>
+      </div>
+      <p class="combo-body">七赤金星の魅力的な雰囲気に、乙のしなやかな適応力が融合した組み合わせだよ。草花のように柔らかく周囲に馴染みながらも、七赤特有の華やかさでどこにいても注目を集めてしまうんだ。人の心を読む力に優れていて、場の空気を和ませる天才。芸術的センスも抜群で、美しいものを生み出す才能があるよ。ただ、優しすぎて相手に合わせすぎてしまうことも。自分の本音を見失わないように注意が必要なんだ。恋愛では駆け引き上手だけど、本命には素直になれないことも。金と木の緊張関係があるから、内面では常に葛藤を抱えやすいけど、それが繊細な表現力につながっているんだよ。</p>
+      <a href="https://note.com/by_nature/n/n25eea0a67d0f" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-03">
+      <div class="combo-header">
+        <span class="combo-code">G-03</span>
+        <span class="combo-title">七赤金星 × 丙（ひのえ）</span>
+      </div>
+      <p class="combo-body">七赤金星の社交性に、丙の太陽のような明るさが加わった、とびきり華やかな組み合わせだよ。火が金を剋す関係だから、情熱と理性の間で揺れ動くことがあるんだ。でも、その葛藤がドラマチックな人生を生み出すんだよね。存在感が抜群で、どんな場所でも主役級の輝きを放つよ。エンターテインメントや接客業で大活躍できる才能の持ち主。ただ、目立ちすぎて嫉妬を買いやすいから、謙虚さを忘れないことが大切なんだ。恋愛では情熱的だけど、熱しやすく冷めやすい一面も。金のクールさと火の熱さのバランスを取ることで、持ち前のカリスマ性がさらに磨かれるよ。自分を輝かせながら周囲も照らす、そんな生き方が似合うんだ。</p>
+      <a href="https://note.com/by_nature/n/n5c2008079e2f" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-04">
+      <div class="combo-header">
+        <span class="combo-code">G-04</span>
+        <span class="combo-title">七赤金星 × 丁（ひのと）</span>
+      </div>
+      <p class="combo-body">七赤金星の洗練された魅力に、丁の灯火のような温かさが宿る組み合わせだよ。ろうそくの炎のように、静かだけど確実に人の心を照らす力を持っているんだ。火剋金の関係で内面は繊細。華やかに見えて、実は傷つきやすい一面があるよ。直感力が鋭く、相手の本音を見抜く才能は抜群。カウンセラーや占い師としても活躍できる素質があるんだ。美的センスに優れ、細部にこだわる職人気質も持ち合わせているよ。ただ、考えすぎて動けなくなることがあるから注意。七赤の「楽しむ力」を意識して、もっと軽やかに行動してみてね。恋愛では一途で深い愛情を注ぐタイプ。心を許した相手には、とことん尽くす誠実さがあるんだよ。</p>
+      <a href="https://note.com/by_nature/n/n81c5445ae62a" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-05">
+      <div class="combo-header">
+        <span class="combo-code">G-05</span>
+        <span class="combo-title">七赤金星 × 戊（つちのえ）</span>
+      </div>
+      <p class="combo-body">七赤金星の社交的な才能に、戊の山のような安定感が加わった、とても恵まれた組み合わせだよ。土生金の相生関係で、エネルギーが自然と湧いてくるタイプなんだ。どっしりとした信頼感がありながら、七赤特有の明るさで人を惹きつけるよ。大きなスケールで物事を考えられるから、経営者や管理職として才能を発揮しやすいんだ。金運にも恵まれやすく、お金を呼び込む力がある。ただ、安定志向が強すぎて変化を恐れることも。時には冒険心を持つことで、さらなる飛躍ができるよ。頑固になりやすい面もあるから、周囲の意見に耳を傾ける姿勢を大切にしてね。包容力があるから、人の上に立つ立場で輝くことが多いんだ。</p>
+      <a href="https://note.com/by_nature/n/n0dc1d2e7a8c2" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-06">
+      <div class="combo-header">
+        <span class="combo-code">G-06</span>
+        <span class="combo-title">七赤金星 × 己（つちのと）</span>
+      </div>
+      <p class="combo-body">七赤金星の華やかさに、己の大地のような包容力が融合した組み合わせだよ。土生金の相生関係で、周囲からの愛情やサポートを受けやすい、とても恵まれた運勢なんだ。田畑の土のように、人を育て、実りをもたらす才能があるよ。面倒見が良くて、困っている人を放っておけない優しさの持ち主。七赤の楽しさと己の温かさが合わさって、一緒にいると心地よいと感じさせる魅力があるんだ。教育者やサービス業で活躍できるよ。ただ、人に尽くしすぎて自分を後回しにしがち。たまには自分を甘やかすことも大切なんだ。お金は入ってきやすいけど、人のために使いすぎる傾向も。バランスを意識すると、さらに運気が安定するよ。</p>
+      <a href="https://note.com/by_nature/n/n55b34667c871" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-07">
+      <div class="combo-header">
+        <span class="combo-code">G-07</span>
+        <span class="combo-title">七赤金星 × 庚（かのえ）</span>
+      </div>
+      <p class="combo-body">七赤金星に庚の剛金が加わった、金の気が強まる組み合わせだよ。鋼のような強さと、七赤の華やかさが合わさって、とてもパワフルな個性を持っているんだ。決断力と実行力に優れ、目標に向かって一直線に進んでいける人。競争心が強く、負けず嫌いな一面があるよ。ビジネスの世界で成功しやすく、財を築く力がある。ただ、強すぎて周囲を圧倒してしまうことも。七赤本来の柔らかさを忘れないようにしてね。金が重なることで頑固になりやすく、一度決めたら譲らない傾向があるんだ。もう少し柔軟性を持つと、人間関係がさらに良くなるよ。恋愛ではストレートにアプローチするタイプ。自分の魅力に自信を持っている人が多いんだ。</p>
+      <a href="https://note.com/by_nature/n/n94263f48d45a" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-08">
+      <div class="combo-header">
+        <span class="combo-code">G-08</span>
+        <span class="combo-title">七赤金星 × 辛（かのと）</span>
+      </div>
+      <p class="combo-body">七赤金星に辛の宝石の輝きが加わった、美しさが際立つ組み合わせだよ。金の気が重なることで、繊細で洗練されたセンスの持ち主になるんだ。宝石のようにキラキラと輝き、人を魅了する力があるよ。美意識が高く、ファッションやアート、美容の分野で才能を発揮しやすい。言葉選びも繊細で、話し方一つとっても品の良さが漂うんだ。ただ、プライドが高くて傷つきやすい面も。批判に弱く、少しの否定でも深く落ち込んでしまうことがあるよ。完璧主義になりがちだから、もっと自分を許してあげてね。恋愛では理想が高め。でも本気で好きになった相手には、宝石のように一途に輝き続ける素敵な人なんだ。</p>
+      <a href="https://note.com/by_nature/n/nf8feaa916fe5" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-09">
+      <div class="combo-header">
+        <span class="combo-code">G-09</span>
+        <span class="combo-title">七赤金星 × 壬（みずのえ）</span>
+      </div>
+      <p class="combo-body">七赤金星の社交性に、壬の大海のようなスケールが加わった組み合わせだよ。金生水の相生関係で、自分のエネルギーを外に流していく傾向があるんだ。発想力が豊かで、クリエイティブな仕事に向いているよ。海のように広い心を持ち、どんな人も受け入れる懐の深さがある。七赤の楽しさと壬のダイナミックさが合わさって、話が面白く、人を飽きさせない魅力があるんだ。ただ、エネルギーを放出しすぎて疲れやすい面も。時には立ち止まって充電することが大切だよ。お金は稼ぐ力があるけど、流れ出ていきやすいから管理を意識してね。変化を恐れず、人生を大きな流れに乗せていける。冒険心を大切にすると運が開けるよ。</p>
+      <a href="https://note.com/by_nature/n/nd75768e24cd4" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+    <div class="combo-card" id="combo-10">
+      <div class="combo-header">
+        <span class="combo-code">G-10</span>
+        <span class="combo-title">七赤金星 × 癸（みずのと）</span>
+      </div>
+      <p class="combo-body">七赤金星の華やかさに、癸の雨露のような繊細さが融合した組み合わせだよ。金生水の相生関係で、感受性がとても豊かなんだ。人の気持ちに敏感で、細やかな気配りができる優しさの持ち主。七赤の社交性と癸の内省的な面が合わさって、明るいのに深みのある人柄になるよ。芸術や文学、音楽などで才能を発揮しやすいんだ。直感力も鋭く、見えないものを感じ取る力がある。ただ、感情に流されやすく、気分の浮き沈みが激しい面も。考えすぎて不安になることがあるから、もっと自分を信じてあげてね。恋愛ではロマンチストで、理想の関係を夢見るタイプ。心を潤す存在として、周囲に癒しを与えられる素敵な人なんだよ。
+以上が七赤金星と十干の組み合わせだよ。もっと詳しく知りたいことがあれば、いつでも聞いてね！🦦✨</p>
+      <a href="https://note.com/by_nature/n/nfa09d0856a45" target="_blank" rel="noopener noreferrer" class="combo-note-btn">もっと詳しく見る（note）→</a>
+    </div>
+  <div class="detail-cta">
+    <div class="detail-cta-title">🔮 詳細鑑定レポートについて</div>
+    <div class="detail-features">
+      <span class="detail-feature">組み合わせの特徴</span><span class="detail-feature">強み・気をつけたいこと</span>
+      <span class="detail-feature">向いている仕事</span><span class="detail-feature">金運</span>
+      <span class="detail-feature">恋愛傾向</span><span class="detail-feature">人間関係</span>
+      <span class="detail-feature">ラッキーカラー</span><span class="detail-feature">開運アドバイス</span>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">6,000文字超えのボリュームでお伝えします。</p>
+    <a href="https://note.com/by_nature/n/n0fe029ff036c" target="_blank" rel="noopener noreferrer" class="btn-note">📖 記事一覧はこちら（七赤金星の記事を探してね）</a>
+  </div>
+  <div class="ad-area">
+    <div class="ad-label">広告</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1736527039172931" data-ad-slot="5698827070" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <div class="nav-links">
+    <a href="/stars/index.html" class="nav-link"><div class="nav-link-label">← BACK</div>他の星を見る</a>
+    <a href="/diagnosis.html" class="nav-link"><div class="nav-link-label">DIAGNOSIS</div>無料診断ページ →</a>
+  </div>
+  <footer><nav class="footer-nav"></nav><p class="footer-copy">© 2026 星詠みの海獺 / by_nature</p></footer>
+</div>
+<script src="../nav.js"></script>
+<script>
+  const starsEl=document.getElementById('stars-bg');
+  for(let i=0;i<45;i++){
+    const s=document.createElement('div');s.className='star';
+    const size=Math.random()*2.5+0.5;
+    const colors=['#ef4444','#c9a84c','#7c3aed'];
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};--d:${Math.random()*4+2}s;--delay:${Math.random()*6}s;--op:${Math.random()*0.4+0.15};`;
+    starsEl.appendChild(s);
+  }
+  try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
+</script>
+</body>
+</html>
