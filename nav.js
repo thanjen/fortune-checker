@@ -191,7 +191,8 @@
           data-full-width-responsive="true"></ins>
       </div>
 
-      <!-- 楽天アフィリエイト -->
+      <!-- 楽天アフィリエイト（非表示中） -->
+      <!-- AdSense審査通過後に再表示予定
       <div class="nav-rakuten-grid">
         ${RAKUTEN_ITEMS.map(item => `
           <a href="${item.href}" rel="nofollow" target="_blank" class="nav-rakuten-item">
@@ -202,6 +203,7 @@
       </div>
       <p class="nav-ad-note">※ 広告・アフィリエイトリンクを含みます</p>
       <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4B3MEQ+BZ1UR6+2HOM+BWGDT" alt="">
+      -->
     `;
 
     footer.parentNode.insertBefore(adSection, footer);
