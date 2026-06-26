@@ -745,14 +745,12 @@ function startDiagnosis() {
         relation: selectedRelation,
         totalScore: data.total_score
       });
-      // 5秒後に結果表示
-      setTimeout(() => {
-        showResult({
-          myName, myStarIdx, myJikkanIdx,
-          targetName, targetStarIdx, targetJikkanIdx,
-          relation: selectedRelation, data
-        });
-      }, 5000);
+      // GASが返ってきたら即座に結果表示
+      showResult({
+        myName, myStarIdx, myJikkanIdx,
+        targetName, targetStarIdx, targetJikkanIdx,
+        relation: selectedRelation, data
+      });
     } else {
       alert('データの取得に失敗しました。もう一度お試しください。');
       showPage('page-input');
